@@ -1317,6 +1317,7 @@
 				link.classList.toggle('active', filter === currentFilter);
 			});
 		}
+		var originalSearchResult = [];
 		function searchWords() {
 			if (window.isInitializing) {
 				return;
@@ -1325,7 +1326,13 @@
 			const query = searchInput.value.trim();
 			currentSearchQuery = query;
 			if (!query) {
+				// 如果没有查询，恢复到默认过滤后的数据
 				currentWordData = [...defaultFilteredData];
+				originalSearchResult = []; // 清空原始搜索结果
+				// 如果需要按字母排序（虽然通常不会在空搜索时排序），在此基础上排序
+				if (isSorted) {
+					currentWordData.sort((a, b) => a.W.localeCompare(b.W));
+				}
 			} else {
 				const searchTerms = query.replace(/ |　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
 				if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
@@ -1376,7 +1383,7 @@
 					});
 					return { word, score, matchedTermIndex };
 				});
-				currentWordData = scoredWords
+				let filteredAndScored = scoredWords
 					.filter(item => item.score > 0)
 					.sort((a, b) => {
 						// 首先按搜索词出现的顺序排序
@@ -1387,6 +1394,18 @@
 						return b.score - a.score;
 					})
 					.map(item => item.word);
+
+				// 保存原始搜索顺序
+				originalSearchResult = [...filteredAndScored];
+
+				// 将当前结果设置为原始顺序
+				currentWordData = [...originalSearchResult];
+
+				// 检查是否需要按字母排序
+				if (isSorted) {
+					 currentWordData.sort((a, b) => a.W.localeCompare(b.W));
+				}
+
 				searchTerms.forEach(term => {
 					const searchTerm = term.toLowerCase();
 					const foundWord = originalWordData.data.find(word =>
@@ -1414,6 +1433,7 @@
 			updateDisplay(limit);
 			updateUrlParams();
 		}
+
 		function findWordInDaixue(word) {
 			const wordLower = word.toLowerCase();
 			for (const unit of originalWordData.daixue) {
@@ -1428,17 +1448,27 @@
 			}
 			return null;
 		}
+
 		function sortWords(limit) {
 			if(!limit)limit=wordsPerPage;
 			isSorted = !isSorted;
 			if (isSorted) {
-				currentWordData.sort((a, b) => a.W.localeCompare(b.W));
+				if (originalSearchResult.length > 0) {
+					 currentWordData = [...originalSearchResult];
+					 currentWordData.sort((a, b) => a.W.localeCompare(b.W));
+				} else {
+					currentWordData.sort((a, b) => a.W.localeCompare(b.W));
+				}
 				sortBtn.textContent = '按考频排序';
 			} else {
-				currentWordData = [...defaultFilteredData];
+				if (originalSearchResult.length > 0) {
+					currentWordData = [...originalSearchResult];
+				} else {
+					currentWordData = [...defaultFilteredData];
+				}
 				sortBtn.textContent = '按字母排序';
 			}
-			currentPage = 1;
+			currentPage = 1; // 排序后回到第一页
 			totalPages = Math.ceil(currentWordData.length / limit);
 			updateDisplay();
 		}
@@ -1448,11 +1478,8 @@
 				document.getElementById('readPanel').style.display = 'none';
 				document.querySelector('.controls').style.display = 'none';
 				document.getElementById('pagination').style.display = 'none';
+				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
 				document.getElementById('wordContainer').style.display = 'block';
-				if(document.getElementById("cachediv")){
-					document.getElementById("cachediv").style.display = "none";
-					document.getElementById('unitSelectorContainer').style.display = "none";
-				}
 				renderGroupSelector();
 				updateActiveFilterLink();
 				updateUrlParams();
@@ -1472,14 +1499,19 @@
 				document.querySelector('.controls').style.display = 'none';
 				document.getElementById('wordContainer').style.display = 'none';
 				document.getElementById('pagination').style.display = 'none';
+				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "block";
 			}else {
 				document.querySelector('.controls').style.display = 'block';
 				document.getElementById('wordContainer').style.display = 'block';
 				document.getElementById('pagination').style.display = 'block';
 				document.getElementById('readPanel').style.display = 'none';
+				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
 			}
 			defaultFilteredData = wordManager.getFilteredWords(originalWordData.data, filterType);
 			currentWordData = [...defaultFilteredData];
+			originalSearchResult = [];
+			isSorted = false;
+			sortBtn.textContent = '按字母排序';
 			totalPages = Math.ceil(currentWordData.length / wordsPerPage);
 			if (currentPage > totalPages) currentPage = 1;
 			searchWords();
@@ -1500,7 +1532,6 @@
 			const startIndex = (currentPage - 1) * limit;
 			const endIndex = Math.min(startIndex + limit, currentWordData.length);
 			const pageWords = currentWordData.slice(startIndex, endIndex);
-			//手工复制到多个AI生成作文
 			if(!(originalWordData.essay && originalWordData.essay.some(e => e.p === currentPage))){
 				let words='这些单词【'+pageWords.map(w => w.word).join(', ')+'】';
 				//步骤1
