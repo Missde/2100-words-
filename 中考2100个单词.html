@@ -1478,7 +1478,10 @@
 				document.getElementById('readPanel').style.display = 'none';
 				document.querySelector('.controls').style.display = 'none';
 				document.getElementById('pagination').style.display = 'none';
-				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
+				if(document.getElementById("cachediv")){
+					document.getElementById("cachediv").style.display = "none";
+					document.getElementById("unitSelectorContainer").style.display = "none";
+				}
 				document.getElementById('wordContainer').style.display = 'block';
 				renderGroupSelector();
 				updateActiveFilterLink();
