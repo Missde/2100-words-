@@ -77,18 +77,21 @@
 		.verb-form-grid{display: grid;grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));gap: 10px;}
 		.verb-form-item{background-color: #f8f9fa;border-radius: 8px;padding: 5px;text-align: center;transition: all 0.2s;border: 1px solid #e9ecef;}
 		.verb-form-item:hover{background-color: #e9ecef;transform: translateY(-2px);box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);}
+
+		.verb-form-item.play .verb-form-value:before{content:"🔊";font-size:.8rem;}
+
 		.verb-form-label{font-size: 1rem;color: #666;text-transform: uppercase;font-weight: bold;}
 		.verb-form-value{font-size: 1.3rem;font-weight: bold;color: #2196F3;}
-		.verb-examples{margin-bottom: 20px;}
+		.verb-examples{margin:20px 0;}
 		.verb-example-type{margin-bottom: 15px;}
 		.verb-example-type-title{font-size: 1rem;font-weight: bold;color: #555;padding-left: 10px;border-left: 5px solid #2196F3;}
 		.verb-example-list{list-style-type: none;padding-left: 0;margin:0;padding:0;}
-		.verb-example-item{padding: 5px 10px;margin-left:30px;margin-bottom: 5px;background-color: #f8f9fa;border-radius: 6px;border-left: 3px solid #4caf50;cursor: pointer;}
+		.verb-example-item{font-size:1.2rem;transition: all 0.2s;padding: 5px 10px;margin-left:30px;margin-bottom: 5px;background-color: #f8f9fa;border-radius: 6px;border-left: 3px solid #4caf50;cursor: pointer;}
 		.verb-example-item:hover{background-color: #e9ecef;}
 		.verb-example-item:nth-child(odd){background-color: #f0f4f8;}
 		.reading-ing {background: #2196F3;color:#1976d2;transition: all 0.3s ease;}
 		.example-english.reading-ing {background:#e3f2fd;padding:0px 6px;border-radius: 4px;}
-		.verb-example-item.reading-ing {background:#e3f2fd;border-left-color: #2196F3;transform: translateX(5px);}
+		.verb-example-item.reading-ing {background:#e3f2fd;border-left-color: #2196F3;transform: translateX(5px);font-size:1.3rem;}
 		.read-sentence.reading-ing {background:#e3f2fd;color: #1976d2;border:#2196F3;transform:scale(1.02);}
 		/* 待学单元选择器样式 */
 		.unit-selector { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;padding-left:2rem;}
@@ -105,7 +108,8 @@
 		.group-selector label { display: inline-flex; align-items: center; cursor: pointer;padding:3px 10px; border-radius: 15px;font-size: 0.9rem;transition: all 0.2s;color:#0078d7;background: #eef7ff;border: 1px solid #a0cfff;}
 		.group-selector label:hover{background-color: #2196F3;color: #fff;}
 		.group-category-header {margin: 10px 0 5px 10px;clear: both; width: 100%; }
-		#groupSelectorContainer:before{content:"按照单词分类学单词";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
+		.group-category-h2:before{content:"年级分类";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin:20px 0;}
+		#groupSelectorContainer:before{content:"单词分类";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
 		/* 作文内容层样式 */
 		.essay-panel.show {display: block;}
 		.essay-panel {position: fixed;left: 50%;bottom:10px;transform: translateX(-50%);width: calc(100% - 20px);max-width:900px;background: white;border: 2px solid #2196F3;border-radius: 12px;box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.15);z-index: 1000;overflow: hidden;display: none;padding-bottom:10px;transition: all 0.3s ease;}
@@ -919,21 +923,21 @@
 				let html = `
 					<div class="verb-forms">
 						<div class="verb-form-grid">
-							<div class="verb-form-item">
+							<div class="verb-form-item ${verbData.F.A?"play":""}">
 								<div class="verb-form-label">原形</div>
-								<div class="verb-form-value">${verbData.F.A}</div>
+								<div class="verb-form-value" data-verb="${verbData.F.A?verbData.F.A:""}">${verbData.F.A?verbData.F.A:"--"}</div>
 							</div>
-							<div class="verb-form-item">
+							<div class="verb-form-item ${verbData.F.B?"play":""}">
 								<div class="verb-form-label">过去式</div>
-								<div class="verb-form-value">${verbData.F.B}</div>
+								<div class="verb-form-value" data-verb="${verbData.F.B?verbData.F.B:""}">${verbData.F.B?verbData.F.B:"--"}</div>
 							</div>
-							<div class="verb-form-item">
+							<div class="verb-form-item ${verbData.F.C?"play":""}">
 								<div class="verb-form-label">过去分词</div>
-								<div class="verb-form-value">${verbData.F.C}</div>
+								<div class="verb-form-value" data-verb="${verbData.F.C?verbData.F.C:""}">${verbData.F.C?verbData.F.C:"--"}</div>
 							</div>
-							<div class="verb-form-item">
+							<div class="verb-form-item ${verbData.F.D?"play":""}">
 								<div class="verb-form-label">现在分词</div>
-								<div class="verb-form-value">${verbData.F.D}</div>
+								<div class="verb-form-value" data-verb="${verbData.F.D?verbData.F.D:""}">${verbData.F.D?verbData.F.D:"--"}</div>
 							</div>
 						</div>
 					</div>
@@ -953,6 +957,23 @@
 				}
 				html += `</div>`;
 				this.content.innerHTML = html;
+
+				//播放有道单词读音
+				const formValues = this.content.querySelectorAll('.verb-form-value');
+				formValues.forEach(valueElement => {
+					const word = valueElement.getAttribute('data-verb');
+					if (word) {
+						valueElement.style.cursor = 'pointer';
+						valueElement.addEventListener('click', (e) => {
+							e.stopPropagation();
+							const mp3 = "http://dict.youdao.com/dictvoice?type=0&audio=" + word;
+							playAudio(mp3, null);
+						});
+					}
+				});
+
+
+
 				this.addExampleClickListeners();
 			}
 			renderExampleType(type, examples, form) {
@@ -1023,20 +1044,70 @@
 					const button = document.createElement('span');
 					button.innerHTML = subCategoryName;
 					button.onclick = () => {
-
-						const trimmedList = wordListString.trim().replace(/,$/g, '');
-						const words = trimmedList.split(',').map(w => w.trim()).filter(w => w);
-						const queryString = words.join(' ');
-
-						let title=encodeURIComponent('【'+subCategoryName+"】类");
-						const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}`;
-						window.location.href = newUrl;
+						const wordList = wordListString.trim().replace(/,$/g, '');
+						if (wordList) {
+							const queryString = wordList;
+							let title = encodeURIComponent('【' + subCategoryName + "】类");
+							const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}`;
+							window.location.href = newUrl;
+						} else {
+							console.warn(`分类 "${subCategoryName}" 的单词列表为空或格式不正确: ${wordListString}`);
+						}
 					};
 					label.appendChild(button);
 					subCategoryButtonsDiv.appendChild(label);
 				}
 				groupContainer.appendChild(subCategoryButtonsDiv);
 			}
+
+			//按照年级显示分类
+			const daixueData = originalWordData.daixue;
+			if (daixueData && daixueData.length > 0) {
+				const groupedDaixue = {};
+				daixueData.forEach(unit => {
+					if (!groupedDaixue[unit.grade]) {
+						groupedDaixue[unit.grade] = [];
+					}
+					groupedDaixue[unit.grade].push(unit);
+				});
+
+				const daixueHeader = document.createElement('div');
+				daixueHeader.className = 'group-category-h2';
+				groupContainer.appendChild(daixueHeader);
+
+				for (const [grade, units] of Object.entries(groupedDaixue)) {
+					const gradeHeader = document.createElement('div');
+					gradeHeader.className = 'group-category-header';
+					gradeHeader.textContent = `${grade}:`;
+					groupContainer.appendChild(gradeHeader);
+
+					const unitButtonsDiv = document.createElement('div');
+					unitButtonsDiv.className = 'group-selector';
+					unitButtonsDiv.style.cssText = 'padding-left:2rem;display: flex; flex-wrap: wrap; gap: 10px;';
+
+					units.forEach(unit => {
+						const label = document.createElement('label');
+						const button = document.createElement('span');
+						button.innerHTML = unit.unit;
+						button.onclick = () => {
+							const wordListString = unit.W;
+							if (wordListString) {
+								const queryString = wordListString.trim().replace(/,$/g, '');
+								let title = encodeURIComponent(`【${unit.unit}】`);
+								const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}`;
+								window.location.href = newUrl;
+							} else {
+								console.warn(`单元 "${unit.unit}" 的单词列表为空: ${unit.W}`);
+							}
+						};
+						label.appendChild(button);
+						unitButtonsDiv.appendChild(label);
+					});
+					groupContainer.appendChild(unitButtonsDiv);
+				}
+			}
+
+
 			container.appendChild(groupContainer);
 		}
 		const speechManager = new SpeechManager();
@@ -1381,8 +1452,8 @@
 					currentWordData.sort((a, b) => a.W.localeCompare(b.W));
 				}
 			} else {
-				const searchTerms = query.replace(/ |　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-				//if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
+				const searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
+				if(searchTerms.length>10)limit=40;//多个词同时搜索，1页显示90个
 
 				const isFuzzy = urlParams.title ? urlParams.fuzzy : fuzzySearchCheckbox.checked;
 
@@ -1396,7 +1467,7 @@
 					searchTerms.forEach(term => {
 						const wordText = word.W.toLowerCase();
 						const searchTerm = term.toLowerCase();
-						const explanation = word.C.toLowerCase();
+						const explanation = word.C.toLowerCase()+" "+(word.I?word.I.toLowerCase():"")+" "+(word.K?word.K.toLowerCase():"");
 						const example = word.E.toLowerCase();
 						const exampleChinese = word.F.toLowerCase();
 						if (isFuzzy) {
@@ -1450,6 +1521,7 @@
 				if (isSorted) {
 					 currentWordData.sort((a, b) => a.W.localeCompare(b.W));
 				}
+				let l='';
 				searchTerms.forEach(term => {
 					const searchTerm = term.toLowerCase();
 					const foundWord = originalWordData.data.find(word =>
@@ -1467,10 +1539,12 @@
 					} else if (!foundWord) {
 						const foundInDaixue = findWordInDaixue(searchTerm);
 						if (foundInDaixue) {
+							l+='"'+term+'",';
 							toastManager.show(`"${term}"未收录单词库<br/>在 <b style="color:#ff0">${foundInDaixue.grade} ${foundInDaixue.unit}</b>中学习`, 'info', 8000);
 						}
 					}
 				});
+				if(l)console.log(l);
 			}
 			totalPages = Math.ceil(currentWordData.length / limit);
 			if (currentPage > totalPages) currentPage = 1;
@@ -1726,9 +1800,13 @@
 			});
 			return result;
 		}
-		function renderPagination() {
+		function renderPagination(limit) {
+			if(!limit) limit = wordsPerPage;
+			const totalPagesForRender = Math.ceil(currentWordData.length / limit);
+
 			pagination.innerHTML = '';
-			if (totalPages <= 1) return;
+			if (totalPagesForRender <= 1) return;
+
 			const prevBtn = createPageBtn('上一页', currentPage > 1, () => {
 				if (currentPage > 1) {
 					essayManager.pauseAudio();
@@ -1737,19 +1815,22 @@
 					essayManager.resetTTS();
 					essayManager.resetSize();
 					currentPage--;
-					updateDisplay();
+					updateDisplay(limit);
 					updateUrlParams();
 				}
 			});
 			pagination.appendChild(prevBtn);
+
 			const maxVisiblePages = 5;
 			let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-			let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+			let endPage = Math.min(totalPagesForRender, startPage + maxVisiblePages - 1);
+
 			if (endPage - startPage + 1 < maxVisiblePages) {
 				startPage = Math.max(1, endPage - maxVisiblePages + 1);
 			}
+
 			if (startPage > 1) {
-				pagination.appendChild(createPageBtn('1', true, () => goToPage(1)));
+				pagination.appendChild(createPageBtn('1', true, () => goToPage(1, limit)));
 				if (startPage > 2) {
 					const ellipsis = document.createElement('span');
 					ellipsis.className = 'ellipsis';
@@ -1757,29 +1838,32 @@
 					pagination.appendChild(ellipsis);
 				}
 			}
+
 			for (let i = startPage; i <= endPage; i++) {
-				const pageBtn = createPageBtn(i.toString(), true, () => goToPage(i));
+				const pageBtn = createPageBtn(i.toString(), true, () => goToPage(i, limit));
 				if (i === currentPage) pageBtn.classList.add('active');
 				pagination.appendChild(pageBtn);
 			}
-			if (endPage < totalPages) {
-				if (endPage < totalPages - 1) {
+
+			if (endPage < totalPagesForRender) {
+				if (endPage < totalPagesForRender - 1) {
 					const ellipsis = document.createElement('span');
 					ellipsis.className = 'ellipsis';
 					ellipsis.textContent = '...';
 					pagination.appendChild(ellipsis);
 				}
-				pagination.appendChild(createPageBtn(totalPages.toString(), true, () => goToPage(totalPages)));
+				pagination.appendChild(createPageBtn(totalPagesForRender.toString(), true, () => goToPage(totalPagesForRender, limit)));
 			}
-			const nextBtn = createPageBtn('下一页', currentPage < totalPages, () => {
-				if (currentPage < totalPages) {
+
+			const nextBtn = createPageBtn('下一页', currentPage < totalPagesForRender, () => {
+				if (currentPage < totalPagesForRender) {
 					essayManager.pauseAudio();
 					essayManager.pauseTTS();
 					essayManager.resetAudio();
 					essayManager.resetTTS();
 					essayManager.resetSize();
 					currentPage++;
-					updateDisplay();
+					updateDisplay(limit);
 					updateUrlParams();
 				}
 			});
@@ -1793,14 +1877,15 @@
 			if (enabled) btn.addEventListener('click', onClick);
 			return btn;
 		}
-		function goToPage(page) {
+		function goToPage(page, limit) {
+			if(!limit) limit = wordsPerPage;
 			essayManager.pauseAudio();
 			essayManager.pauseTTS();
 			essayManager.resetAudio();
 			essayManager.resetTTS();
 			essayManager.resetSize();
 			currentPage = page;
-			updateDisplay();
+			updateDisplay(limit);
 			updateUrlParams();
 			essayManager.checkAndShowEssay(currentPage);
 		}
