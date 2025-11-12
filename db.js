@@ -1,7 +1,7 @@
 
 		var originalWordData = {
-			"total": 2360,
-			"data":[
+			total: 2360,
+			data:[
 				//前2100个
 					{P:1,W:"the",Y:"/ði; ðə/",C:"art. 这；那",E:"The cat is on the chair.",F:"猫在椅子上。"},
 					{P:1,W:"to",Y:"/tuː; tə/",C:"prep. 到；向",E:"She goes to school by bike. / She rides her bike to school.",F:"她骑自行车去上学。"},
@@ -23,7 +23,7 @@
 					{P:1,W:"on",Y:"/ɒn/",C:"prep. 在…上",E:"The pen is on the desk.",F:"钢笔在书桌上。"},
 					{P:1,W:"are",Y:"/ɑː(r); ə(r)/",C:"v. 是",E:"We are in the classroom.",F:"我们在教室里。",I:"用于第2人称及复数",K:"be动词"},
 					{P:1,W:"with",Y:"/wɪð/",C:"prep. 和…一起",E:"I live with my parents.",F:"我和父母住在一起。"},
-					{P:1,W:"people",Y:"/ˈpiːpl/",C:"n. 人们",I:"单复一致",E:"Many people like sports.",F:"许多人喜欢运动。"},
+					{P:1,W:"people",Y:"/ˈpiːpl/",C:"n. 人们",I:"person复数",E:"Many people like sports.",F:"许多人喜欢运动。"},
 					{P:1,W:"have",Y:"/hæv/",C:"v. 有",E:"I have a red bike.",F:"我有一辆红色的自行车。"},
 					{P:1,W:"we",Y:"/wiː/",C:"pron. 我们",E:"We study English every day.",F:"我们每天学英语。"},
 					{P:1,W:"at",Y:"/æt/",C:"prep. 在",E:"She is at home now.",F:"她现在在家。"},
@@ -436,7 +436,7 @@
 					{P:1,W:"hurt",Y:"/hɜː(r)t/",C:"v. 伤害",E:"Be careful not to hurt yourself.",F:"小心别伤到自己。"},
 					{P:1,W:"weather",Y:"/ˈweðə(r)/",C:"n. 天气",E:"The weather is nice today.",F:"今天天气很好。"},
 					{P:1,W:"open",Y:"/ˈəʊpən/",C:"v. 打开",E:"Please open the window.",F:"请打开窗户。"},
-					{P:1,W:"fall",Y:"/fɔːl/",C:"v. 落下",E:"Leaves fall in autumn.",F:"树叶在秋天落下。"},
+					{P:1,W:"fall",Y:"/fɔːl/",C:"n.秋天<i>美式口语</i> v. 落下",E:"Leaves fall in autumn.",F:"树叶在秋天落下。"},
 					{P:1,W:"quickly",Y:"/ˈkwɪkli/",C:"adv. 快速地",E:"He ran quickly to school.",F:"他快速地跑向学校。"},
 					{P:1,W:"wonderful",Y:"/ˈwʌndə(r)fl/",C:"adj. 精彩的",E:"We had a wonderful time.",F:"我们度过了美好的时光。"},
 					{P:1,W:"poor",Y:"/pɔː(r)/",C:"adj. 贫穷的",E:"We should help poor people.",F:"我们应该帮助穷人。"},
@@ -472,7 +472,7 @@
 					{P:1,W:"finish",Y:"/ˈfɪnɪʃ/",C:"v. 完成",E:"I finished my homework.",F:"我完成了我的作业。"},
 					{P:1,W:"community",Y:"/kəˈmjuːnəti/",C:"n. 社区",E:"We have a clean and tidy community.",F:"我们有一个干净整洁的社区。"},
 					{P:1,W:"green",Y:"/ɡriːn/",C:"adj. 绿色的",E:"The trees are green in spring.",F:"春天树木是绿色的。"},
-					{P:1,W:"second",Y:"/ˈsekənd/",C:"num. 第二",E:"This is my second visit to Beijing.",F:"这是我第二次访问北京。"},
+					{P:1,W:"second",Y:"/ˈsekənd/",C:"num. 第二;n.秒",E:"This is my second visit to Beijing.",F:"这是我第二次访问北京。"},
 					{P:1,W:"spread",Y:"/spred/",C:"v. 传播",E:"News spreads quickly.",F:"消息传播得很快。"},
 					{P:1,W:"real",Y:"/rɪəl/",C:"adj. 真实的",E:"This is a real story.",F:"这是一个真实的故事。"},
 					{P:1,W:"pick",Y:"/pɪk/",C:"v. 采摘",E:"We pick apples in autumn.",F:"我们在秋天摘苹果。"},
@@ -917,7 +917,7 @@
 					{P:2,W:"dragon",Y:"/ˈdræɡən/",C:"n. 龙",E:"The dragon is important in Chinese culture.",F:"龙在中国文化中很重要。"},
 					{P:2,W:"astronaut",Y:"/ˈæstrənɔːt/",C:"n. 宇航员",E:"He wants to be an astronaut.",F:"他想成为一名宇航员。"},
 					{P:2,W:"term",Y:"/tɜː(r)m/",C:"n. 学期",E:"We have a new term in September.",F:"我们在九月份有一个新学期。"},
-					{P:2,W:"couple",Y:"/ˈkʌpl/",C:"n. 一对；几个",E:"I have a couple of questions.",F:"我有几个问题。"},
+					{P:2,W:"couple",Y:"/ˈkʌpl/",C:"n. 两个;夫妻;一对儿;几个",E:"I have a couple of questions. / The old couple lives happily.",F:"我有几个问题。/ 这对老夫妻生活得很幸福。"},
 					{P:2,W:"clever",Y:"/ˈklevə(r)/",C:"adj. 聪明的",E:"She is a clever student.",F:"她是一个聪明的学生。"},
 					{P:2,W:"everyday",Y:"/ˈevrideɪ/",C:"adj. 每天的；日常的",E:"This is an everyday activity.",F:"这是一项日常活动。"},
 					{P:2,W:"dry",Y:"/draɪ/",C:"adj. 干的",E:"The clothes are dry now.",F:"衣服现在干了。"},
@@ -1346,7 +1346,7 @@
 					{P:3,W:"deaf",Y:"/def/",C:"adj. 聋的",E:"He is deaf in one ear.",F:"他一只耳朵聋了。"},
 					{P:3,W:"drop",Y:"/drɒp/,/drɑːp/",C:"v. 落下",E:"Don't drop the glass.",F:"别把玻璃杯掉了。"},
 					{P:3,W:"alarm",Y:"/əˈlɑː(r)m/",C:"n. 闹钟；警报",E:"The alarm clock woke me up.",F:"闹钟把我叫醒了。"},
-					{P:3,W:"fallen",Y:"/ˈfɔːlən/",C:"adj. 落下的",E:"We swept the fallen leaves.",F:"我们扫了落叶。"},
+					{P:3,W:"fallen",Y:"/ˈfɔːlən/",C:"adj. 落下的<i>fall过去分词</i>",E:"We swept the fallen leaves.",F:"我们扫了落叶。"},
 					{P:3,W:"apart",Y:"/əˈpɑː(r)t/",C:"adv. 分开",E:"The two houses are far apart.",F:"两栋房子离得很远。"},
 					{P:3,W:"shocked",Y:"/ʃɒkt/,/ʃɑːkt/",C:"adj. 震惊的",E:"We were shocked by the news.",F:"我们被这个消息震惊了。"},
 					{P:3,W:"remind",Y:"/rɪˈmaɪnd/",C:"v. 提醒",E:"Please remind me to buy milk.",F:"请提醒我买牛奶。"},
@@ -2391,6 +2391,38 @@
 					{P:2,W:"being",Y:"/ˈbiːɪŋ/",C:"v. 正在；n. 存在",I:"be的现在分词",E:"She is being very helpful today.",F:"她今天非常乐于助人。",K:"be动词"},
 					{P:2,W:"frog",Y:"/frɒɡ/",C:"n. 青蛙",E:"A frog can live both in water and on land.",F:"青蛙既能生活在水里也能生活在陆地上。"},
 
+					{P:2,W:"whiteboard",Y:"/ˈwaɪtbɔːd/",C:"n. 白板",E:"The teacher wrote the main points on the whiteboard.",F:"老师把要点写在了白板上。"},
+					{P:3,W:"pea",Y:"/piː/",C:"n. 豌豆",E:"Would you like some peas with your dinner?",F:"你晚餐想吃点豌豆吗？"},
+					{P:3,W:"sage",Y:"/seɪdʒ/",C:"n. 鼠尾草；圣人",E:"The recipe needs some sage.",F:"这个食谱需要一些鼠尾草。"},
+					{P:2,W:"cinnamon",Y:"/ˈsɪnəmən/",C:"n. 肉桂",E:"I like cinnamon in my coffee.",F:"我喜欢在咖啡里加肉桂。"},
+					{P:2,W:"professor",Y:"/prəˈfesə(r)/",C:"n. 教授",E:"The professor is teaching a class now.",F:"教授正在上课。"},
+					{P:2,W:"media",Y:"/ˈmiːdiə/",C:"n. 媒体",I:"medium的复数形式",E:"The media reported the news quickly.",F:"媒体迅速报道了这条新闻。"},
+					{P:3,W:"flute",Y:"/fluːt/",C:"n. 长笛",E:"She plays the flute beautifully.",F:"她长笛吹得很优美。"},
+				{P:2,W:"geese",Y:"/ɡiːs/",C:"n. 鹅",I:"goose的复数形式",E:"The geese are swimming in the pond.",F:"鹅正在池塘里游泳。"},
+				{P:2,W:"painter",Y:"/ˈpeɪntə(r)/",C:"n. 画家；油漆匠",E:"The painter is drawing a landscape.",F:"画家正在画一幅风景画。"},
+				{P:2,W:"photographer",Y:"/fəˈtɒɡrəfə(r)/",C:"n. 摄影师",E:"The photographer took many pictures.",F:"摄影师拍了很多照片。"},
+				{P:2,W:"designer",Y:"/dɪˈzaɪnə(r)/",C:"n. 设计师",E:"She is a famous fashion designer.",F:"她是一位著名的时装设计师。"},
+				{P:2,W:"boating",Y:"/ˈbəʊtɪŋ/",C:"n. 划船",E:"They go boating on the lake.",F:"他们在湖上划船。"},
+				{P:3,W:"sled",Y:"/sled/",C:"n. 雪橇",E:"The children play with a sled in winter.",F:"孩子们冬天玩雪橇。"},
+				{P:2,W:"remove",Y:"/rɪˈmuːv/",C:"v. 移除；去掉",E:"Please remove your shoes before entering.",F:"进入前请脱鞋。"},
+				{P:2,W:"exhibition",Y:"/ˌeksɪˈbɪʃn/",C:"n. 展览；展示",E:"We saw many paintings at the art exhibition.",F:"我们在艺术展览上看到了很多画。"},
+
+				{P:3,W:"Russia",Y:"/ˈrʌʃə/",C:"n. 俄罗斯",E:"Moscow is the capital of Russia.",F:"莫斯科是俄罗斯的首都。"},
+				{P:3,W:"Canada",Y:"/ˈkænədə/",C:"n. 加拿大",E:"Canada has many beautiful lakes.",F:"加拿大有很多美丽的湖泊。"},
+				{P:3,W:"Scotland",Y:"/ˈskɒtlənd/",C:"n. 苏格兰",E:"Scotland is famous for its castles.",F:"苏格兰以其城堡闻名。"},
+				{P:3,W:"Mexico",Y:"/ˈmeksɪkəʊ/",C:"n. 墨西哥",E:"They are going to visit Mexico next month.",F:"他们下个月要去墨西哥旅游。"},
+				{P:3,W:"Brazil",Y:"/brəˈzɪl/",C:"n. 巴西",E:"Brazil is the largest country in South America.",F:"巴西是南美洲最大的国家。"},
+				{P:3,W:"Finland",Y:"/ˈfɪnlənd/",C:"n. 芬兰",E:"Finland is known for its northern lights.",F:"芬兰以其北极光而闻名。"},
+				{P:3,W:"Norway",Y:"/ˈnɔːweɪ/",C:"n. 挪威",E:"The fjords in Norway are very beautiful.",F:"挪威的峡湾非常美丽。"},
+				{P:3,W:"Spain",Y:"/speɪn/",C:"n. 西班牙",E:"We enjoyed the food in Spain.",F:"我们很喜欢西班牙的食物。"},
+				{P:3,W:"Zealand",Y:"/ˈziːlənd/",C:"n. 泽兰（丹麦岛屿）；新西兰组成部分",E:"New Zealand consists of two main islands.",F:"新西兰由两个主要岛屿组成。"},
+				{P:3,W:"Singapore",Y:"/ˌsɪŋəˈpɔː/",C:"n. 新加坡",E:"Singapore is a clean and modern city.",F:"新加坡是一个干净现代的城市。"},
+				{P:3,W:"Thailand",Y:"/ˈtaɪlænd/",C:"n. 泰国",E:"Thailand is famous for its beautiful beaches.",F:"泰国以其美丽的海滩而闻名。"},
+				{P:3,W:"Italian",Y:"/ɪˈtæliən/",C:"adj. 意大利的；n. 意大利人；意大利语",E:"She is learning to cook Italian food.",F:"她正在学习烹饪意大利菜。"},
+				{P:3,W:"Spanish",Y:"/ˈspænɪʃ/",C:"adj. 西班牙的；n. 西班牙人；西班牙语",E:"He speaks Spanish very well.",F:"他西班牙语说得很好。"},
+				{P:3,W:"Finnish",Y:"/ˈfɪnɪʃ/",C:"adj. 芬兰的；n. 芬兰人；芬兰语",E:"The Finnish design is simple and functional.",F:"芬兰的设计简约而实用。"},
+				{P:1,W:"lights",Y:"/laɪts/",C:"n. 灯；灯光",I:"light的复数形式",E:"Please turn off the lights when you leave.",F:"离开时请关灯。"},
+				{P:2,W:"opportunity",Y:"/ˌɒpəˈtjuːnəti/",C:"n. 机会；时机",E:"This is a good opportunity to learn English.",F:"这是学习英语的好机会。"},
 			],
 			dongci:[
 				{W:"agree",C:"同意",F:{A:"agree",B:"agreed",C:"agreed",D:"agreeing"},exp:{A:["I agree with your idea. | 我同意你的想法。","She agrees to help us. | 她同意帮助我们。"],B:["He agreed to the plan yesterday. | 他昨天同意了这个计划。","They agreed on the time last week. | 他们上周就时间达成了一致。"],C:["I have agreed with him. | 我已经同意他了。","She has agreed to come. | 她已经同意来了。"],D:["We are agreeing on the plan now. | 我们现在正在就计划达成一致。","They are agreeing with each other. | 他们正在互相同意对方的观点。"]}},
@@ -2603,115 +2635,128 @@
 				{W:"write",C:"写",F:{A:"write",B:"wrote",C:"written",D:"writing"},exp:{A:["I write a letter. | 我写一封信。","She writes a diary. | 她写日记。"],B:["He wrote a poem. | 他写了一首诗。","They wrote a report. | 他们写了一份报告。"],C:["I have written a book. | 我已经写了一本书。","She had written the email. | 她已经写了那封邮件。"],D:["He is writing a story. | 他正在写一个故事。","She is writing in her journal. | 她正在写日记。"]}},
 			],
 			group:{
-				"基础词汇": {
-					"数字基数词":"one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,thirty,forty,fifty,sixty,seventy,eighty,ninety",
-					"数字大数":"hundred,thousand,million,billion,zero",
-					"序数词":"first,second,third,fourth,fifth,sixth,seventh,eighth,ninth,tenth,twelfth,thirteenth,fifteenth,eighteenth,fortieth,fiftieth,sixtieth,seventieth,eightieth,hundredth,thousandth,millionth",
-					"颜色类":"red,blue,green,yellow,black,white,brown,pink,purple,orange,grey,gold,silver,color,colour"
+				"基础词汇":{
+					"数字基数词":"zero,one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,thirty,forty,fifty,sixty,seventy,eighty,ninety,hundred,thousand,million,billion",
+					"序数词":"first,second,third,fourth,fifth,sixth,seventh,eighth,ninth,tenth,eleventh,twelfth,thirteenth,fourteenth,fifteenth,sixteenth,seventeenth,eighteenth,nineteenth,twentieth,thirtieth,fortieth,fiftieth,sixtieth,seventieth,eightieth,ninetieth,hundredth,thousandth,millionth",
+					"颜色类":"red,blue,green,yellow,black,white,brown,pink,purple,orange,grey,gold,silver,pale,purple,beige,navy,maroon,teal,coral,indigo,violet,olive,lavender,crimson,amber,peach,mauve,plum,cream,ivory,azure,emerald"
 				},
-				"时间日期": {
+				"时间日期":{
+					"时间单位":"second,minute,hour,day,week,month,year,century,moment,period,lifetime,beginning,end,past,future,decade,generation,era",
+					"星期":"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,weekend",
 					"月份":"January,February,March,April,May,June,July,August,September,October,November,December",
-					"星期":"Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
-					"季节时刻":"spring,summer,autumn,winter,season,morning,afternoon,evening,night,today,tomorrow,yesterday,tonight,noon,midnight,daytime",
-					"时间单位":"time,year,month,week,day,century,moment,period,lifetime,beginning,end,past,future",
-					"时间副词":"now,never,always,often,sometimes,usually,already,yet,still,soon,later,before,after,when,while,during,until,since,ago,early,late,nowadays,recently,lately,finally"
+					"季节":"spring,summer,autumn,fall,winter",
+					"时刻":"morning,noon,afternoon,evening,night,today,tomorrow,yesterday,tonight,midnight,daytime,dawn,dusk",
+					"时间副词":"now,never,always,often,sometimes,usually,already,yet,still,soon,later,before,after,when,while,during,until,since,ago,early,late,nowadays,recently,lately,finally,immediately,occasionally,rarely,seldom,periodically,regularly,weekly,monthly,yearly",
+					"时间表达":"o'clock,quarter,half,P.M.,A.M."
 				},
-				"动物、植物": {
-					"家养宠物":"animal,pet,dog,cat,puppy,kitten,bird,duck,chicken,hen,cow,sheep,pig,horse",
-					"野生动物":"deer,elephant,giraffe,zebra,lion,tiger,wolf,fox,bear,panda,monkey,rabbit,snake,whale,dinosaur",
-					"鸟类禽类":"goose,swan,eagle,parrot,penguin,duckling,mule",
-					"昆虫水生":"insect,bee,butterfly,spider,ant,fish,shark,dolphin,turtle,frog",
-					"神话动物":"dragon,zebra,cheetah,koala,kangaroo,camel",
-
-					"植物类":"plant,tree,grass,flower,rose,leaf,leaves,wood,bamboo,forest,peony,lotus,ginkgo,moss",
-					"自然景观":"nature,mountain,hill,river,lake,sea,ocean,beach,island,desert,field,valley,cave",
-					"天文地理":"sun,moon,star,sky,cloud,earth,planet,space,universe,solar,Mars"
+				"动物植物自然":{
+					"家养宠物":"dog,cat,puppy,kitten,bird,duck,chicken,hen,cow,sheep,pig,horse,rabbit,fish,pet,goat,guinea,pig,hamster,parrot,canary,ferret,gerbil",
+					"野生动物":"deer,elephant,giraffe,zebra,lion,tiger,wolf,fox,bear,panda,monkey,rabbit,snake,whale,dinosaur,dragon,cheetah,koala,kangaroo,camel,zebra,hyena,leopard,jaguar,antelope,bison,moose,elk,porcupine,armadillo,opossum,skunk,weasel",
+					"鸟类禽类":"goose,swan,eagle,parrot,penguin,duckling,mule,robin,owl,hen,rooster,seagull,crow,cardinal,flamingo,peacock,crane,albatross,vulture,condor,kingfisher,woodpecker",
+					"昆虫水生":"insect,bee,butterfly,spider,ant,fish,shark,dolphin,turtle,frog,octopus,jellyfish,lobster,crab,cricket,grasshopper,mosquito,dragonfly,centipede,earthworm,snail,clam,scallop,starfish,seaurchin",
+					"植物类":"plant,tree,grass,flower,rose,leaf,leaves,wood,bamboo,forest,peony,lotus,ginkgo,moss,ivy,vine,fern,cactus,orchid,tulip,daisy,sunflower,pine,oak,willow,maple,corn,bean,potato,tomato,cabbage,carrot,onion,lettuce,pumpkin,spinach,pepper,eggplant,zucchini,radish,turnip,celery,asparagus,artichoke,cauliflower,broccoli,brussels,sprout,beet,garlic,ginger,soy,bean,pea,almond,walnut,coconut,papaya,kiwi,mango,avocado,banana,apple,orange,lemon,lime,grape,strawberry,blueberry,raspberry,blackberry,watermelon,peach,pear,cherry,plum,apricot,fig,date,pomegranate,passion,fruit,guava,lychee,cranberry",
+					"自然景观":"nature,mountain,hill,river,lake,sea,ocean,beach,island,desert,field,valley,cave,cliff,glacier,prairie,steppe,swamp,marsh,reef,archipelago,peninsula,isthmus",
+					"天文地理":"sun,moon,star,sky,cloud,earth,planet,space,universe,solar,Mars,Jupiter,Venus,comet,meteor,galaxy,nebula,asteroid,meteorite,blackhole,quasar,pulsar,orbit,atmosphere,gravity,lightyear,cosmos"
 				},
-				"食物饮品": {
-					"主食类":"rice,noodle,bread,pancake,dumpling,porridge,pizza,hamburger,burger,sandwich,soup,spaghetti,tofu",
-					"水果类":"fruit,apple,banana,grape,strawberry,lemon,watermelon,orange,pear,cherry",
-					"蔬菜类":"vegetable,cabbage,carrot,cucumber,onion,potato,tomato,corn,bean,pumpkin,lettuce",
-					"肉蛋海鲜":"meat,beef,pork,mutton,chicken,turkey,fish,egg,bacon,sausage",
-					"饮品":"water,tea,juice,cola,coffee,milk,drink",
-					"甜点零食":"cake,biscuit,cookie,candy,chocolate,ice-cream,popcorn,yogurt,yoghurt,pie,mooncake,salad",
-					"调料味道":"salt,sugar,pepper,butter,honey,cream,gravy,mashed,sour,salty,sweet,delicious,fresh,taste"
+				"食物饮品":{
+					"主食类":"rice,noodle,bread,pancake,dumpling,porridge,pizza,hamburger,burger,sandwich,soup,spaghetti,tofu,pasta,cereal,quinoa,barley,oats,maize,cornmeal,rice,gnocchi,risotto,lasagna,macaroni,french,bread,ciabatta,baguette,crouton,biscuit,cracker",
+					"水果类":"apple,banana,grape,strawberry,lemon,watermelon,orange,pear,cherry,peach,plum,kiwi,mango,coconut,fig,guava,lychee,papaya,avocado,pomegranate,passion,fruit,blueberry,raspberry,blackberry,cantaloupe,honeydew,cranberry,dates,figs,olive,apricot",
+					"蔬菜类":"cabbage,carrot,cucumber,onion,potato,tomato,corn,bean,pumpkin,lettuce,spinach,pepper,eggplant,zucchini,radish,turnip,celery,asparagus,artichoke,cauliflower,broccoli,brussels,sprout,beet,garlic,ginger,soy,bean,pea",
+					"肉蛋海鲜":"meat,beef,pork,mutton,chicken,turkey,fish,egg,bacon,sausage,ham,steak,lamb,duck,shrimp,crab,lobster,octopus,squid,clam,scallop,oyster,salmon,tuna,cod,trout,sardine,anchovy,mackerel,haddock,halibut,eel,crab,lobster,shrimp,prawn,oyster,scallop,mussel,squid,octopus,jellyfish",
+					"饮品":"water,tea,juice,cola,coffee,milk,drink,beer,wine,liquor,spirit,whiskey,vodka,rum,gin,brandy,sherry,mead,cider,smoothie,lemonade,soda,sparkling,water,mineral,water,alcohol,non-alcoholic",
+					"甜点零食":"cake,biscuit,cookie,candy,chocolate,ice-cream,popcorn,yogurt,yoghurt,pie,mooncake,salad,pudding,doughnut,cheesecake,tiramisu,custard,flan,meringue,macaron,gelato,parfait,creme,brulee,marzipan,nougat,toffee,caramel,fudge,truffle",
+					"调料味道":"salt,sugar,pepper,butter,honey,cream,gravy,mashed,sour,salty,sweet,delicious,fresh,taste,spicy,umami,bitter,acrid,sharp,metallic,earthy,flavor,aroma,fragrance,spice,herb,garlic,ginger,curry,pepper,cumin,cinnamon,nutmeg,cardamom,oregano,basil,thyme,rosemary,sage,coriander,parsley,celery,salt,pepper",
+					"乳制品":"milk,yogurt,yoghurt,cheese,butter,cream,ice-cream,cottage,cheese,kefir,sour,cream,whipping,cream,heavy,cream,buttermilk,ricotta,mozzarella,cheddar,parmesan,gouda,feta,blue,cheese,cream,cheese,mascarpone"
 				},
-				"人物关系": {
-					"核心家庭":"family,mother,father,mom,dad,parent,son,daughter,child,children,kid,baby,boy,girl",
-					"扩展亲属":"grandmother,grandma,grandfather,grandpa,grandchild,granddaughter,brother,sister,twin,aunt,uncle,cousin,stepmother,stepsister",
-					"婚姻关系":"wife,husband,marry,married",
+				"人物关系":{
+					"家人":"mother,father,mom,dad,parent,son,daughter,child,children,kid,baby,boy,girl",
+					"亲属":"grandmother,grandma,grandfather,grandpa,grandchild,granddaughter,brother,sister,twin,aunt,uncle,cousin,stepmother,stepsister,stepfather,stepbrother",
+					"婚姻关系":"wife,husband,marry,married,couple,bride,groom",
 					"人称代词":"I,you,he,she,it,we,they,me,him,her,us,them",
 					"物主代词":"my,your,his,her,its,our,their,mine,yours,hers,theirs,ours",
-					"反身代词":"myself,yourself,himself,herself,itself,ourselves,themselves"
+					"反身代词":"myself,yourself,himself,herself,itself,ourselves,themselves",
+					"称谓":"sir,madam,miss,mrs,ms,doctor,professor,teacher,student,officer,manager,boss,king,queen,prince,princess,emperor,empress,general,admiral,captain,colonel,major,lieutenant,sergeant,corporal,private,priest,monk,nun,rabbi,imam,pastor,bishop"
 				},
-				"身体健康": {
-					"身体部位":"body,head,hair,face,eye,nose,mouth,ear,tongue,throat,tooth,teeth,neck,shoulder,arm,hand,finger,leg,foot,feet,knee,heel,elbow",
-					"内脏器官":"brain,heart,blood,bone,stomach,skin",
-					"健康状态":"health,healthy,sick,ill,illness,fever,headache,stomachache,toothache,medicine,medical,hospital",
-					"动物特征":"fur,feather,wing,fin,tail",
+				"身体健康":{
+					"身体":"body,head,hair,face,eye,nose,mouth,ear,tongue,throat,tooth,teeth,neck,shoulder,arm,hand,finger,leg,foot,feet,knee,heel,elbow,wrist,waist,back,breast,chest,stomach,hip,buttock,thigh,calf,ankle,sole,instep,palm,back,side,skin,scalp,eyelash,eyebrow,lip,chin,jaw,forehead,temple,earlobe,nail,claw,hoof,fin,wing,tail,feather,fur,hide,scale",
+					"器官":"brain,heart,blood,bone,stomach,skin,liver,kidney,lung,nerve,muscle,tissue,intestine,bladder,pancreas,spleen,thyroid,adrenal,ovary,testicle,uterus,prostate,appendix,diaphragm,esophagus,trachea,larynx,pharynx",
+					"健康状态":"health,healthy,sick,ill,illness,fever,headache,stomachache,toothache,medicine,medical,hospital,injury,pain,allergy,flu,cold,heatstroke,dehydration,exhaustion,overweight,obese,underweight,anemia,diabetes,asthma,arthritis,cancer,heart,disease,stroke,seizure,coma",
+					"积极情绪":"happy,excited,proud,confident,brave,joy,pleasure,fun,love,like,amazing,wonderful,fantastic,beautiful,lovely,nice,great,excellent,perfect,delighted,thrilled,ecstatic,elated,joyful,cheerful,optimistic,grateful,peaceful,calm,relaxed",
+					"消极情绪":"sad,angry,nervous,afraid,scared,boring,bored,tired,sleepy,upset,unhappy,mad,crazy,silly,stupid,terrible,awful,pity,sadness,fear,stress,embarrassed,hate,dislike,worry,anxious,depressed,lonely,frustrated,resentful,jealous,guilty,ashamed,shy,embarrassing",
+					"思维认知":"think,know,understand,remember,learn,study,read,write,speak,listen,see,look,find,feel,believe,dream,idea,thought,mind,brain,memory,reason,logic,insight,intuition,imagination,perception,awareness,consciousness,subconscious,emotion,feeling"
+				},
+				"教育学习":{
+					"学科领域":"math,science,history,geography,music,art,P.E.,physics,chemistry,biology,literature,economics,grammar,vocabulary,pronunciation,language,philosophy,psychology,sociology,anthropology,computer,science,engineering,technology,design,architecture,law,medicine,nursing,accounting,finance,business,management,marketing,communication,media,environmental,science,geology,meteorology,astronomy,zoology,botany,anatomy,physiology",
+					"学习用品":"book,textbook,storybook,novel,dictionary,magazine,newspaper,map,comic,pen,pencil,eraser,ruler,notebook,homework,schoolbag,backpack,calculator,compass,protractor,slide,ruler,graph,paper,scissors,glue,sticky,note,highlighter,marker,whiteboard,blackboard,chalk,marker,eraser,projector,screen,laptop,tablet,printer,ink,paper,ink,cartridge,binders,folders,clips,files,bookcase,desk,chair,chair,shelf,locker",
+					"学习活动":"learn,study,teach,education,test,exam,examination,quiz,question,answer,problem,solution,score,grade,level,degree,certificate,license,practice,review,revise,memorize,recite,repeat,dictate,transcribe,translate,interpret,analyze,evaluate,compare,contrast,debate,discuss,lecture,seminar,workshop,project,assignment,homework,essay,report,thesis,dissertation",
+					"学校成员":"teacher,student,pupil,professor,headmaster,classmate,principal,staff,administrator,clerk,librarian,technician,security,guard"
+				},
+				"生活用品":{
+					"服饰类":"clothes,shirt,T-shirt,sweater,jacket,coat,trousers,shorts,skirt,dress,shoe,sock,hat,cap,glove,scarf,uniform,blouse,pocket,underwear,costume,jeans,denim,leather,silk,wool,cotton,linen,nylon,polyester,spandex,lace,button,zipper,fastener,strap,belt,shoelace,eyeglasses,sunglasses,watch,ring,necklace,earring,bracelet,tiara,crown,tiara,shawl,robe,slippers,pajamas,vest,cardigan,hoodie,joggers",
+					"电子设备":"computer,phone,camera,radio,TV,television,machine,robot,calculator,laptop,keyboard,screen,CD,digital,electronic,mobile,video,website,Internet,email,tablet,smartphone,smartwatch,earphone,headphone,speaker,printer,scanner,modem,router,server,game,console,remote,controller,drone,smart,home,appliance,air,conditioner,refrigerator,oven,microwave,coffee,maker,blender,juicer,food,processor,iron,steamer,vacuum,aspirator,electric,shaver,toothbrush,electric,watch,calculator,projector",
+					"家居用品":"soap,shampoo,toothbrush,toothpaste,towel,umbrella,fan,clock,watch,bag,backpack,wallet,handbag,suitcase,box,basket,bin,bottle,mirror,lamp,candle,alarm,fridge,oven,bed,sofa,chair,table,desk,quilt,blanket,pillow,cushion,curtain,blinds,carpet,rug,mat,door,window,lock,key,shelf,drawer,wardrobe,closet,coat,stand,coat,hanger,light,switch,socket,outlet,extension,cord,plug,fire,extinguisher,tool,kit,first,aid,kit,fire,alarm,smoke,detector",
+					"厨房用品":"pan,oven,spoon,fork,knife,plate,bowl,cup,teapot,kettle,blender,toaster,microwave,stove,grill,cooker,ladle,spatula,whisk,grater,peeler,cutter,measuring,cup,measuring,spoon,rolling,pin,pastry,bag,oven,mitt,potholder,napkin,dish,towel,garbage,can,recycling,bin,water,filter",
+					"文具办公":"pen,pencil,eraser,ruler,notebook,paper,card,envelope,stamp,tape,glue,scissors,stapler,clip,clipboard,desk,organizer,calendar,planner,notepad,sticky,note,highlighter,marker,whiteboard,blackboard,chalk,marker,eraser,projector,screen,laptop,tablet,printer,ink,cartridge,binders,folders,clips,files,bookcase,desk,chair,shelf,locker"
+				},
+				"交通出行":{
+					"交通工具":"bus,train,subway,metro,underground,car,bike,bicycle,taxi,plane,ship,boat,ferry,rocket,truck,ambulance,motorcycle,scooter,jeep,van,hovercraft,submarine,airplane,drone,hot,air,balloon,paraglider,skateboard,snowboard,sled,tractor,forklift,crane,firetruck,police,car,ambulance,hearse,limousine",
+					"交通设施":"transport,traffic,road,street,station,airport,bridge,tunnel,parking,highway,intersection,crossing,garage,terminal,roundabout,traffic,light,stop,sign,zebra,crossing,pedestrian,walkway,footpath,bicycle,lane,service,station,repair,shop,petrol,station,gas,station,charging,station",
+					"出行相关":"travel,trip,journey,tour,driver,passenger,guide,visitor,tourist,map,luggage,suitcase,passport,ticket,visa,boarding,departure,arrival,check,in,check,out,security,screening,customs,immigration,boarding,pass,seat,belt,window,seat,aisle,seat,flight,route,destination,origin,layover,connection,transit"
+				},
+				"运动娱乐":{
+					"球类运动":"sport,basketball,football,tennis,volleyball,badminton,ping-pong,baseball,cricket,golf,hockey,rugby,handball,water,polo,lacrosse,softball,table,tennis,netball,beach,volleyball,ultimate,frisbee",
+					"户外运动":"swim,skate,ski,riding,cycling,jog,hike,climb,jump,run,walk,skateboarding,paragliding,fishing,diving,surfing,boating,canoeing,kayaking,rock,climbing,bungee,jumping,skydiving,scuba,diving,snowboarding,ice,skating,ice,hockey,water,skiing,rafting,orienteering,caving,trekking,backpacking",
+					"娱乐活动":"sing,game,match,play,fun,music,dance,film,movie,party,festival,holiday,concert,theater,show,performance,reading,watching,listening,crafting,painting,drawing,photography,collecting,traveling,exploring,adventuring,exploring,reading,playing,computer,games,video,games,board,games,puzzle,solving,treasure,hunt,escape,room,escape,room,escape,room,escape,room",
+					"音乐艺术":"music,song,lyrics,beat,rhythm,harmony,orchestra,band,choir,choir,violin,piano,guitar,drum,flute,clarinet,saxophone,trumpet,trombone,cello,viola,harpsichord,accordion,mandolin,bass,ukulele,banjo,cello,violin,viola,cello,harmonica,recorder,xylophone,melody,tune,note,chord,composition,improvisation,concert,recital,opera,ballet"
+				},
+				"职业身份":{
+					"教育职业":"teacher,student,pupil,professor,headmaster,classmate,instructor,lecturer,educator,schoolmaster,librarian,teaching,assistant,education,consultant",
+					"医疗职业":"doctor,nurse,dentist,patient,pharmacist,surgeon,therapist,paramedic,psychologist,physician,physiotherapist,occupational,therapist,audiologist,ophthalmologist,pediatrician,geriatrician,anesthesiologist,embalmer,medic,orderly",
+					"艺术职业":"writer,artist,musician,singer,actor,actress,player,pianist,violinist,magician,poet,dancer,painter,composer,director,photographer,filmmaker,producer,designer,architect,sculptor,illustrator,calligrapher,stylist,makeup,artist,hairstylist,stage,manager",
+					"服务职业":"worker,farmer,driver,pilot,cook,waiter,postman,fireman,banker,clerk,servant,agent,secretary,delivery,courier,porter,guard,attendant,receptionist,concierge,housekeeper,maid,barber,mechanic,plumber,electrician,carpenter,bricklayer,roofer,gardener,landscaper,pest,control,exterminator",
+					"管理职业":"manager,boss,president,minister,officer,leader,head,master,chief,executive,director,chairman,administrator,superintendent,foreman,project,manager,team,leader,deputy,assistant",
+					"专业职业":"scientist,engineer,lawyer,journalist,expert,professional,architect,accountant,consultant,researcher,analyst,statistician,mathematician,chemist,physicist,biologist,geologist,meteorologist,astronomer,zoologist,botanist,anatomist,physiologist,psychologist,sociologist,anthropologist,philosopher,historian,linguist,translator,interpreter,editor,proofreader"
+				},
+				"建筑场所":{
+					"教育机构":"school,university,college,classroom,library,bookshop,bookstore,museum,laboratory,academy,institute,kindergarten,pre,kindergarten,daycare,playground,auditorium,lecture,room,science,lab,computer,lab,art,room,music,room,swimming,pool,track,field",
+					"商业场所":"restaurant,hotel,bank,office,mall,supermarket,market,shop,store,company,factory,warehouse,warehouse,showroom,retail,store,pharmacy,clinic,dentist,office,doctor,office,library,bookstore,stationery,store,electronics,store,clothing,store,shoe,store,hardware,store,pet,store,garden,center,car,dealer,auto,repair,shop",
+					"公共设施":"hospital,police,station,airport,post,park,garden,playground,beach,pool,gym,stadium,library,community,center,fire,station,emergency,room,public,restroom,public,phone,water,fountain,shelter,recycling,center,garbage,can,bin,bench,tree,street,light,traffic,light,stop,sign,zebra,crossing,escalator,elevator,handrail",
+					"文化娱乐":"cinema,theater,theatre,club,museum,amusement,palace,temple,church,castle,opera,arena,auditorium,studio,concert,hall,recital,room,exhibition,hall,art,gallery,library,bookstore,comic,shop,arcade,video,game,center,car,showroom",
+					"居住空间":"house,home,building,apartment,room,bedroom,bathroom,kitchen,hall,living,tent,camp,dormitory,cottage,flat,condo,loft,studio,apartment,mansion,villa,houseboat,treehouse,yurt,igloo,tipi,cabin"
+				},
+				"动词":{
+					"be动词":"be,been,am,was,are,were,is",
+					"感官动词":"see,look,hear,listen,smell,taste,feel,touch,observe,perceive,recognize,identify,sense,detect,notice,catch,feel,hear,smell,taste",
+					"基本动作":"go,come,run,walk,jump,move,stand,sit,lie,turn,climb,swim,fly,ride,roll,push,pull,carry,lift,throw,catch,hold,grab,point,show,offer,accept,give,take,get,have,use,open,close,lock,unlock,put,place,lay,rest,drop,fall,throw,catch,catch,catch,catch,catch",
+					"认知心理":"think,know,understand,remember,learn,study,read,write,speak,listen,see,look,find,feel,believe,dream,idea,thought,mind,imagine,realize,recognize,identify,perceive,notice,observe,recall,forget,decide,choose,prefer,wish,hope,expect,desire,need,want,require,ask,question,question,question",
+					"交流表达":"say,tell,ask,pay,speak,talk,chat,explain,reply,answer,report,describe,mention,agree,disagree,argue,debate,announce,communicate,converse,dialogue,interact,exchange,share,express,voice,voice,voice,voice,voice",
+					"变化状态":"become,grow,turn,change,develop,improve,reduce,increase,appear,disappear,remain,start,begin,end,finish,continue,stop,quit,leave,return,enter,exit,open,close,activate,deactivate,switch,on,switch,off,charge,discharge,run,out,fill,empty",
+					"使役操作":"make,let,have,get,help,allow,force,encourage,remind,teach,show,build,create,design,produce,fix,repair,operate,assemble,disassemble,install,remove,replace,upgrade,downgrade,calibrate,adjust,modify,change,alter,transform,convert",
+					"日常行为":"eat,sleep,drink,wash,wear,cook,clean,work,shop,play,rest,exercise,study,practice,travel,visit,meet,choose,brush,comb,shave,shower,bathe,do,laundry,iron,clean,cook,prepare,serve,deliver,collect,send,receive,post,mail,print,scan,photocopy,download,upload,connect,disconnect"
+				},
+				"形容词副词":{
+					"外貌体型":"big,small,tall,short,long,beautiful,ugly,pretty,handsome,fat,thin,slim,young,old,curly,straight,curly,round,square,oval,wide,narrow,large,small,medium,average,normal,regular,typical,standard,unusual,odd,weird,strange,peculiar,uncommon,common,normal,regular,typical,standard,unusual,odd,weird,strange,peculiar,uncommon",
+					"情感情绪":"happy,sad,angry,tired,sleepy,hungry,thirsty,sick,ill,healthy,strong,weak,rich,poor,busy,free,full,empty,open,closed,clean,dirty,neat,messy,tidy,wet,dry,hot,cold,warm,cool,calm,excited,nervous,afraid,scared,brave,confident,shy,embarrassed,guilty,ashamed,jealous,pride,love,hate,like,dislike",
+					"品质评价":"good,better,best,bad,worse,worst,excellent,perfect,terrible,awful,wonderful,fantastic,amazing,lovely,nice,great,real,true,false,right,wrong,correct,incorrect,accurate,inaccurate,precise,imprecise,appropriate,inappropriate,suitable,unsuitable,proper,improper,legal,illegal,ethical,unethical,ethical,unethical",
+					"状态感受":"possible,impossible,easy,difficult,hard,simple,complex,clear,important,necessary,valuable,helpful,creative,successful,interesting,exciting,boring,surprised,traditional,modern,ancient,classical,regular,special,usual,unusual,common,normal,strange,different,same,similar,exact,digital,electric,medical,scientific,environmental,national,international,social,personal,public,private",
+					"程度数量副词":"very,most,much,more,less,quite,almost,enough,too,so,such,rather,many,few,some,any,all,both,each,every,several,none,little,much,more,less,enough,plenty,abundant,scarce,adequate,inadequate,sufficient,insufficient,partial,complete,entire,whole,entirely,completely,fully,partly,partially",
+					"频率时间副词":"always,often,sometimes,usually,never,ever,again,once,regularly,seldom,rarely,already,yet,still,just,soon,later,finally,recently,lately,periodically,occasionally,infrequently,frequently,continuously,consistently,steadily,gradually,suddenly,immediately,instantly,quickly,slowly,rapidly,swiftly,slowly,late,early,ontime,behind,time,ahead,time,now,then,there,here,where,when,how,why"
+				},
+				"其它":{
+					"单复数同形":"sheep,deer,fish,species,series,means,aircraft,crossing,equipment,furniture,luggage,information,advice,news,homework,work,money,bread,rice,sugar,salt,water,tea,coffee,milk,juice,sand,snow,rain,wind,weather,time,music,art,knowledge,courage,love,happiness,beauty,peace,health,progress,research",
+					"单复数异形": "man,men,woman,women,child,children,tooth,teeth,foot,feet,mouse,mice,goose,geese,person,people,medium,media",
 
-					"积极情绪":"happy,excited,proud,confident,brave,joy,pleasure,fun,love,like,amazing,wonderful,fantastic,beautiful,lovely,nice,great,excellent,perfect",
-					"消极情绪":"sad,angry,nervous,afraid,scared,boring,bored,tired,sleepy,upset,unhappy,mad,crazy,silly,stupid,terrible,awful,pity,sadness,fear,stress,embarrassed,hate,dislike,worry",
-					"思维认知":"think,know,understand,remember,learn,study,read,write,speak,listen,see,look,find,feel,believe,dream,idea,thought,mind,brain,memory"
-				},
-				"教育学习": {
-					"学科领域":"math,science,history,geography,music,art,P.E.,physics,chemistry,biology,literature,economics,grammar,vocabulary,pronunciation",
-					"学习用品":"book,textbook,storybook,novel,dictionary,magazine,newspaper,map,comic,pen,pencil,eraser,ruler,notebook,homework,schoolbag,backpack,calculator",
-					"学习活动":"learn,study,teach,education,test,exam,examination,quiz,question,answer,problem,solution,score,grade,level,degree,certificate,license"
-				},
-				"生活用品": {
-					"服饰类":"clothes,shirt,T-shirt,sweater,jacket,coat,trousers,shorts,skirt,dress,shoe,sock,hat,cap,glove,scarf,uniform,blouse,pocket,underwear,costume",
-					"电子设备":"computer,phone,camera,radio,TV,television,machine,robot,calculator,laptop,keyboard,screen,CD,digital,electronic,mobile,video,website,Internet,email",
-					"家居用品":"soap,shampoo,toothbrush,toothpaste,towel,umbrella,fan,clock,watch,bag,backpack,wallet,handbag,suitcase,box,basket,bin,bottle,mirror,lamp,candle,alarm,fridge,oven,bed,sofa,chair,table,desk,quilt",
-					"文具办公":"pen,pencil,eraser,ruler,notebook,paper,card,envelope,stamp,tape,glue,scissors,stapler"
-				},
-				"交通出行": {
-					"交通工具":"bus,train,subway,metro,underground,car,bike,bicycle,taxi,plane,ship,boat,ferry,rocket,truck,ambulance",
-					"交通设施":"transport,traffic,road,street,station,airport,bridge,tunnel,parking",
-					"出行相关":"travel,trip,journey,tour,driver,passenger,guide,visitor,tourist,map,luggage,suitcase,passport,ticket"
-				},
-				"运动娱乐": {
-					"球类运动":"sport,basketball,football,tennis,volleyball,badminton,ping-pong,baseball",
-					"户外运动":"swim,skate,ski,riding,cycling,jog,hike,climb,jump,run,walk,skateboarding,paragliding,fishing",
-					"娱乐活动":"game,match,play,fun,music,dance,film,movie,party,festival,holiday"
-				},
-				"职业身份": {
-					"教育职业":"teacher,student,pupil,professor,headmaster,classmate",
-					"医疗职业":"doctor,nurse,dentist,patient",
-					"艺术职业":"writer,artist,musician,singer,actor,actress,player,pianist,violinist,magician,poet,dancer,painter,composer,director",
-					"服务职业":"worker,farmer,driver,pilot,cook,waiter,postman,fireman,banker,clerk,servant,agent,secretary",
-					"管理职业":"manager,boss,president,minister,officer,leader,head,master",
-					"专业职业":"scientist,engineer,lawyer,journalist,expert,professional",
-				},
-				"建筑场所": {
-					"教育机构":"school,university,college,classroom,library,bookshop,bookstore,museum,laboratory",
-					"商业场所":"restaurant,hotel,bank,office,mall,supermarket,market,shop,store,company,factory",
-					"公共设施":"hospital,police,station,airport,post,park,garden,playground,beach,pool,gym,stadium",
-					"文化娱乐":"cinema,theater,theatre,club,museum,amusement,palace,temple,church,castle",
-					"居住空间":"house,home,building,apartment,room,bedroom,bathroom,kitchen,hall,living,tent,camp"
-				},
-				"形容词副词": {
-					"外貌特征":"big,small,tall,short,long,beautiful,ugly,pretty,handsome,fat,thin,slim,young,old,curly",
-					"品质状态":"good,better,best,bad,worse,worst,excellent,perfect,terrible,awful,wonderful,fantastic,amazing,lovely,nice,great,real,true,false,right,wrong,correct",
-					"状态特征":"happy,sad,angry,tired,sleepy,hungry,thirsty,sick,ill,healthy,strong,weak,rich,poor,busy,free,full,empty,open,closed,clean,dirty,neat,messy,tidy,wet,dry,hot,cold,warm,cool",
-					"程度数量":"very,most,much,more,less,quite,almost,enough,too,so,such,rather,many,few,some,any,all,both,each,every,several,most,none,little,much,more,less,enough",
-					"性质特征":"possible,impossible,easy,difficult,hard,simple,complex,clear,important,necessary,valuable,helpful,creative,successful,interesting,exciting,boring,surprised,traditional,modern,ancient,classical,regular,special,usual,unusual,common,normal,strange,different,same,similar,exact,digital,electric,medical,scientific,environmental,national,international,social,personal,public,private"
-				},
-				"其它": {
 					"方位词":"in,on,at,under,over,above,below,behind,front,back,left,right,top,bottom,middle,center,east,west,south,north,inside,outside,between,among,around,across,through,along,up,down,here,there,where,everywhere,somewhere,anywhere,near,far,close,away",
-					"基本动词":"have,has,do,does,will,would,can,could,may,might,shall,should,must,make,take,get,go,come,see,look,find,give,put,keep,let,tell,feel,try,read,live,show,say,think,know,become,remember,write,stop,visit,start,save,ask,pay,sleep,mean,move,stay,turn,study,bring,grow,understand,leave,choose,meet,plan,practice,share,join,walk,teach,buy,sell,send,build,welcome,develop,solve,introduce,spend,hear,return,throw,agree,guide,prepare,win,pass,report,realize,avoid,create,complete,draw,produce,cry,stand,drive,provide,depend,sit,wear,pull,paint,dance,collect,fight,encourage,listen,invite,describe,begin,reduce,celebrate,treat,decide,fix,wake,attend,act,guess,expect,suggest,continue,enter,increase,discuss,manage,lift,arrive,reply,explain,reach,jump,repair,rise,lie,dig,quit,drop,invent,review,steal,lay,tie,perform,advise,donate,design,behave,admire,rush,dare,require,pack,lock,shut,examine,cancel,count,hike,aim,fold,argue,compare,greet,kick,nod,announce,operate,recommend,satisfy,click,judge,organize,separate,stare,oversleep,recall,reflect,divide,mention,polish,excite,sweep,cooperate,suffer,prove,recognise,jog,delete,blow,spell,warn,translate,knock,graduate,burn,pour,shake,hang,hunt,lend,push,memorize,punish,mail,fail,doubt,regret,prefer,kiss,recycle,award,tap,print,search,glue,chat,balance,bear,refuse,serve,feed,seem,stick,survive,mix,bully,bleed,countdown,landscape,peel,mash,cure,replace,defeat,destroy,gather,involve,revise",
-
-					"国家地区":"China,Chinese,England,English,America,American,Japan,Japanese,Germany,German,Russia,Russian,France,French,Canada,Canadian,Australia,Australian,India,Indian,Asia,Africa,Europe,Britain,London,Egypt",
-					"文化传统":"culture,traditional,modern,history,art,music,festival,holiday,Christmas,ceremony,custom,tradition",
-					"社会概念":"society,community,government,law,policy,peace,war,success,failure,money,wealth,business,trade,industry",
-
-					"天气现象":"weather,sunny,rainy,snowy,cloudy,windy,stormy,rain,snow,wind,storm,sunshine,moonlight,rainbow,thunder,lightning,fog,cloud",
-					"环境保护":"environment,nature,natural,pollution,protect,clean,green,recycle,waste,energy,solar",
-
-				},
+					"国家名称":"China,England,America,Japan,Germany,Russia,France,Canada,Australia,India,Britain,London,Egypt,Italy,Korea,Scotland,Switzerland,Mexico,Brazil,Nigeria,Sweden,Finland,Denmark,Norway,Spain,Portugal,Greece,Turkey,Poland,Netherlands,Belgium,Austria,Switzerland,New,Zealand,Singapore,Israel,South,Korea,North,Korea,Indonesia,Thailand,Vietnam,Philippines,Malaysia,Brunei,Cambodia,Laos,Myanmar,Bangladesh,Pakistan,Sri,Lanka,Nepal,Bhutan,Mongolia,Myanmar,United,States,United,Kingdom,European,Union,Commonwealth,Arab,League,OPEC,ASEAN",
+					"国籍与语言":"Chinese,English,American,Japanese,German,Russian,French,Canadian,Australian,Indian,British,Scottish,Italian,Spanish,Portuguese,Arabic,Hindi,Korean,Swedish,Dutch,Norwegian,Greek,Turkish,Polish,Danish,Finnish,Swiss,Spanish,Portuguese,Greek,Turkish,Polish,Danish,Finnish,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss,Swiss......",
+					"文化传统":"culture,traditional,modern,history,art,music,festival,holiday,Christmas,ceremony,custom,tradition,folk,legend,myth,ancestor,ritual,rite,ceremony,celebration,observance,commemoration,anniversary,memorial,parade,procession,fireworks,decorations,lights,flags,anthem,national,anthem,flag,emblem,coat,of,arms,monument,statue,memorial,site,heritage,preservation,conservation",
+					"社会概念":"society,community,government,law,policy,peace,war,success,failure,money,wealth,business,trade,industry,justice,equality,freedom,democracy,dictatorship,tyranny,oppression,liberty,rights,obligations,privileges,immigration,emigration,refugee,asylum,poverty,wealth,inequality,opportunity,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,advantage,disadvantage,adv......",
+					"天气现象":"weather,sunny,rainy,snowy,cloudy,windy,stormy,rain,snow,wind,storm,sunshine,moonlight,rainbow,thunder,lightning,fog,cloud,hail,temperature,pressure,humidity,barometer,thermometer,anemometer,hygrometer,radar,forecast,warning,advisory,watch,alert,heatwave,cold,snap,drought,flood,blizzard,hurricane,tornado,typhoon,monsoon,el,nino,la,nina,climate,global,warming,greenhouse,effect,ozone,layer,acid,rain,smog,air,pollution,water,pollution,noise,pollution,light,pollution",
+					"环境保护":"environment,nature,natural,pollution,protect,clean,green,recycle,waste,energy,solar,wind,eco-friendly,conservation,sustainability,renewable,non,renewable,carbon,footprint,emission,greenhouse,global,warming,deforestation,desertification,extinction,biodiversity,ecosystem,habitat,species,conservation,protection,reforestation,afforestation,organic,biodegradable,compost,landfill,incineration,plastic,waste,chemical,waste,industrial,waste,agricultural,waste,water,conservation,water,harvesting,green,energy,solar,energy,wind,energy,hydro,energy,geothermal,energy,biofuel,electric,vehicle,hybrid,vehicle,public,transport,carpooling,walking,cycling,green,space,park,urban,planning,smart,city,green,roof,green,wall,permaculture,organic,farming,sustainable,agriculture"
+				}
 			},
-			"yixue":"",
-			"daixue":[
+			yixue:"",
+			daixue:[
 				{grade:"小学",unit:"3年级",W:"name,nice,ear,hand,eye,mouth,arm,can,share,smile,listen,help,say,friend,good,mum,dad,grandma,grandpa,grandfather,grandmother,mother,father,me,sister,family,have,big,cousin,brother,baby,uncle,aunt,small,like,dog,pet,cat,fish,bird,rabbit,go,zoo,fox,miss,panda,red,cute,monkey,tiger,elephant,lion,animal,giraffe,tall,fast,apple,banana,farm,air,orange,grape,school,garden,need,water,flower,grass,plant,new,tree,sun,give,them,colour,green,blue,make,purple,brown,bear,yellow,duck,sea,some,pink,draw,white,black,old,five,year,one,two,three,four,ten,six,seven,eight,nine,o'clock,cut,eat,cake,where,from,about,today,teacher,student,after,who,girl,neighbour,boy,woman,man,mr,classmate,he,english,she,very,uk,china,canada,usa,has,long,body,short,leg,right,fat,thin,slow,love,tail,her,gift,picture,card,sing,dance,face,all,so,talk,song,or,much,eraser,find,ruler,pen,pencil,book,bag,paper,these,see,smell,taste,hear,touch,learn,nose,tongue,class,in,computer,breakfast,time,bread,egg,milk,noodle,juice,rice,meat,vegetable,healthy,plate,soup,fruit,colourful,candy,yummy,at,boat,cool,keep,home,ball,doll,car,on,shelf,box,cap,map,under,still,put,fifteen,twelve,fourteen,thirteen,eleven,twenty,seventeen,sixteen,eighteen,nineteen,piggy,bank,pay,back"},
 				{grade:"小学",unit:"4年级",W:"PE,job,doctor,farmer,nurse,office,company,worker,factory,busy,tired,chore,cook,clean,room,look,sweep,floor,together,people,child,children,his,strong,hair,also,kind,quiet,best,read,Chinese,play,game,football,basketball,always,afternoon,there,playground,park,over,hospital,shop,toilet,bus,library,sport,walk,commy,favourite,place,photo,story,buy,firefighter,why,driver,cleaner,delivery,courier,police,lot,now,the,bed,tell,everyone,Ms,speak,weather,sunny,hot,bad,cold,windy,cloudy,rainy,snowy,warm,tomorrow,rain,closed,film,idea,fly,kite,snowman,fun,their,swim,Sydney,whose,sweater,sock,mine,wear,shirt,coat,dress,which,season,winter,snow,get,spring,summer,autumn,T-shirt,fall,leaf,glove,then,first,second,teachers,art,music,next,to,homework,forty,way,English,lunch,dinner,up,kid,thirty,fifty,hurry,come,just,outside,be,careful,New York,how,degree,world,London,Moscow,Singapore,tomato,potato,beans,carrot,horse,cow,sheep,hen,yum,those,goat,clothes,pants,hat,skirt,shorts,jacket,yours,pack,wait,scarf,umbrella,sunglasses,pretty,expensive,cheap,try,size,of,course,too,eighty,dollar,sale,more,us"},
 				{grade:"小学",unit:"5年级",W:"young,funny,strict,polite,hard-working,helpful,clever,shy,know,our,will,sometimes,robot,him,finish,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,weekend,wash,my,watch,TV,do,books,cooking,often,sports,should,every,day,schedule,sandwich,salad,hamburger,ice,cream,tea,fresh,delicious,sweet,drink,thirsty,food,Dear,onion,songs,pipa,kung,fu,cartoon,cartoons,ping-pong,we,ll,party,wonderful,any,problem,no,want,send,email,clock,bottle,bike,front,between,above,beside,behind,grandparent,house,lots,move,dirty,everywhere,mouse,live,nature,forest,river,lake,mountain,hill,bridge,building,village,boating,aren,high,exercise,morning,exercises,for,shopping,take,dancing,when,start,usually,Spain,late,a.m.,p.m.,work,last,sound,letter,island,cave,swimming,win,picnic,pick,apples,because,vacation,lovely,leaves,paint,January,February,March,April,May,June,July,August,September,October,November,December,few,thing,meet,trip,contest,labour,Labour,Day,Great,Wall,national,National,American,Thanksgiving,Christmas,riddle,act,out,RSVP,by,third,fourth,fifth,twelfth,twentieth,twenty-first,twenty-third,thirtieth,other,special,show,festival,kitten,diary,noise,fur,open,hers,theirs,ours,climbing,eating,playing,jumping,drinking,sleeping,each,excited,doing,having,reading,listening,your,desk,quietly,turn,turns,bamboo,its,anything,else,exhibition,sushi,teach,sure,Canadian,Spanish"},

@@ -21,7 +21,7 @@
 		#fuzzySearch {width: 18px;height: 18px;vertical-align: sub;}
 		.sort-btn {padding: 8px 16px;background-color: #2196F3;color: white;border: none;border-radius: 4px;cursor: pointer;transition: background-color 0.3s;}
 		.sort-btn:hover {background-color: #0b7dda;}
-		.word-card {border: 1px solid #ddd;border-radius: 8px;padding: 5px 15px;margin-bottom: 10px;box-shadow: 0 2px 4px rgba(0,0,0,0.1);position: relative;width: calc(50% - 10px);display: inline-block;vertical-align: top;box-sizing: border-box;height:110px;}
+		.word-card {border: 1px solid #ddd;border-radius: 8px;padding: 5px 15px;margin-bottom: 10px;box-shadow: 0 2px 4px rgba(0,0,0,0.1);position: relative;width: calc(50% - 10px);display: inline-block;vertical-align: top;box-sizing: border-box;height:110px;overflow:hidden;}
 		.word-card:nth-child(odd) {margin-right: 10px;clear:both;}
 		.word-card:nth-child(even) {margin-left: 10px;float:right;}
 		.word-card.forget {background-color: #fff8f8; border-left: 4px solid #ff6b6b;}
@@ -52,7 +52,7 @@
 		.word-page.active {display: block;}
 		.no-results {text-align: center;padding: 40px;color: #666;font-size: 1.2rem;}
 		.highlight {color: red;}
-		.word-index {position: absolute; bottom:10px; right:20px; color: #999; font-size: 0.9rem;border:1px solid #ddd;padding:3px;line-height:17px;height:17px;min-width:17px;text-align:center;border-radius:50%;}
+		.word-index {text-decoration: none;position: absolute; bottom:10px; right:20px; color: #999; font-size: 0.9rem;border:1px solid #ddd;padding:3px;line-height:17px;height:17px;min-width:17px;text-align:center;border-radius:50%;}
 		.word-index.high-frequency { border-color: #ff4444; background-color: #ffebee; color: #c62828;}
 		.word-index.medium-frequency { border-color: #ff9800; background-color: #fff3e0; color: #ef6c00;}
 		.word-index.low-frequency { border-color: #4caf50; background-color: #e8f5e8; color: #2e7d32;}
@@ -69,10 +69,8 @@
 		.verb-modal-overlay{position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, 0.5);display: flex;justify-content: center;align-items: center;z-index: 2000;opacity: 0;visibility: hidden;transition: all 0.3s ease;}
 		.verb-modal-overlay.active{opacity: 1;visibility: visible;}
 		.verb-modal{background-color: white;border-radius: 12px;box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);width: 90%;max-width: 600px;max-height: 80vh;overflow-y: auto;transform: scale(0.9);transition: transform 0.3s ease;position: relative;}
-		.verb-modal-overlay.active .verb-modal{transform: scale(1);}
 		.verb-modal-header{background: linear-gradient(135deg, #2196F3, #1976d2);color: white;padding:5px 20px;border-radius: 12px 12px 0 0;display: flex;justify-content: space-between;align-items: center;}
 		.verb-modal-title{font-size: 2rem;font-weight: bold;margin: 0;}
-		.verb-forms{margin-bottom:10px;}
 		.verb-modal-close{background: none;border: none;color: white;font-size: 1.5rem;cursor: pointer;width: 36px;height: 36px;border-radius: 50%;display: flex;align-items: center;justify-content: center;transition: background-color 0.2s;}
 		.verb-modal-close:hover{background-color: rgba(255, 255, 255, 0.2);}
 		.verb-modal-content{padding: 10px;}
@@ -98,10 +96,7 @@
 		.unit-selector label:hover{background:#fff;}
 		.unit-selector input[type="checkbox"] {transition: all 0.2s;margin-right: 5px;appearance: none;border:1px solid #a0cfff;width:13px;height:13px;border-radius:50%;}
 		.unit-selector input[type="checkbox"]:checked {background: #fff;border-color: #007bff;}
-
 		.unit-selector label.on{background: #2196F3;color:#fff;}
-
-
 		#cachediv{border:3px solid #eee;padding:10px;border-radius:10px;width:100%;}
 		#unitSelectorContainer{border:3px solid #eee;1padding:10px;border-radius:10px;margin-bottom:20px;}
 		#unitSelectorContainer:before{content:"批量标注已学的单词";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
@@ -109,11 +104,8 @@
 		.group-selector { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; padding-left:10px; }
 		.group-selector label { display: inline-flex; align-items: center; cursor: pointer;padding:3px 10px; border-radius: 15px;font-size: 0.9rem;transition: all 0.2s;color:#0078d7;background: #eef7ff;border: 1px solid #a0cfff;}
 		.group-selector label:hover{background-color: #2196F3;color: #fff;}
-
-
-
-
 		.group-category-header {margin: 10px 0 5px 10px;clear: both; width: 100%; }
+		#groupSelectorContainer:before{content:"按照单词分类学单词";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
 		/* 作文内容层样式 */
 		.essay-panel.show {display: block;}
 		.essay-panel {position: fixed;left: 50%;bottom:10px;transform: translateX(-50%);width: calc(100% - 20px);max-width:900px;background: white;border: 2px solid #2196F3;border-radius: 12px;box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.15);z-index: 1000;overflow: hidden;display: none;padding-bottom:10px;transition: all 0.3s ease;}
@@ -153,6 +145,24 @@
 		body.essay-panel-visible.big {padding-bottom: calc(50vh);}
 		.no-tts .verb-example-item{cursor:text}
 		.no-tts .read{display:none;}
+
+
+		/* 朗读面板 */
+		.readPanel{display:none;border-radius:12px; margin:20px auto; max-width:1000px;}
+		.readPanel .textarea{margin-bottom:20px;}
+		.readPanel textarea{background:#fafcff;width:97%; height:120px;margin:0 auto;padding:12px; border:2px solid #ccc; border-radius:8px; font-size:0.9rem; resize:vertical;}
+		.readPanel .fenduan{display:none;margin-top: 12px;margin-bottom: 20px;padding: 14px;background: #fafcff;border: 2px solid #e0e6f0;border-radius: 10px;line-height: 1.8;font-size: 17px;min-height: 60px;}
+		.readPanel .read-sentence {display: inline-block;padding: 0px 8px;margin: 2px 4px 2px 0;border-radius: 6px;cursor: pointer;transition: all 0.2s;background-color: #ffffff;border: 1px solid #e8eef7;}
+		.readPanel .read-sentence:hover {background-color: #eef7ff;color: #0078d7;border-color: #a0cfff;}
+		.readPanel .read-sentence.playing {background-color: #d0e7ff;border-color: #0078d7;}
+		.readPanel .set{background:#fff8f8; padding:15px; border-radius:8px; margin:20px 0; border:1px solid #ffe0e0;}
+		.readPanel .set h3{margin-top:0; color:#d32f2f; font-size:1.1rem;}
+		.readPanel .set label{font-weight:bold; margin-right:8px;}
+		.readPanel .set input{width:100px;}
+		.readPanel .set span{font-size:0.9rem; color:#555; min-width:40px; display:inline-block;}
+		.readPanel .set select{padding:6px 10px; border-radius:4px; border:1px solid #ccc;width:300px}
+		.readPanel .setbox{display:flex; flex-wrap:wrap; gap:15px; align-items:center;}
+
 		/* 移动端响应式样式 */
 		@media screen and (max-width: 600px) {
 			body {padding: 0 10px 20px;font-size: 14px;}
@@ -239,22 +249,6 @@
 	<div id="unitSelectorContainer" style="display: none;"></div>
 	<div id="wordContainer"></div>
 	<!-- 朗读功能面板 -->
-	<style type="text/css">
-	.readPanel{display:none;border-radius:12px; margin:20px auto; max-width:1000px;}
-	.readPanel .textarea{margin-bottom:20px;}
-	.readPanel textarea{background:#fafcff;width:97%; height:120px;margin:0 auto;padding:12px; border:2px solid #ccc; border-radius:8px; font-size:0.9rem; resize:vertical;}
-	.readPanel .fenduan{display:none;margin-top: 12px;margin-bottom: 20px;padding: 14px;background: #fafcff;border: 2px solid #e0e6f0;border-radius: 10px;line-height: 1.8;font-size: 17px;min-height: 60px;}
-	.readPanel .read-sentence {display: inline-block;padding: 0px 8px;margin: 2px 4px 2px 0;border-radius: 6px;cursor: pointer;transition: all 0.2s;background-color: #ffffff;border: 1px solid #e8eef7;}
-	.readPanel .read-sentence:hover {background-color: #eef7ff;color: #0078d7;border-color: #a0cfff;}
-	.readPanel .read-sentence.playing {background-color: #d0e7ff;border-color: #0078d7;}
-	.readPanel .set{background:#fff8f8; padding:15px; border-radius:8px; margin:20px 0; border:1px solid #ffe0e0;}
-	.readPanel .set h3{margin-top:0; color:#d32f2f; font-size:1.1rem;}
-	.readPanel .set label{font-weight:bold; margin-right:8px;}
-	.readPanel .set input{width:100px;}
-	.readPanel .set span{font-size:0.9rem; color:#555; min-width:40px; display:inline-block;}
-	.readPanel .set select{padding:6px 10px; border-radius:4px; border:1px solid #ccc;width:300px}
-	.readPanel .setbox{display:flex; flex-wrap:wrap; gap:15px; align-items:center;}
-	</style>
 	<div id="readPanel" class="readPanel">
 		<div class="textarea">
 			<textarea id="readInput" placeholder="请输入要朗读的英文或中文文本（支持多段、多句）..."></textarea>
@@ -317,13 +311,11 @@
 				<button class="verb-modal-close" id="verbModalClose">&times;</button>
 			</div>
 			<div class="verb-modal-content" id="verbModalContent">
-				<!-- 内容将动态填充 -->
 			</div>
 		</div>
 	</div>
 	<script src="db.js"></script>
 	<script>
-		// 添加语音合成管理器
 		class SpeechManager {
 			constructor() {
 				this.synth = window.speechSynthesis;
@@ -352,7 +344,7 @@
 						if (this.currentVoice) {
 							this.currentUtterance.voice = this.currentVoice;
 						} else {
-							// 如果没有设置音色，使用默认逻辑
+
 							const voices = this.synth.getVoices();
 							const emmaVoice = voices.find(voice =>
 								voice.name.includes('Emma') || voice.name.includes('Microsoft Emma') || voice.name.includes('EmmaMultilingual')
@@ -470,7 +462,7 @@
 					}).catch(error => {
 						console.error('音频播放失败:', error);
 						toastManager.show('音频播放失败', 'error', 2000);
-						// 播放失败，尝试切换到TTS
+
 						this.tryTTSOnAudioError();
 					});
 				}
@@ -485,7 +477,7 @@
 			}
 			loadAudio() {
 				if (isTTSSupported && (!this.currentEssay|| !this.currentEssay.mp3)) {
-					// 如果mp3路径为空或未定义，直接显示TTS
+
 					this.hideAudioControls();
 					this.showTTSControls();
 					this.panel.classList.remove('has-audio');
@@ -494,24 +486,24 @@
 				}
 				try {
 					this.currentAudio = new Audio(this.currentEssay.mp3+'.mp3');
-					// 监听canplay事件，表示音频可以播放
+
 					this.currentAudio.addEventListener('canplay', () => {
 						this.showAudioControls();
 						this.updateAudioTimeDisplay();
 					});
-					// 监听error事件，表示音频加载失败
+
 					this.currentAudio.addEventListener('error', (e) => {
 						//console.error('音频加载失败:', e);
-						// 加载失败，切换到TTS
+
 						if(!isTTSSupported)return;
 						this.hideAudioControls();
 						this.showTTSControls();
 						this.panel.classList.remove('has-audio');
 						this.panel.classList.add('has-tts');
 					});
-					// 监听loadedmetadata，也可以用于初始化
+
 					this.currentAudio.addEventListener('loadedmetadata', () => {
-						// 如果error事件没有触发，说明加载成功，显示音频控件
+
 						if (!this.audioControls.style.display || this.audioControls.style.display === 'none') {
 							this.showAudioControls();
 							this.updateAudioTimeDisplay();
@@ -529,7 +521,7 @@
 					});
 				} catch (error) {
 					console.error('创建音频对象失败:', error);
-					// 创建失败，切换到TTS
+
 					if(!isTTSSupported)return;
 					this.hideAudioControls();
 					this.showTTSControls();
@@ -538,9 +530,9 @@
 				}
 			}
 			tryTTSOnAudioError() {
-				// 即使音频加载成功但播放失败，也尝试TTS
+
 				this.pauseAudio();
-				// 然后切换到TTS模式
+
 				if(!isTTSSupported)return;
 				this.hideAudioControls();
 				this.showTTSControls();
@@ -651,7 +643,7 @@
 			}
 			show(essay,limit) {
 				if(!limit)limit=wordsPerPage;
-				if (this.currentEssay && this.currentEssay.p === essay.p)return; // 已经是当前作文，无需重复加载
+				if (this.currentEssay && this.currentEssay.p === essay.p)return;
 				this.currentEssay = essay;
 				this.title.textContent = "《 "+essay.tit+" 》";
 				const startIndex = (currentPage - 1) * limit;
@@ -1001,67 +993,52 @@
 			}
 		}
 
-		// 新增：渲染分类选择器
 		function renderGroupSelector() {
 			const container = document.getElementById('wordContainer');
 			const pagination = document.getElementById('pagination');
-			container.innerHTML = ''; // 清空单词容器
-			pagination.innerHTML = ''; // 清空分页
-
+			container.innerHTML = '';
+			pagination.innerHTML = '';
 			const groupedData = originalWordData.group;
-
 			if (!groupedData || Object.keys(groupedData).length === 0) {
 				container.innerHTML = '<div class="no-results">没有分类可用</div>';
 				return;
 			}
 
-			// 创建一个主容器
 			const groupContainer = document.createElement('div');
 			groupContainer.id = 'groupSelectorContainer';
-			groupContainer.style.cssText = 'margin-bottom: 20px; padding: 10px; border: 3px solid #eee; border-radius: 8px;';
-
+			groupContainer.style.cssText = 'margin-bottom: 20px;border: 3px solid #eee; border-radius: 8px;';
 			for (const [topCategoryName, subCategories] of Object.entries(groupedData)) {
-				// 创建大类标题
+
 				const categoryHeader = document.createElement('div');
 				categoryHeader.className = 'group-category-header';
 				categoryHeader.textContent = topCategoryName;
 				groupContainer.appendChild(categoryHeader);
 
-				// 创建小类按钮容器
 				const subCategoryButtonsDiv = document.createElement('div');
-				subCategoryButtonsDiv.className = 'group-selector'; // 使用新的CSS类名
+				subCategoryButtonsDiv.className = 'group-selector';
 				subCategoryButtonsDiv.style.cssText = 'padding-left:2rem;display: flex; flex-wrap: wrap; gap: 10px;';
 
-				// 遍历小类
 				for (const [subCategoryName, wordListString] of Object.entries(subCategories)) {
-					// 创建按钮容器 (label)
 					const label = document.createElement('label');
-					//label.style.cssText = 'display: inline-flex; align-items: center; cursor: pointer; background-color: #f0f4f8; padding: 0px 10px; border-radius: 10px; border: 1px solid #ccc; font-size: 0.9rem; transition: background-color 0.2s, border-color 0.2s;';
-					//label.onmouseover = () => label.style.backgroundColor = '#e0e7ff'; // 悬停效果
-					//label.onmouseout = () => label.style.backgroundColor = '#f0f4f8'; // 恢复效果
-
-					// 创建按钮 (input type button)
 					const button = document.createElement('span');
-					button.innerHTML = subCategoryName; // 按钮文本是小类名
+					button.innerHTML = subCategoryName;
 					button.onclick = () => {
-						// 清理并分割单词列表
+
 						const trimmedList = wordListString.trim().replace(/,$/g, '');
 						const words = trimmedList.split(',').map(w => w.trim()).filter(w => w);
-						const queryString = words.join(' '); // 用空格连接
-						const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false`; // 构造新URL
-						window.location.href = newUrl; // 跳转
+						const queryString = words.join(' ');
+
+						let title=encodeURIComponent('【'+subCategoryName+"】类");
+						const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}`;
+						window.location.href = newUrl;
 					};
-
-					label.appendChild(button); // 将按钮放入label
-					subCategoryButtonsDiv.appendChild(label); // 将label放入按钮容器
+					label.appendChild(button);
+					subCategoryButtonsDiv.appendChild(label);
 				}
-
-				groupContainer.appendChild(subCategoryButtonsDiv); // 将按钮容器放入主容器
+				groupContainer.appendChild(subCategoryButtonsDiv);
 			}
-
-			container.appendChild(groupContainer); // 将主容器放入页面容器
+			container.appendChild(groupContainer);
 		}
-
 		const speechManager = new SpeechManager();
 		const wordManager = new WordStateManager();
 		const toastManager = new ToastManager();
@@ -1096,7 +1073,7 @@
 				}
 				if (element)element.classList.add('reading-ing');
 				text=text.trim().replace(/[.,;:!?]+$/, '').split(/\s+/).filter(w => w).join(' , ');
-				// 使用当前设置的音色、语速和音调
+
 				const rate = parseFloat(document.getElementById('rateSlider')?.value || 0.9);
 				const pitch = parseFloat(document.getElementById('pitchSlider')?.value || 1.0);
 				await speechManager.speak(text, rate, pitch, 1.0);
@@ -1241,32 +1218,7 @@
 				}
 			});
 		}
-		function goToPreviousPage() {
-			if (currentPage > 1) {
-				essayManager.pauseAudio();
-				essayManager.pauseTTS();
-				essayManager.resetAudio();
-				essayManager.resetTTS();
-				essayManager.resetSize();
-				currentPage--;
-				updateDisplay();
-				updateUrlParams();
-				toastManager.show(`已翻到第 ${currentPage} 页`, 'info', 1000);
-			}
-		}
-		function goToNextPage() {
-			if (currentPage < totalPages) {
-				essayManager.pauseAudio();
-				essayManager.pauseTTS();
-				essayManager.resetAudio();
-				essayManager.resetTTS();
-				essayManager.resetSize();
-				currentPage++;
-				updateDisplay();
-				updateUrlParams();
-				toastManager.show(`已翻到第 ${currentPage} 页`, 'info', 1000);
-			}
-		}
+
 		function getParamsFromUrl() {
 			const params = new URLSearchParams(window.location.search);
 			return {
@@ -1274,18 +1226,38 @@
 				page: parseInt(params.get('page')) || 1,
 				fuzzy: params.get('fuzzy') !== 'false',
 				filter: params.get('filter') || 'all',
-				cache: params.get('cache') || ''
+				cache: params.get('cache') || '',
+
+				title: params.get('title') || ''
 			};
 		}
+
+
 		function updateUrlParams() {
 			const params = new URLSearchParams();
-			if (currentSearchQuery) params.set('q', currentSearchQuery);
+			const urlParams = getParamsFromUrl();
+
+
+			if (!urlParams.title) {
+				if (currentSearchQuery) params.set('q', currentSearchQuery);
+				if (!fuzzySearchCheckbox.checked) params.set('fuzzy', 'false');
+			} else {
+
+
+
+				params.set('title', urlParams.title);
+
+				if (urlParams.query) params.set('q', urlParams.query);
+				if (window.location.search.includes('fuzzy=false')) params.set('fuzzy', 'false');
+			}
+
 			if (currentPage > 1) params.set('page', currentPage);
-			if (!fuzzySearchCheckbox.checked) params.set('fuzzy', 'false');
 			if (currentFilter !== 'all') params.set('filter', currentFilter);
 			const newUrl = `${window.location.pathname}?${params.toString()}`;
 			window.history.replaceState(null, '', newUrl);
 		}
+
+
 		function initUrlParams() {
 			const urlParams = getParamsFromUrl();
 			currentSearchQuery = urlParams.query;
@@ -1293,6 +1265,7 @@
 			currentFilter = urlParams.filter;
 			searchInput.value = currentSearchQuery;
 			fuzzySearchCheckbox.checked = urlParams.fuzzy;
+
 			window.isInitializing = true;
 			if (urlParams.cache) {
 				try {
@@ -1309,7 +1282,78 @@
 			}
 			window.isInitializing = false;
 			updateActiveFilterLink();
+
+			if (urlParams.title) {
+				searchInput.value = urlParams.title;
+				searchInput.readOnly = true;
+				searchInput.style.backgroundColor = '#e3f2fd';
+				searchInput.style.border = '1px solid #2196F3';
+				//searchInput.style.borderRadius = '4px';
+				//searchInput.style.padding = '7px 12px';
+
+				document.querySelector('.search-box .checkbox').style.display = 'none';
+			} else {
+
+				searchInput.readOnly = false;
+				searchInput.style.backgroundColor = '';
+				searchInput.style.border = '';
+				searchInput.style.borderRadius = '';
+				searchInput.style.padding = '';
+				document.querySelector('.search-box .checkbox').style.display = '';
+			}
 		}
+
+
+		function applyFilter(filterType) {
+			currentFilter = filterType;
+			if (filterType === 'group') {
+				document.getElementById('readPanel').style.display = 'none';
+				document.querySelector('.controls').style.display = 'none';
+				document.getElementById('pagination').style.display = 'none';
+				if(document.getElementById("cachediv")){
+					document.getElementById("cachediv").style.display = "none";
+					document.getElementById("unitSelectorContainer").style.display = "none";
+				}
+				document.getElementById('wordContainer').style.display = 'block';
+				renderGroupSelector();
+				updateActiveFilterLink();
+				updateUrlParams();
+				return;
+			}
+			if (filterType === 'read') {
+				document.getElementById('readPanel').style.display = 'block';
+				document.getElementById('wordContainer').style.display = 'none';
+				document.getElementById('pagination').style.display = 'none';
+				document.querySelector('.controls').style.display = 'none';
+				if (!readAloudManager) {
+					readAloudManager = new ReadAloudManager();
+				}
+			}else if (filterType === 'cache') {
+				document.getElementById('readPanel').style.display = 'none';
+				document.querySelector('.controls').style.display = 'none';
+				document.getElementById('wordContainer').style.display = 'none';
+				document.getElementById('pagination').style.display = 'none';
+				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "block";
+			}else {
+				document.querySelector('.controls').style.display = 'block';
+				document.getElementById('wordContainer').style.display = 'block';
+				document.getElementById('pagination').style.display = 'block';
+				document.getElementById('readPanel').style.display = 'none';
+				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
+			}
+			defaultFilteredData = wordManager.getFilteredWords(originalWordData.data, filterType);
+			currentWordData = [...defaultFilteredData];
+			originalSearchResult = [];
+			isSorted = false;
+			sortBtn.textContent = '按字母排序';
+			totalPages = Math.ceil(currentWordData.length / wordsPerPage);
+			if (currentPage > totalPages) currentPage = 1;
+			searchWords();
+			updateActiveFilterLink();
+			renderUnitSelector();
+			essayManager.checkAndShowEssay(currentPage);
+		}
+
 		function updateActiveFilterLink() {
 			filterLinks.forEach(link => {
 				const href = link.getAttribute('href');
@@ -1323,21 +1367,25 @@
 				return;
 			}
 			let limit=wordsPerPage;
-			const query = searchInput.value.trim();
+
+			const urlParams = getParamsFromUrl();
+			const query = urlParams.title ? urlParams.query : searchInput.value.trim();
 			currentSearchQuery = query;
+
 			if (!query) {
-				// 如果没有查询，恢复到默认过滤后的数据
+
 				currentWordData = [...defaultFilteredData];
-				originalSearchResult = []; // 清空原始搜索结果
-				// 如果需要按字母排序（虽然通常不会在空搜索时排序），在此基础上排序
+				originalSearchResult = [];
+
 				if (isSorted) {
 					currentWordData.sort((a, b) => a.W.localeCompare(b.W));
 				}
 			} else {
 				const searchTerms = query.replace(/ |　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-				if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
-				const isFuzzy = fuzzySearchCheckbox.checked;
-				// 创建搜索词到索引的映射，用于保持顺序
+				//if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
+
+				const isFuzzy = urlParams.title ? urlParams.fuzzy : fuzzySearchCheckbox.checked;
+
 				const termIndexMap = new Map();
 				searchTerms.forEach((term, index) => {
 					termIndexMap.set(term.toLowerCase(), index);
@@ -1386,26 +1434,22 @@
 				let filteredAndScored = scoredWords
 					.filter(item => item.score > 0)
 					.sort((a, b) => {
-						// 首先按搜索词出现的顺序排序
+
 						if (a.matchedTermIndex !== b.matchedTermIndex) {
 							return a.matchedTermIndex - b.matchedTermIndex;
 						}
-						// 相同搜索词内按匹配分数排序
+
 						return b.score - a.score;
 					})
 					.map(item => item.word);
 
-				// 保存原始搜索顺序
 				originalSearchResult = [...filteredAndScored];
 
-				// 将当前结果设置为原始顺序
 				currentWordData = [...originalSearchResult];
 
-				// 检查是否需要按字母排序
 				if (isSorted) {
 					 currentWordData.sort((a, b) => a.W.localeCompare(b.W));
 				}
-
 				searchTerms.forEach(term => {
 					const searchTerm = term.toLowerCase();
 					const foundWord = originalWordData.data.find(word =>
@@ -1433,7 +1477,6 @@
 			updateDisplay(limit);
 			updateUrlParams();
 		}
-
 		function findWordInDaixue(word) {
 			const wordLower = word.toLowerCase();
 			for (const unit of originalWordData.daixue) {
@@ -1448,7 +1491,6 @@
 			}
 			return null;
 		}
-
 		function sortWords(limit) {
 			if(!limit)limit=wordsPerPage;
 			isSorted = !isSorted;
@@ -1468,59 +1510,9 @@
 				}
 				sortBtn.textContent = '按字母排序';
 			}
-			currentPage = 1; // 排序后回到第一页
+			currentPage = 1;
 			totalPages = Math.ceil(currentWordData.length / limit);
 			updateDisplay();
-		}
-		function applyFilter(filterType) {
-			currentFilter = filterType;
-			if (filterType === 'group') {
-				document.getElementById('readPanel').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
-				document.getElementById('pagination').style.display = 'none';
-				if(document.getElementById("cachediv")){
-					document.getElementById("cachediv").style.display = "none";
-					document.getElementById("unitSelectorContainer").style.display = "none";
-				}
-				document.getElementById('wordContainer').style.display = 'block';
-				renderGroupSelector();
-				updateActiveFilterLink();
-				updateUrlParams();
-				return;
-			}
-
-			if (filterType === 'read') {
-				document.getElementById('readPanel').style.display = 'block';
-				document.getElementById('wordContainer').style.display = 'none';
-				document.getElementById('pagination').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
-				if (!readAloudManager) {
-					readAloudManager = new ReadAloudManager();
-				}
-			}else if (filterType === 'cache') {
-				document.getElementById('readPanel').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
-				document.getElementById('wordContainer').style.display = 'none';
-				document.getElementById('pagination').style.display = 'none';
-				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "block";
-			}else {
-				document.querySelector('.controls').style.display = 'block';
-				document.getElementById('wordContainer').style.display = 'block';
-				document.getElementById('pagination').style.display = 'block';
-				document.getElementById('readPanel').style.display = 'none';
-				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
-			}
-			defaultFilteredData = wordManager.getFilteredWords(originalWordData.data, filterType);
-			currentWordData = [...defaultFilteredData];
-			originalSearchResult = [];
-			isSorted = false;
-			sortBtn.textContent = '按字母排序';
-			totalPages = Math.ceil(currentWordData.length / wordsPerPage);
-			if (currentPage > totalPages) currentPage = 1;
-			searchWords();
-			updateActiveFilterLink();
-			renderUnitSelector();
-			essayManager.checkAndShowEssay(currentPage);
 		}
 		function updateDisplay(limit) {
 			if(!limit)limit=wordsPerPage;
@@ -1622,7 +1614,7 @@
 					${englishExamplesHtml}
 					${chineseExamplesHtml}
 				</div>
-				<div class="word-index ${frequencyClass}" title="${frequencyTitle}">${index}</div>
+				<a class="word-index ${frequencyClass}" title="查看单词 ${word.W}" href="https://www.iciba.com/word?w=${word.W}" target="_blank">${index}</a>
 			`;
 			const wordElement = wordCard.querySelector('.word');
 			const phoneticElement = wordCard.querySelector('.phonetic');
@@ -1706,7 +1698,7 @@
 						if (!term) return;
 						const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 						if (word) {
-							// 如果是单词的完整匹配
+
 							if(word.toLowerCase() === term.toLowerCase()){
 								const wordRegex = new RegExp(`\\b${escapedTerm}\\b`, 'gi');
 								result = result.replace(wordRegex, '<span class="highlight">$&</span>');
@@ -1822,6 +1814,7 @@
 			searchInput.addEventListener('input', debounce(searchWords, 300));
 			sortBtn.addEventListener('click', sortWords);
 			fuzzySearchCheckbox.addEventListener('change', searchWords);
+
 			filterLinks.forEach(link => {
 				link.addEventListener('click', (e) => {
 					e.preventDefault();
@@ -1832,6 +1825,34 @@
 						searchInput.value = '';
 						currentSearchQuery = '';
 					}
+
+					const urlParams = getParamsFromUrl();
+					const hasTitleParam = urlParams.title !== null;
+
+					if (urlParams.title && urlParams.query && window.location.search.includes('fuzzy=')) {
+
+						const newParams = new URLSearchParams();
+						if (filter !== 'all') {
+							newParams.set('filter', filter);
+						}
+
+						const newUrl = `${window.location.pathname}?${newParams.toString()}`;
+						window.history.replaceState(null, '', newUrl);
+
+
+
+						currentSearchQuery = '';
+						searchInput.value = '';
+						fuzzySearchCheckbox.checked = true;
+
+						searchInput.readOnly = false;
+						searchInput.style.backgroundColor = '';
+						searchInput.style.border = '';
+						searchInput.style.borderRadius = '';
+						searchInput.style.padding = '';
+						document.querySelector('.search-box .checkbox').style.display = '';
+					}
+
 					applyFilter(filter);
 				});
 			});
@@ -1853,7 +1874,7 @@
 				timeout = setTimeout(later, wait);
 			};
 		}
-		// ========== 朗读功能模块 ==========
+
 		class ReadAloudManager {
 			constructor() {
 				this.panel = document.getElementById('readPanel');
@@ -1879,7 +1900,7 @@
 			loadVoices() {
 				const synth = window.speechSynthesis;
 				let voices = synth.getVoices();
-				// 如果 voices 为空，等待 voiceschanged 事件
+
 				if (voices.length === 0) {
 					synth.addEventListener('voiceschanged', () => {
 						voices = synth.getVoices();
@@ -1901,7 +1922,7 @@
 				const filteredVoices = voices.filter(v =>
 					v.lang.startsWith('en-US') || v.lang.startsWith('zh-CN')
 				);
-				// 优先将 Emma 放在前面
+
 				const emmaVoice = filteredVoices.find(v => v.name.includes('Emma'));
 				if (emmaVoice) {
 					const option = document.createElement('option');
@@ -1928,7 +1949,7 @@
 				this.pitchSlider.addEventListener('input', (e) => {
 					this.pitchValue.textContent = e.target.value;
 				});
-				// 添加音色选择变化监听
+
 				this.voiceSelect.addEventListener('change', () => {
 					const selectedVoiceName = this.voiceSelect.value;
 					speechManager.setVoice(selectedVoiceName);
@@ -1936,7 +1957,7 @@
 				});
 				this.readAllBtn.addEventListener('click', () => this.readAll());
 				this.pauseBtn.addEventListener('click', () => this.pause());
-				// 动态委托点击句子
+
 				this.output.addEventListener('click', (e) => {
 					const sentenceEl = e.target.closest('.read-sentence');
 					if (sentenceEl) {
@@ -1952,12 +1973,12 @@
 					this.sentences = [];
 					return;
 				}
-				// 按段落分割
+
 				const paragraphs = text.split(/\n+/).filter(p => p.trim());
 				let allSentences = [];
 				let html = '';
 				paragraphs.forEach((para, pIndex) => {
-					// 按句子分割（英文句号、问号、感叹号；中文句号、问号、感叹号）
+
 					//const sentences = para.split(/(?<=[.!?。！？])\s*/).filter(s => s.trim());
 					//para=para.replace(/\:/g," : ");
 					const sentences = para.split(/(?<!\d\.)(?<!\.[A-Za-z])(?<=[.!?。！？]|:)\s*/).filter(s => s.trim());
@@ -2010,7 +2031,7 @@
 					toastManager.show('浏览器不支持语音朗读', 'warning', 2000);
 					return;
 				}
-				speechManager.stop(); // 停止之前的朗读
+				speechManager.stop();
 				const fullText = this.sentences.join(' ');
 				const rate = parseFloat(this.rateSlider.value);
 				const pitch = parseFloat(this.pitchSlider.value);
