@@ -1093,7 +1093,7 @@
 							const wordListString = unit.W;
 							if (wordListString) {
 								const queryString = wordListString.trim().replace(/,$/g, '');
-								let title = encodeURIComponent(`【${unit.unit}】`);
+								let title = encodeURIComponent(`【${grade} - ${unit.unit}】`);
 								const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}`;
 								window.location.href = newUrl;
 							} else {
@@ -1453,7 +1453,7 @@
 				}
 			} else {
 				const searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-				if(searchTerms.length>10)limit=40;//多个词同时搜索，1页显示90个
+				//if(searchTerms.length>10)limit=40;//多个词同时搜索，1页显示90个
 
 				const isFuzzy = urlParams.title ? urlParams.fuzzy : fuzzySearchCheckbox.checked;
 
@@ -1753,12 +1753,21 @@
 			}
 			currentAudio = new Audio(audioUrl);
 			currentAudio.play();
-			button.classList.add('playing');
-			currentAudio.onended = () => button.classList.remove('playing');
-			currentAudio.onerror = () => {
-				button.classList.remove('playing');
-				//toastManager.show('音频加载失败', 'error', 2000);
-			};
+
+			if (button) {
+				button.classList.add('playing');
+				currentAudio.onended = () => {
+					button.classList.remove('playing');
+				};
+				currentAudio.onerror = () => {
+					button.classList.remove('playing');
+				};
+			} else {
+				currentAudio.onended = () => {
+				};
+				currentAudio.onerror = () => {
+				};
+			}
 		}
 		function highlightSearchTerms(text, word = null) {
 				if (!currentSearchQuery || !text) return text;
