@@ -1440,11 +1440,12 @@
 			let limit=wordsPerPage;
 
 			const urlParams = getParamsFromUrl();
-			const query = urlParams.title ? urlParams.query : searchInput.value.trim();
-			currentSearchQuery = query;
+			// 检查是否同时包含 title 和 q 参数
+			const groupSearch = !!urlParams.title && !!urlParams.query;
+			const query = groupSearch ? urlParams.query : searchInput.value.trim(); // 如果是特殊模式，使用 q 参数
+			currentSearchQuery = query; // 这个变量会被 highlightSearchTerms 使用
 
 			if (!query) {
-
 				currentWordData = [...defaultFilteredData];
 				originalSearchResult = [];
 
@@ -1452,70 +1453,108 @@
 					currentWordData.sort((a, b) => a.W.localeCompare(b.W));
 				}
 			} else {
-				const searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-				//if(searchTerms.length>10)limit=40;//多个词同时搜索，1页显示90个
+				if(groupSearch){
+					var searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
+					//if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
+				}else{
+					var searchTerms = query.replace(/ |　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
+				}
 
-				const isFuzzy = urlParams.title ? urlParams.fuzzy : fuzzySearchCheckbox.checked;
+				// --- 修改开始：调整模糊搜索逻辑 ---
+				// 如果是特殊模式 (groupSearch)，则忽略 fuzzy 参数，强制使用特殊逻辑
+				// 否则，使用原有的逻辑
+				const isFuzzy = groupSearch ? false : (urlParams.title ? urlParams.fuzzy : fuzzySearchCheckbox.checked);
+				// --- 修改结束 ---
 
 				const termIndexMap = new Map();
 				searchTerms.forEach((term, index) => {
 					termIndexMap.set(term.toLowerCase(), index);
 				});
+
 				const scoredWords = defaultFilteredData.map(word => {
 					let score = 0;
 					let matchedTermIndex = -1;
-					searchTerms.forEach(term => {
-						const wordText = word.W.toLowerCase();
-						const searchTerm = term.toLowerCase();
-						const explanation = word.C.toLowerCase()+" "+(word.I?word.I.toLowerCase():"")+" "+(word.K?word.K.toLowerCase():"");
-						const example = word.E.toLowerCase();
-						const exampleChinese = word.F.toLowerCase();
-						if (isFuzzy) {
-							if (wordText === searchTerm) {
-								score += 100;
-								matchedTermIndex = termIndexMap.get(searchTerm);
+
+					// --- 修改开始：根据模式应用不同的搜索逻辑 ---
+					if (groupSearch) {
+						// 特殊模式：URL 含 title 且含 q
+						searchTerms.forEach(term => {
+							// 1. word.W 完整匹配且区分大小写
+							if (word.W === term) { // 完全匹配，区分大小写
+								score += 100; // 高分
+								matchedTermIndex = termIndexMap.get(term.toLowerCase());
 							}
-							else if (wordText.includes(searchTerm)) {
-								score += 10;
+
+							// 2. word.I + word.K 模糊搜索 (合并后搜索)，但不搜索单词，避免模糊搜索列出错误项目
+							let  combinedSearchText = ((word.I || '') + ' ' + (word.K || '')).replace(/[a-z]/ig,"");
+							if (combinedSearchText.toLowerCase().includes(term.toLowerCase())) {
+								score += 10; // 较低分
 								if (matchedTermIndex === -1) {
+									matchedTermIndex = termIndexMap.get(term.toLowerCase());
+								}
+							}/*
+							// 3. word.C (释义) 也进行模糊搜索，作为补充
+							if (word.C.toLowerCase().includes(term.toLowerCase())) {
+								score += 5; // 更低分
+								if (matchedTermIndex === -1) {
+									matchedTermIndex = termIndexMap.get(term.toLowerCase());
+								}
+							}*/
+						});
+					} else {
+						// 原有模式：普通搜索
+						searchTerms.forEach(term => {
+							const wordText = word.W.toLowerCase();
+							const searchTerm = term.toLowerCase();
+							const explanation = word.C.toLowerCase()+" "+((word.I || '') + ' ' + (word.K || ''));
+							const example = word.E.toLowerCase();
+							const exampleChinese = word.F.toLowerCase();
+							if (isFuzzy) {
+								if (wordText === searchTerm) {
+									score += 100;
+									matchedTermIndex = termIndexMap.get(searchTerm);
+								}
+								else if (wordText.includes(searchTerm)) {
+									score += 10;
+									if (matchedTermIndex === -1) {
+										matchedTermIndex = termIndexMap.get(searchTerm);
+									}
+								}
+								if (explanation.includes(searchTerm) || example.includes(searchTerm)) {
+									score += 1;
+									if (matchedTermIndex === -1) {
+										matchedTermIndex = termIndexMap.get(searchTerm);
+									}
+								}
+								if (exampleChinese.includes(searchTerm)) {
+									score += 3;
+									if (matchedTermIndex === -1) {
+										matchedTermIndex = termIndexMap.get(searchTerm);
+									}
+								}
+							} else {
+								if (wordText === searchTerm) {
+									score = 100;
 									matchedTermIndex = termIndexMap.get(searchTerm);
 								}
 							}
-							if (explanation.includes(searchTerm) || example.includes(searchTerm)) {
-								score += 1;
-								if (matchedTermIndex === -1) {
-									matchedTermIndex = termIndexMap.get(searchTerm);
-								}
-							}
-							if (exampleChinese.includes(searchTerm)) {
-								score += 3;
-								if (matchedTermIndex === -1) {
-									matchedTermIndex = termIndexMap.get(searchTerm);
-								}
-							}
-						} else {
-							if (wordText === searchTerm) {
-								score = 100;
-								matchedTermIndex = termIndexMap.get(searchTerm);
-							}
-						}
-					});
+						});
+					}
+					// --- 修改结束 ---
 					return { word, score, matchedTermIndex };
 				});
+
 				let filteredAndScored = scoredWords
 					.filter(item => item.score > 0)
 					.sort((a, b) => {
-
 						if (a.matchedTermIndex !== b.matchedTermIndex) {
 							return a.matchedTermIndex - b.matchedTermIndex;
 						}
-
 						return b.score - a.score;
 					})
 					.map(item => item.word);
 
 				originalSearchResult = [...filteredAndScored];
-
 				currentWordData = [...originalSearchResult];
 
 				if (isSorted) {
@@ -1629,10 +1668,19 @@
 			const wordTitle = wordManager.getWordClickTitle(word.W);
 			const phoneticTitle = wordManager.getPhoneticClickTitle(word.W, currentFilter);
 			const isVerb = originalWordData.dongci.some(verb =>
-				verb.W.toLowerCase() === word.W.toLowerCase()
+				//verb.W.toLowerCase() === word.W.toLowerCase()
+				verb.W === word.W // 完全匹配，区分大小写 避免May(5月)关联到了may(可以)
 			);
-			let explanationHtml = highlightSearchTerms(word.C);
-			explanationHtml+=word.I?("<i>"+highlightSearchTerms(word.I)+"</i>"):"";
+
+			const urlParams = getParamsFromUrl();
+			let hightlight=function(word,word2){
+				if(urlParams.title)return word;
+				return highlightSearchTerms(word,word2);
+			}
+
+
+			let explanationHtml = hightlight(word.C);
+			explanationHtml+=word.I?("<i>"+hightlight(word.I)+"</i>"):"";
 			if (isVerb) {
 				explanationHtml = `<span class="explanation verb-link" title="点击查看动词变化">${explanationHtml}</i></span>`;
 			} else {
@@ -1658,7 +1706,7 @@
 			const englishExamples = word.E.split(' / ').map(example => example.trim()).filter(example => example);
 			let englishExamplesHtml = '';
 			englishExamples.forEach((example, i) => {
-				const highlightedExample = highlightSearchTerms(example);
+				const highlightedExample = hightlight(example);
 				englishExamplesHtml += `
 					<span class="example-english" data-example="${example}">
 						${highlightedExample}
@@ -1669,7 +1717,7 @@
 			const chineseExamples = word.F.split(' / ').map(example => example.trim()).filter(example => example);
 			let chineseExamplesHtml = '<div>';
 			chineseExamples.forEach((example, i) => {
-				const highlightedExample = highlightSearchTerms(example);
+				const highlightedExample = hightlight(example);
 				chineseExamplesHtml += `
 					<span class="example-chinese">${highlightedExample}</span>
 				`;
@@ -1678,7 +1726,7 @@
 			wordCard.innerHTML = `
 				<div class="word-header">
 					<div class="word-main">
-						<span class="word" title="${wordTitle}">${highlightSearchTerms(word.W,word.W)}</span>
+						<span class="word" title="${wordTitle}">${hightlight(word.W,word.W)}</span>
 						<span class="phonetic" title="${phoneticTitle}">${word.Y}</span>
 						${explanationHtml}
 					</div>
@@ -1770,43 +1818,27 @@
 			}
 		}
 		function highlightSearchTerms(text, word = null) {
-				if (!currentSearchQuery || !text) return text;
-				const terms = currentSearchQuery.split(',').map(term => term.trim()).filter(term => term);
-				if (terms.length === 0) return text;
-				let result = text;
-				result = result.replace(/[&<>]/g, function(m) {
-						return {'&': '&amp;','<': '&lt;','>': '&gt;'}[m];
-				});
-				terms.forEach(term => {
-						if (!term) return;
-						const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-						if (word) {
-
-							if(word.toLowerCase() === term.toLowerCase()){
-								const wordRegex = new RegExp(`\\b${escapedTerm}\\b`, 'gi');
-								result = result.replace(wordRegex, '<span class="highlight">$&</span>');
-							}
-						}else {
-							const regex = new RegExp(`(${escapedTerm})`, 'gi');
-							result = result.replace(regex, '<span class="highlight">$1</span>');
-						}
-				});
-			return result.replace(/&lt;i&gt;/g,"<i>").replace(/&lt;\/i&gt;/g,"</i>");
-		}
-		function highlightSearchTerms_stop(text) {
 			if (!currentSearchQuery || !text) return text;
+
 			const terms = currentSearchQuery.split(',').map(term => term.trim()).filter(term => term);
 			if (terms.length === 0) return text;
+
 			let result = text;
-			result = result.replace(/[&<>]/g, function(m) {
-				return {'&': '&amp;','<': '&lt;','>': '&gt;'}[m];
+			result = result.replace(/[&<>"']/g, function(m) {
+				return {'&': '&amp;', '<': '<', '>': '>', '"': '&quot;', "'": '&#039;'}[m];
 			});
 			terms.forEach(term => {
 				if (!term) return;
 				const escapedTerm = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-				const regex = new RegExp(`(${escapedTerm})(?![^<]*>)(?![^<]*</span>)`, 'gi');
+				let regex;
+				if (word && word.toLowerCase() === term.toLowerCase()) {
+					regex = new RegExp(`\\b(${escapedTerm})\\b(?![^<]*>|[^<]*<\\/[^>]*>)`, 'gi');
+				} else {
+					regex = new RegExp(`(${escapedTerm})(?![^<]*>|[^<]*<\\/[^>]*>)`, 'gi');
+				}
 				result = result.replace(regex, '<span class="highlight">$1</span>');
 			});
+			result = result.replace(/<i>/g,"<i>").replace(/<\/i>/g,"</i>");
 			return result;
 		}
 		function renderPagination(limit) {
