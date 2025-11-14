@@ -7,13 +7,14 @@
 	<meta name="author" content="Missde整理：①词频列表取自蝶变背单词。②例句、作文由豆包+DeepSeek生成。③作文朗读：微软语音库"/>
 	<title>初中2100单词</title>
 	<style>
-		h1 {margin:0 0 15px 0;padding:0; text-align: center;}
+		h1 {margin:0 0 15px 0;padding:0; text-align: center; /* Fixed positioning for floating effect */ position: fixed; top: 0; left: 0; right: 0; background-color: white; /* Ensure background */ z-index: 1001; /* Ensure it's on top */ box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional shadow for better visibility */ }
+
 		h1 a { display: inline-block;padding: 3px 13px;margin: 0 5px;background-color: #f5f5f5;color: #333;text-decoration: none;border-radius: 20px;border: 1px solid #ddd;font-size: 1.1rem;transition: all 0.2s ease;}
 		h1 a:first{padding-left:0;}
 		h1 a:last{padding-right:0;}
 		h1 a:hover { color: #1976d2;background-color: #e3f2fd;border-color: #2196F3;}
 		h1 a.active {background-color: #2196F3;color: white;border-color: #1976d2;font-weight: bold;}
-		body {font-family: Arial, sans-serif;line-height: 1.6;max-width: 1000px;margin: 0 auto;padding:0 0 20px 0px;font-family:"舒窈衡水体shuyaohengshuiti";}
+		body {font-family: Arial, sans-serif;line-height: 1.6;max-width: 1000px;margin: 0 auto;padding: 80px 0 20px 0px; /* Adjusted top padding to account for fixed h1 */ font-family:"舒窈衡水体shuyaohengshuiti";} /* Added padding-top */
 		.controls {display: flex;justify-content: space-between;align-items: center;margin-bottom: 10px;flex-wrap: wrap;gap: 15px;}
 		.search-box {display: flex;gap: 10px;flex: 1;min-width: 250px;}
 		#searchInput {flex: 1;padding: 8px 12px;border: 1px solid #ddd;border-radius: 4px;font-size: 1rem;}
@@ -42,7 +43,8 @@
 		.example-english {transition: all 0.3s ease;}
 		.example-english:hover {color: #1976d2;}
 		.example-chinese{color:#aaa;font-size:.8rem;}
-		.pagination {text-align: center;margin-top: 30px;gap: 10px;flex-wrap: wrap;clear:both;}
+		.pagination {display:block;text-align: center;margin-top: 30px;gap: 10px;flex-wrap: wrap;clear:both;}
+		.pagination.hide{display:none;}
 		.page-btn {overflow:hidden;margin-right:10px;padding: 8px 16px;border: 1px solid #ddd;border-radius: 4px;background-color: white;cursor: pointer;transition: all 0.2s;}
 		.page-btn.active {background-color: #2196F3;color: white;border-color: #2196F3;}
 		.page-btn:disabled {opacity: 0.5;cursor: not-allowed;}
@@ -209,6 +211,13 @@
 			.essay-panel.big.show.has-audio .essay-content {max-height: calc(60vh - 120px);}
 			.essay-panel.big.show.has-tts .essay-content {max-height: calc(60vh - 120px);}
 		}
+
+			.en0:before,.cn0:before{content:"①";color:#ccc;font-size:.7rem;}
+			.en1:before,.cn1:before{content:"②";color:#ccc;font-size:.7rem;}
+			.en2:before,.cn2:before{content:"③";color:#ccc;font-size:.7rem;}
+
+
+
 		@media print {
 			.essay-panel.show,
 			h1,.controls,.audio-btn,.pagination,.essay-panel,.toast-container{display:none}
@@ -217,10 +226,11 @@
 			.word-main{height:30px;line-height:30px;}
 			.word,.word *{font-size: 1.4rem;color:#f00;}
 			.word-header,.example{margin:0;padding:0;}
-			.word-card{box-shadow:none;margin:0 0 3px 0;padding:2px 5px;position: relative;height:85px;overflow:hidden;}
+			.word-card{box-shadow:none;margin:0 0 3px 0;padding:2px 5px;position: relative;height:92px;overflow:hidden;}
 			.word-index {position: absolute; top: 5px; right: 5px;bottom:auto;left:auto;color:#666;font-size: 0.7rem;border:none;}
 			.print-footer {display: block;position: fixed;bottom: 10px;right: 10px;font-size: 0.8rem;color: #666;}
-			.example-english{font-size:1.3rem;margin:0;padding:0;line-height:25px;display:block;}
+			.example-english{font-size:1rem;margin:0;padding:0;line-height:18px;-display:block;}
+			.chinesebox{display:inline-block;}
 			.word-card.forget,.word-card.learned {border-left-width:2px;}
 			body.essay-panel-visible {padding:0;}
 			body.essay-panel-visible.big {padding:0;}
@@ -320,6 +330,7 @@
 	</div>
 	<script src="db.js"></script>
 	<script>
+
 		class SpeechManager {
 			constructor() {
 				this.synth = window.speechSynthesis;
@@ -1014,6 +1025,274 @@
 			}
 		}
 
+		class ReadAloudManager {
+			constructor() {
+				this.panel = document.getElementById('readPanel');
+				this.input = document.getElementById('readInput');
+				this.output = document.getElementById('sentenceOutput');
+				this.voiceSelect = document.getElementById('voiceSelect');
+				this.rateSlider = document.getElementById('rateSlider');
+				this.pitchSlider = document.getElementById('pitchSlider');
+				this.rateValue = document.getElementById('rateValue');
+				this.pitchValue = document.getElementById('pitchValue');
+				this.readAllBtn = document.getElementById('readAllBtn');
+				this.pauseBtn = document.getElementById('pauseBtn');
+				this.sentences = [];
+				this.currentUtterance = null;
+				this.isSpeaking = false;
+				this.currentVoiceName = '';
+				this.init();
+			}
+			init() {
+				this.loadVoices();
+				this.bindEvents();
+			}
+			loadVoices() {
+				const synth = window.speechSynthesis;
+				let voices = synth.getVoices();
+
+				if (voices.length === 0) {
+					synth.addEventListener('voiceschanged', () => {
+						voices = synth.getVoices();
+						this.populateVoiceList(voices);
+						this.initializeSpeechManagerVoice();
+					});
+				} else {
+					this.populateVoiceList(voices);
+					this.initializeSpeechManagerVoice();
+				}
+			}
+			initializeSpeechManagerVoice() {
+				const selectedVoiceName = this.voiceSelect.value;
+				speechManager.setVoice(selectedVoiceName);
+				this.currentVoiceName = selectedVoiceName;
+			}
+			populateVoiceList(voices) {
+				this.voiceSelect.innerHTML = '';
+				const filteredVoices = voices.filter(v =>
+					v.lang.startsWith('en-US') || v.lang.startsWith('zh-CN')
+				);
+
+				const emmaVoice = filteredVoices.find(v => v.name.includes('Emma'));
+				if (emmaVoice) {
+					const option = document.createElement('option');
+					option.value = emmaVoice.name;
+					option.textContent = `${emmaVoice.name.replace(/Microsoft|Online|\([\w\s\,]+\)/gi, '')}`; //(${emmaVoice.lang})
+					option.selected = true;
+					this.voiceSelect.appendChild(option);
+					this.currentVoiceName = emmaVoice.name;
+				}
+				filteredVoices.forEach(voice => {
+					if (emmaVoice && voice.name === emmaVoice.name) return;
+					const option = document.createElement('option');
+					option.value = voice.name;
+					option.textContent = `${voice.name.replace(/Microsoft|Online|\([\w\s\,]+\)/gi, '')}`;// (${voice.lang})
+					this.voiceSelect.appendChild(option);
+				});
+				this.initializeSpeechManagerVoice();
+			}
+			bindEvents() {
+				this.input.addEventListener('input', () => this.formatText());
+				this.rateSlider.addEventListener('input', (e) => {
+					this.rateValue.textContent = e.target.value;
+				});
+				this.pitchSlider.addEventListener('input', (e) => {
+					this.pitchValue.textContent = e.target.value;
+				});
+
+				this.voiceSelect.addEventListener('change', () => {
+					const selectedVoiceName = this.voiceSelect.value;
+					speechManager.setVoice(selectedVoiceName);
+					this.currentVoiceName = selectedVoiceName;
+				});
+				this.readAllBtn.addEventListener('click', () => this.readAll());
+				this.pauseBtn.addEventListener('click', () => this.pause());
+
+				this.output.addEventListener('click', (e) => {
+					const sentenceEl = e.target.closest('.read-sentence');
+					if (sentenceEl) {
+						const text = sentenceEl.dataset.text;
+						this.speakText(text, sentenceEl);
+					}
+				});
+			}
+			formatText() {
+				const text = this.input.value.trim();
+				if (!text) {
+					this.output.innerHTML = '';
+					this.sentences = [];
+					return;
+				}
+
+				const paragraphs = text.split(/\n+/).filter(p => p.trim());
+				let allSentences = [];
+				let html = '';
+				paragraphs.forEach((para, pIndex) => {
+
+					//const sentences = para.split(/(?<=[.!?。！？])\s*/).filter(s => s.trim());
+					//para=para.replace(/\:/g," : ");
+					const sentences = para.split(/(?<!\d\.)(?<!\.[A-Za-z])(?<=[.!?。！？]|:)\s*/).filter(s => s.trim());
+					html += `<p style="margin:0 0 3px 0; padding:0;">`;
+					sentences.forEach((s, sIndex) => {
+						const clean = s.trim();
+						if (!clean) return;
+						allSentences.push(clean);
+						html += `<span class="read-sentence" data-text="${this.escapeHtml(clean)}">
+							${this.escapeHtml(clean)}
+						</span>`;
+					});
+					html += `</p>`;
+				});
+				this.output.style.display="block";
+				this.output.innerHTML = html;
+				this.sentences = allSentences;
+			}
+			escapeHtml(text) {
+				return text.replace(/[&<>"']/g, m => ({
+					'&': '&amp;',
+					'<': '<',
+					'>': '>',
+					'"': '&quot;',
+					"'": '&#039;'
+				}[m]));
+			}
+			getSelectedVoice() {
+				const selectedName = this.voiceSelect.value;
+				const voices = window.speechSynthesis.getVoices();
+				return voices.find(v => v.name === selectedName) || voices[0];
+			}
+			speakText(text, element = null) {
+				if (!isTTSSupported) {
+					toastManager.show('浏览器不支持语音朗读', 'warning', 2000);
+					return;
+				}
+				if (element)element.classList.add('reading-ing');
+				const rate = parseFloat(this.rateSlider.value);
+				const pitch = parseFloat(this.pitchSlider.value);
+				const voice = this.getSelectedVoice();
+				speechManager.speak(text, rate, pitch, 1.0)
+				.finally(() => {
+					if (element)element.classList.remove('reading-ing');
+				});
+			}
+			async readAll() {
+				if (!this.sentences.length) return;
+				if (!isTTSSupported) {
+					toastManager.show('浏览器不支持语音朗读', 'warning', 2000);
+					return;
+				}
+				speechManager.stop();
+				const fullText = this.sentences.join(' ');
+				const rate = parseFloat(this.rateSlider.value);
+				const pitch = parseFloat(this.pitchSlider.value);
+				const voice = this.getSelectedVoice();
+				try {
+					await speechManager.speak(fullText, rate, pitch, 1.0);
+				} catch (e) {
+					console.error('朗读失败:', e);
+					toastManager.show('朗读失败，请重试', 'error', 2000);
+				}
+			}
+			pause() {
+				speechManager.stop();
+			}
+		}
+		const speechManager = new SpeechManager();
+		const wordManager = new WordStateManager();
+		const toastManager = new ToastManager();
+		const verbManager = new VerbDetailManager();
+		const essayManager = new EssayManager();
+		let currentWordData = [...originalWordData.data];
+		let isSorted = false;
+		const isTTSSupported = 'speechSynthesis' in window;
+		if(!isTTSSupported)document.body.classList.add('no-tts');
+        const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        const isEdge = /Edg\//i.test(navigator.userAgent) || /Edge\//i.test(navigator.userAgent);
+		const wordsPerPage = isMobile ? 5 : 20;
+		let totalPages = Math.ceil(currentWordData.length / wordsPerPage);
+		let currentPage = 1;
+		let currentAudio = null;
+		let currentSearchQuery = '';
+		let currentFilter = 'all';
+		let defaultFilteredData = [...currentWordData];
+		let unitSelectorContainer = document.getElementById('unitSelectorContainer');
+		const wordContainer = document.getElementById('wordContainer');
+		const pagination = document.getElementById('pagination');
+		const searchInput = document.getElementById('searchInput');
+		const sortBtn = document.getElementById('sortBtn');
+		const filterLinks = document.querySelectorAll('h1 a');
+		const fuzzySearchCheckbox = document.getElementById('fuzzySearch');
+		const printFooter = document.getElementById('printFooter');
+		async function speakEnglishExample(text, element = null) {
+			try {
+				if (!isTTSSupported) {
+					toastManager.show('您的浏览器不支持语音合成功能', 'warning', 2000);
+					return;
+				}
+				if (element)element.classList.add('reading-ing');
+				text=text.trim().replace(/[.,;:!?]+$/, '').split(/\s+/).filter(w => w).join(' , ');
+
+				const rate = parseFloat(document.getElementById('rateSlider')?.value || 0.9);
+				const pitch = parseFloat(document.getElementById('pitchSlider')?.value || 1.0);
+				await speechManager.speak(text, rate, pitch, 1.0);
+			} catch (error) {
+				console.error('语音合成错误:', error);
+			} finally {
+				if (element)element.classList.remove('reading-ing');
+			}
+		}
+
+
+		function applyFilter(filterType) {
+			currentFilter = filterType;
+			if (filterType === 'group') {
+				document.getElementById('readPanel').style.display = 'none';
+				document.querySelector('.controls').style.display = 'none';
+				document.getElementById('pagination').classList.add("hide");
+				if(document.getElementById("cachediv")){
+					document.getElementById("cachediv").style.display = "none";
+					document.getElementById("unitSelectorContainer").style.display = "none";
+				}
+				document.getElementById('wordContainer').style.display = 'block';
+				renderGroupSelector();
+				updateActiveFilterLink();
+				updateUrlParams();
+				essayManager.hide();
+				return;
+			}
+			if (filterType === 'read') {
+				document.getElementById('readPanel').style.display = 'block';
+				document.getElementById('wordContainer').style.display = 'none';
+				document.getElementById('pagination').classList.add("hide");
+				document.querySelector('.controls').style.display = 'none';
+				if (!readAloudManager) {
+					readAloudManager = new ReadAloudManager();
+				}
+			}else if (filterType === 'cache') {
+				document.getElementById('readPanel').style.display = 'none';
+				document.querySelector('.controls').style.display = 'none';
+				document.getElementById('wordContainer').style.display = 'none';
+				document.getElementById('pagination').classList.add("hide");
+				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "block";
+			}else {
+				document.querySelector('.controls').style.display = 'block';
+				document.getElementById('wordContainer').style.display = 'block';
+				document.getElementById('pagination').classList.remove("hide");
+				document.getElementById('readPanel').style.display = 'none';
+				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
+			}
+			defaultFilteredData = wordManager.getFilteredWords(originalWordData.data, filterType);
+			currentWordData = [...defaultFilteredData];
+			originalSearchResult = [];
+			isSorted = false;
+			sortBtn.textContent = '按字母排序';
+			totalPages = Math.ceil(currentWordData.length / wordsPerPage);
+			if (currentPage > totalPages) currentPage = 1;
+			searchWords();
+			updateActiveFilterLink();
+			renderUnitSelector();
+			essayManager.checkAndShowEssay(currentPage);
+		}
 		function renderGroupSelector() {
 			const container = document.getElementById('wordContainer');
 			const pagination = document.getElementById('pagination');
@@ -1109,50 +1388,6 @@
 
 
 			container.appendChild(groupContainer);
-		}
-		const speechManager = new SpeechManager();
-		const wordManager = new WordStateManager();
-		const toastManager = new ToastManager();
-		const verbManager = new VerbDetailManager();
-		const essayManager = new EssayManager();
-		let currentWordData = [...originalWordData.data];
-		let isSorted = false;
-		const isTTSSupported = 'speechSynthesis' in window;
-		if(!isTTSSupported)document.body.classList.add('no-tts');
-        const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-        const isEdge = /Edg\//i.test(navigator.userAgent) || /Edge\//i.test(navigator.userAgent);
-		const wordsPerPage = isMobile ? 5 : 20;
-		let totalPages = Math.ceil(currentWordData.length / wordsPerPage);
-		let currentPage = 1;
-		let currentAudio = null;
-		let currentSearchQuery = '';
-		let currentFilter = 'all';
-		let defaultFilteredData = [...currentWordData];
-		let unitSelectorContainer = document.getElementById('unitSelectorContainer');
-		const wordContainer = document.getElementById('wordContainer');
-		const pagination = document.getElementById('pagination');
-		const searchInput = document.getElementById('searchInput');
-		const sortBtn = document.getElementById('sortBtn');
-		const filterLinks = document.querySelectorAll('h1 a');
-		const fuzzySearchCheckbox = document.getElementById('fuzzySearch');
-		const printFooter = document.getElementById('printFooter');
-		async function speakEnglishExample(text, element = null) {
-			try {
-				if (!isTTSSupported) {
-					toastManager.show('您的浏览器不支持语音合成功能', 'warning', 2000);
-					return;
-				}
-				if (element)element.classList.add('reading-ing');
-				text=text.trim().replace(/[.,;:!?]+$/, '').split(/\s+/).filter(w => w).join(' , ');
-
-				const rate = parseFloat(document.getElementById('rateSlider')?.value || 0.9);
-				const pitch = parseFloat(document.getElementById('pitchSlider')?.value || 1.0);
-				await speechManager.speak(text, rate, pitch, 1.0);
-			} catch (error) {
-				console.error('语音合成错误:', error);
-			} finally {
-				if (element)element.classList.remove('reading-ing');
-			}
 		}
 		function exportCache() {
 			const cacheData = {
@@ -1375,55 +1610,6 @@
 		}
 
 
-		function applyFilter(filterType) {
-			currentFilter = filterType;
-			if (filterType === 'group') {
-				document.getElementById('readPanel').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
-				document.getElementById('pagination').style.display = 'none';
-				if(document.getElementById("cachediv")){
-					document.getElementById("cachediv").style.display = "none";
-					document.getElementById("unitSelectorContainer").style.display = "none";
-				}
-				document.getElementById('wordContainer').style.display = 'block';
-				renderGroupSelector();
-				updateActiveFilterLink();
-				updateUrlParams();
-				return;
-			}
-			if (filterType === 'read') {
-				document.getElementById('readPanel').style.display = 'block';
-				document.getElementById('wordContainer').style.display = 'none';
-				document.getElementById('pagination').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
-				if (!readAloudManager) {
-					readAloudManager = new ReadAloudManager();
-				}
-			}else if (filterType === 'cache') {
-				document.getElementById('readPanel').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
-				document.getElementById('wordContainer').style.display = 'none';
-				document.getElementById('pagination').style.display = 'none';
-				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "block";
-			}else {
-				document.querySelector('.controls').style.display = 'block';
-				document.getElementById('wordContainer').style.display = 'block';
-				document.getElementById('pagination').style.display = 'block';
-				document.getElementById('readPanel').style.display = 'none';
-				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
-			}
-			defaultFilteredData = wordManager.getFilteredWords(originalWordData.data, filterType);
-			currentWordData = [...defaultFilteredData];
-			originalSearchResult = [];
-			isSorted = false;
-			sortBtn.textContent = '按字母排序';
-			totalPages = Math.ceil(currentWordData.length / wordsPerPage);
-			if (currentPage > totalPages) currentPage = 1;
-			searchWords();
-			updateActiveFilterLink();
-			renderUnitSelector();
-			essayManager.checkAndShowEssay(currentPage);
-		}
 
 		function updateActiveFilterLink() {
 			filterLinks.forEach(link => {
@@ -1455,6 +1641,7 @@
 			} else {
 				if(groupSearch){
 					var searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
+					//limit=90;
 					//if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
 				}else{
 					var searchTerms = query.replace(/ |　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
@@ -1703,23 +1890,23 @@
 					break;
 			}
 			//英语例句 - 高亮
-			const englishExamples = word.E.split(' / ').map(example => example.trim()).filter(example => example);
+			const englishExamples = word.E.split('/').map(example => example.trim()).filter(example => example);
 			let englishExamplesHtml = '';
 			englishExamples.forEach((example, i) => {
 				const highlightedExample = hightlight(example);
 				englishExamplesHtml += `
-					<span class="example-english" data-example="${example}">
+					<span class="example-english en${englishExamples.length>1?i:''}" data-example="${example}">
 						${highlightedExample}
 					</span>
 				`;
 			});
 			//例句翻译 - 高亮
-			const chineseExamples = word.F.split(' / ').map(example => example.trim()).filter(example => example);
-			let chineseExamplesHtml = '<div>';
+			const chineseExamples = word.F.split('/').map(example => example.trim()).filter(example => example);
+			let chineseExamplesHtml = '<div class="chinesebox">';
 			chineseExamples.forEach((example, i) => {
 				const highlightedExample = hightlight(example);
 				chineseExamplesHtml += `
-					<span class="example-chinese">${highlightedExample}</span>
+					<span class="example-chinese en${chineseExamples.length>1?i:''}">${highlightedExample}</span>
 				`;
 			});
 			chineseExamplesHtml += '</div>';
@@ -1858,6 +2045,7 @@
 					currentPage--;
 					updateDisplay(limit);
 					updateUrlParams();
+					window.scrollTo({ top: 0, behavior: 'smooth' });
 				}
 			});
 			pagination.appendChild(prevBtn);
@@ -1906,6 +2094,7 @@
 					currentPage++;
 					updateDisplay(limit);
 					updateUrlParams();
+					window.scrollTo({ top: 0, behavior: 'smooth' });
 				}
 			});
 			pagination.appendChild(nextBtn);
@@ -1929,6 +2118,7 @@
 			updateDisplay(limit);
 			updateUrlParams();
 			essayManager.checkAndShowEssay(currentPage);
+			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}
 		function updatePrintFooter(limit) {
 			if(!limit)limit=wordsPerPage;
@@ -2001,178 +2191,6 @@
 			};
 		}
 
-		class ReadAloudManager {
-			constructor() {
-				this.panel = document.getElementById('readPanel');
-				this.input = document.getElementById('readInput');
-				this.output = document.getElementById('sentenceOutput');
-				this.voiceSelect = document.getElementById('voiceSelect');
-				this.rateSlider = document.getElementById('rateSlider');
-				this.pitchSlider = document.getElementById('pitchSlider');
-				this.rateValue = document.getElementById('rateValue');
-				this.pitchValue = document.getElementById('pitchValue');
-				this.readAllBtn = document.getElementById('readAllBtn');
-				this.pauseBtn = document.getElementById('pauseBtn');
-				this.sentences = [];
-				this.currentUtterance = null;
-				this.isSpeaking = false;
-				this.currentVoiceName = '';
-				this.init();
-			}
-			init() {
-				this.loadVoices();
-				this.bindEvents();
-			}
-			loadVoices() {
-				const synth = window.speechSynthesis;
-				let voices = synth.getVoices();
-
-				if (voices.length === 0) {
-					synth.addEventListener('voiceschanged', () => {
-						voices = synth.getVoices();
-						this.populateVoiceList(voices);
-						this.initializeSpeechManagerVoice();
-					});
-				} else {
-					this.populateVoiceList(voices);
-					this.initializeSpeechManagerVoice();
-				}
-			}
-			initializeSpeechManagerVoice() {
-				const selectedVoiceName = this.voiceSelect.value;
-				speechManager.setVoice(selectedVoiceName);
-				this.currentVoiceName = selectedVoiceName;
-			}
-			populateVoiceList(voices) {
-				this.voiceSelect.innerHTML = '';
-				const filteredVoices = voices.filter(v =>
-					v.lang.startsWith('en-US') || v.lang.startsWith('zh-CN')
-				);
-
-				const emmaVoice = filteredVoices.find(v => v.name.includes('Emma'));
-				if (emmaVoice) {
-					const option = document.createElement('option');
-					option.value = emmaVoice.name;
-					option.textContent = `${emmaVoice.name.replace(/Microsoft|Online|\([\w\s\,]+\)/gi, '')}`; //(${emmaVoice.lang})
-					option.selected = true;
-					this.voiceSelect.appendChild(option);
-					this.currentVoiceName = emmaVoice.name;
-				}
-				filteredVoices.forEach(voice => {
-					if (emmaVoice && voice.name === emmaVoice.name) return;
-					const option = document.createElement('option');
-					option.value = voice.name;
-					option.textContent = `${voice.name.replace(/Microsoft|Online|\([\w\s\,]+\)/gi, '')}`;// (${voice.lang})
-					this.voiceSelect.appendChild(option);
-				});
-				this.initializeSpeechManagerVoice();
-			}
-			bindEvents() {
-				this.input.addEventListener('input', () => this.formatText());
-				this.rateSlider.addEventListener('input', (e) => {
-					this.rateValue.textContent = e.target.value;
-				});
-				this.pitchSlider.addEventListener('input', (e) => {
-					this.pitchValue.textContent = e.target.value;
-				});
-
-				this.voiceSelect.addEventListener('change', () => {
-					const selectedVoiceName = this.voiceSelect.value;
-					speechManager.setVoice(selectedVoiceName);
-					this.currentVoiceName = selectedVoiceName;
-				});
-				this.readAllBtn.addEventListener('click', () => this.readAll());
-				this.pauseBtn.addEventListener('click', () => this.pause());
-
-				this.output.addEventListener('click', (e) => {
-					const sentenceEl = e.target.closest('.read-sentence');
-					if (sentenceEl) {
-						const text = sentenceEl.dataset.text;
-						this.speakText(text, sentenceEl);
-					}
-				});
-			}
-			formatText() {
-				const text = this.input.value.trim();
-				if (!text) {
-					this.output.innerHTML = '';
-					this.sentences = [];
-					return;
-				}
-
-				const paragraphs = text.split(/\n+/).filter(p => p.trim());
-				let allSentences = [];
-				let html = '';
-				paragraphs.forEach((para, pIndex) => {
-
-					//const sentences = para.split(/(?<=[.!?。！？])\s*/).filter(s => s.trim());
-					//para=para.replace(/\:/g," : ");
-					const sentences = para.split(/(?<!\d\.)(?<!\.[A-Za-z])(?<=[.!?。！？]|:)\s*/).filter(s => s.trim());
-					html += `<p style="margin:0 0 3px 0; padding:0;">`;
-					sentences.forEach((s, sIndex) => {
-						const clean = s.trim();
-						if (!clean) return;
-						allSentences.push(clean);
-						html += `<span class="read-sentence" data-text="${this.escapeHtml(clean)}">
-							${this.escapeHtml(clean)}
-						</span>`;
-					});
-					html += `</p>`;
-				});
-				this.output.style.display="block";
-				this.output.innerHTML = html;
-				this.sentences = allSentences;
-			}
-			escapeHtml(text) {
-				return text.replace(/[&<>"']/g, m => ({
-					'&': '&amp;',
-					'<': '<',
-					'>': '>',
-					'"': '&quot;',
-					"'": '&#039;'
-				}[m]));
-			}
-			getSelectedVoice() {
-				const selectedName = this.voiceSelect.value;
-				const voices = window.speechSynthesis.getVoices();
-				return voices.find(v => v.name === selectedName) || voices[0];
-			}
-			speakText(text, element = null) {
-				if (!isTTSSupported) {
-					toastManager.show('浏览器不支持语音朗读', 'warning', 2000);
-					return;
-				}
-				if (element)element.classList.add('reading-ing');
-				const rate = parseFloat(this.rateSlider.value);
-				const pitch = parseFloat(this.pitchSlider.value);
-				const voice = this.getSelectedVoice();
-				speechManager.speak(text, rate, pitch, 1.0)
-				.finally(() => {
-					if (element)element.classList.remove('reading-ing');
-				});
-			}
-			async readAll() {
-				if (!this.sentences.length) return;
-				if (!isTTSSupported) {
-					toastManager.show('浏览器不支持语音朗读', 'warning', 2000);
-					return;
-				}
-				speechManager.stop();
-				const fullText = this.sentences.join(' ');
-				const rate = parseFloat(this.rateSlider.value);
-				const pitch = parseFloat(this.pitchSlider.value);
-				const voice = this.getSelectedVoice();
-				try {
-					await speechManager.speak(fullText, rate, pitch, 1.0);
-				} catch (e) {
-					console.error('朗读失败:', e);
-					toastManager.show('朗读失败，请重试', 'error', 2000);
-				}
-			}
-			pause() {
-				speechManager.stop();
-			}
-		}
 		let readAloudManager = null;
 		function initApp() {
 			addCacheButtons();

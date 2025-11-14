@@ -5,7 +5,7 @@
 				//前2100个
 					{P:1,W:"the",Y:"/ði; ðə/",C:"art. 这；那",E:"The cat is on the chair.",F:"猫在椅子上。"},
 					{P:1,W:"to",Y:"/tuː; tə/",C:"prep. 到；向",E:"She goes to school by bike. / She rides her bike to school.",F:"她骑自行车去上学。"},
-					{P:1,W:"a",Y:"/eɪ; ə/",C:"art. 一个",E:"I saw a bird in the tree. / I often see a bird in the tree.",F:"我看见树上有只鸟。 / 我经常看到树上有只鸟。"},
+					{P:1,W:"a",Y:"/eɪ; ə/",C:"art. 一个",E:"I saw a bird in the tree. / I often see a bird in the tree.",F:"我看见树上有只鸟。/我经常看到树上有只鸟。"},
 					{P:1,W:"and",Y:"/ænd; ənd/",C:"conj. 和；而且",E:"He likes apples and bananas. / He enjoys eating apples and bananas.",F:"他喜欢苹果和香蕉。"},
 					{P:1,W:"in",Y:"/ɪn/",C:"prep. 在…里面",E:"The book is in the bag.",F:"书在包里。"},
 					{P:1,W:"of",Y:"/ɒv; əv/",C:"prep. …的",E:"This is a map of China. / This is a Chinese map.",F:"这是一张中国地图。"},
@@ -14,7 +14,7 @@
 					{P:1,W:"it",Y:"/ɪt/",C:"pron. 它",E:"It is raining outside. / There's rain outside. / The rain is falling outside.",F:"外面正在下雨。"},
 					{P:1,W:"I",Y:"/aɪ/",C:"pron. 我",E:"I am reading a book.",F:"我正在看书。"},
 					{P:1,W:"for",Y:"/fɔː(r); fə(r)/",C:"prep. 为了；给",E:"This gift is for you. / This gift is meant for you.",F:"这个礼物是给你的。"},
-					{P:1,W:"he",Y:"/hiː/",C:"pron. 他",E:"He is playing football. / He's playing a game of football.",F:"他正在踢足球。/ 他正在踢一场足球。"},
+					{P:1,W:"he",Y:"/hiː/",C:"pron. 他",E:"He is playing football. / He's playing a game of football.",F:"他正在踢足球。/他正在踢一场足球。"},
 					{P:1,W:"was",Y:"/wɒz/",C:"v. 是",E:"She was happy yesterday. / She felt happy yesterday.",F:"昨天她很开心。",I:"be动词过去式 用于第1、3人称单数",K:"be动词"},
 					{P:1,W:"can",Y:"/kæn; kən/",C:"modal v. 能；会",E:"Can you swim? / Are you able to swim?",F:"你会游泳吗？"},
 					{P:1,W:"that",Y:"/ðæt/",C:"pron. 那个",E:"That is my school.",F:"那是我的学校。"},
