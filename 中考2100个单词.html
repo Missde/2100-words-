@@ -30,6 +30,8 @@
 		.word-header {display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
 		.word-main {height:40px;overflow:hidden;line-height:40px;flex:1;}
 		.word {font-size:1.5rem;font-weight:bold;margin-right:0px;cursor:pointer;padding-left:3px;}
+		.word-main .long{font-size:1.2rem;}
+
 		.phonetic {color:#666;font-style:italic;margin:0 5px 0 0;cursor:pointer;font-size:0.7rem;font-family:"微软雅黑";}
 		.explanation {color:#333;font-size:0.8rem;}
 		.explanation.verb-link {cursor:pointer; color:#1976d2;}
@@ -70,34 +72,48 @@
 		/* 动词详情漂浮层样式 */
 		.verb-modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0, 0, 0, 0.5);display:flex;justify-content:center;align-items:center;z-index:2000;opacity:0;visibility:hidden;transition:all 0.3s ease;}
 		.verb-modal-overlay.active{opacity:1;visibility:visible;}
-		.verb-modal{background-color:white;border-radius:12px;box-shadow:0 10px 30px rgba(0, 0, 0, 0.2);width:90%;max-width:600px;max-height:80vh;overflow-y:auto;transform:scale(0.9);transition:transform 0.3s ease;position:relative;}
+		.verb-modal{background-color:white;border-radius:12px;box-shadow:0 10px 30px rgba(0, 0, 0, 0.2);width:90%;max-width:600px;max-height:80vh;overflow:hidden;transform:scale(0.9);transition:transform 0.3s ease;position:relative;}
 		.verb-modal-header{background:linear-gradient(135deg, #2196F3, #1976d2);color:white;padding:5px 20px;border-radius:12px 12px 0 0;display:flex;justify-content:space-between;align-items:center;}
 		.verb-modal-title{font-size:2rem;font-weight:bold;margin:0;}
 		.verb-modal-close{background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background-color 0.2s;}
 		.verb-modal-close:hover{background-color:rgba(255, 255, 255, 0.2);}
-		.verb-modal-content{padding:10px;}
+
+		.verb-modal-content {max-height: calc(80vh - 60px);overflow: hidden;display: flex;flex-direction: column;}
+		.verb-forms {flex-shrink: 0;padding:10px;}
+		.verb-examples {overflow-y: auto;flex-grow: 1;padding-right: 10px;margin-right: -10px;}
+		.verb-examples::-webkit-scrollbar {width: 12px;}
+		.verb-examples::-webkit-scrollbar-track {background: #f1f1f1;border-radius: 6px;}
+		.verb-examples::-webkit-scrollbar-thumb {background: #c1c1c1;border-radius: 6px;}
+		.verb-examples::-webkit-scrollbar-thumb:hover {background: #a8a8a8;}
+
 		.verb-form-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));gap:10px;}
-		.verb-form-item{background-color:#f8f9fa;border-radius:8px;padding:5px;text-align:center;transition:all 0.2s;border:1px solid #e9ecef;}
+		.verb-form-item{background-color:#f8f9fa;border-radius:8px;padding:5px;text-align:center;transition:all 0.2s;border:1px solid #e9ecef;position:relative;}
 		.verb-form-item:hover{background-color:#e9ecef;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);}
 
-		.verb-form-item.play .verb-form-value:before{content:"🔊";font-size:.8rem;}
+		.verb-form-item.play .verb-form-value:before{content:"🔊";font-size:1.2rem;position:absolute;left:5px;top:3px;}
 
 		.verb-form-label{font-size:1rem;color:#666;text-transform:uppercase;font-weight:bold;}
-		.verb-form-value{font-size:1.3rem;font-weight:bold;color:#2196F3;}
+		.verb-form-value{font-size:1.4rem;font-weight:bold;color:#2196F3;}
 		.verb-examples{margin:20px 0;}
 		.verb-example-type{margin-bottom:15px;}
-		.verb-example-type-title{font-size:1rem;font-weight:bold;color:#555;padding-left:10px;border-left:5px solid #2196F3;}
+		.verb-example-type-title{font-size:1rem;font-weight:bold;color:#555;padding-left:10px;border-left:5px solid #2196F3;margin-left:10px;}
 		.verb-example-list{list-style-type:none;padding-left:0;margin:0;padding:0;}
-		.verb-example-item{font-size:1.2rem;transition:all 0.2s;padding:5px 10px;margin-left:30px;margin-bottom:5px;background-color:#f8f9fa;border-radius:6px;border-left:3px solid #4caf50;cursor:pointer;}
+		.verb-example-item{font-size:1.3rem;transition:all 0.2s;padding:5px 10px;margin-left:30px;margin-bottom:5px;background-color:#f8f9fa;border-radius:6px;border-left:3px solid #4caf50;cursor:pointer;}
 		.verb-example-item:hover{background-color:#e9ecef;}
 		.verb-example-item:nth-child(odd){background-color:#f0f4f8;}
+
+		.verb-examples .example-chinese{font-size:.9rem;}
+
 		.reading-ing {background:#2196F3;color:#1976d2;transition:all 0.3s ease;}
 		.example-english.reading-ing {background:#e3f2fd;padding:0px 6px;border-radius:4px;}
 		.verb-example-item.reading-ing {background:#e3f2fd;border-left-color:#2196F3;transform:translateX(5px);font-size:1.3rem;}
 		.read-sentence.reading-ing {background:#e3f2fd;color:#1976d2;border:#2196F3;transform:scale(1.02);}
+
+
+
 		/* 待学单元选择器样式 */
 		.unit-selector { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;padding-left:2rem;}
-		.unit-selector label {transition:all 0.2s;display:inline-flex; align-items:center; cursor:pointer;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff; padding:2px 10px;border-radius:15px;font-size:0.9rem; }
+		.unit-selector label {transition:all 0.2s;display:inline-flex; align-items:center; cursor:pointer;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff; padding:2px 10px;border-radius:15px;font-size:1.1rem; }
 		.unit-selector label:hover{background:#fff;}
 		.unit-selector input[type="checkbox"] {transition:all 0.2s;margin-right:5px;appearance:none;border:1px solid #a0cfff;width:13px;height:13px;border-radius:50%;}
 		.unit-selector input[type="checkbox"]:checked {background:#fff;border-color:#007bff;}
@@ -107,7 +123,7 @@
 		#unitSelectorContainer:before{content:"批量标注已学的单词";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
 		/* 分类选择器样式 */
 		.group-selector { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px; padding-left:10px; }
-		.group-selector label { display:inline-flex; align-items:center; cursor:pointer;padding:3px 10px; border-radius:15px;font-size:0.9rem;transition:all 0.2s;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff;}
+		.group-selector label { display:inline-flex; align-items:center; cursor:pointer;padding:3px 10px; border-radius:15px;font-size:1rem;transition:all 0.2s;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff;}
 		.group-selector label:hover{background-color:#2196F3;color:#fff;}
 		.group-category-header {margin:10px 0 5px 10px;clear:both; width:100%; }
 		.group-category-h2:before{content:"年级分类";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin:20px 0;}
@@ -327,7 +343,6 @@
 	</div>
 	<script src="db.js"></script>
 	<script>
-
 		class SpeechManager {
 			constructor() {
 				this.synth = window.speechSynthesis;
@@ -931,21 +946,21 @@
 				let html = `
 					<div class="verb-forms">
 						<div class="verb-form-grid">
-							<div class="verb-form-item ${verbData.F.A?"play":""}">
+							<div class="verb-form-item ${verbData.F.A?"play":""}" data-verb="${verbData.F.A?verbData.F.A:""}">
 								<div class="verb-form-label">原形</div>
-								<div class="verb-form-value" data-verb="${verbData.F.A?verbData.F.A:""}">${verbData.F.A?verbData.F.A:"--"}</div>
+								<div class="verb-form-value">${verbData.F.A?verbData.F.A:"--"}</div>
 							</div>
-							<div class="verb-form-item ${verbData.F.B?"play":""}">
+							<div class="verb-form-item ${verbData.F.B?"play":""}" data-verb="${verbData.F.B?verbData.F.B:""}">
 								<div class="verb-form-label">过去式</div>
-								<div class="verb-form-value" data-verb="${verbData.F.B?verbData.F.B:""}">${verbData.F.B?verbData.F.B:"--"}</div>
+								<div class="verb-form-value">${verbData.F.B?verbData.F.B:"--"}</div>
 							</div>
-							<div class="verb-form-item ${verbData.F.C?"play":""}">
+							<div class="verb-form-item ${verbData.F.C?"play":""}" data-verb="${verbData.F.C?verbData.F.C:""}">
 								<div class="verb-form-label">过去分词</div>
-								<div class="verb-form-value" data-verb="${verbData.F.C?verbData.F.C:""}">${verbData.F.C?verbData.F.C:"--"}</div>
+								<div class="verb-form-value">${verbData.F.C?verbData.F.C:"--"}</div>
 							</div>
-							<div class="verb-form-item ${verbData.F.D?"play":""}">
+							<div class="verb-form-item ${verbData.F.D?"play":""}" data-verb="${verbData.F.D?verbData.F.D:""}">
 								<div class="verb-form-label">现在分词</div>
-								<div class="verb-form-value" data-verb="${verbData.F.D?verbData.F.D:""}">${verbData.F.D?verbData.F.D:"--"}</div>
+								<div class="verb-form-value">${verbData.F.D?verbData.F.D:"--"}</div>
 							</div>
 						</div>
 					</div>
@@ -967,7 +982,7 @@
 				this.content.innerHTML = html;
 
 				//播放有道单词读音
-				const formValues = this.content.querySelectorAll('.verb-form-value');
+				const formValues = this.content.querySelectorAll('.verb-form-item');
 				formValues.forEach(valueElement => {
 					const word = valueElement.getAttribute('data-verb');
 					if (word) {
@@ -1201,13 +1216,13 @@
 		const essayManager = new EssayManager();
 		let currentWordData = [...originalWordData.data];
 		let isSorted = false;
-        const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+		const isMobile = (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
 
 		//手机上朗读效果不好
 		const isTTSSupported = 'speechSynthesis' in window;//&& !isMobile
 		if(!isTTSSupported)document.body.classList.add('no-tts');
 
-        const isEdge = /Edg\//i.test(navigator.userAgent) || /Edge\//i.test(navigator.userAgent);
+		const isEdge = /Edg\//i.test(navigator.userAgent) || /Edge\//i.test(navigator.userAgent);
 		const wordsPerPage = isMobile ? 5 :20;
 		let totalPages = Math.ceil(currentWordData.length / wordsPerPage);
 		let currentPage = 1;
@@ -1245,21 +1260,24 @@
 
 		function applyFilter(filterType) {
 			currentFilter = filterType;
-			if (filterType === 'group') {
-				document.getElementById('readPanel').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
-				document.getElementById('pagination').classList.add("hide");
-				if(document.getElementById("cachediv")){
-					document.getElementById("cachediv").style.display = "none";
-					document.getElementById("unitSelectorContainer").style.display = "none";
+			const urlParams = getParamsFromUrl();
+			const isGroupWithSearch = filterType === 'group' && (urlParams.query || urlParams.title);
+			if (filterType === 'group' && !isGroupWithSearch) {
+					// 纯分组视图
+					document.getElementById('readPanel').style.display = 'none';
+					document.querySelector('.controls').style.display = 'none';
+					document.getElementById('pagination').classList.add("hide");
+					if(document.getElementById("cachediv")){
+						document.getElementById("cachediv").style.display = "none";
+						document.getElementById("unitSelectorContainer").style.display = "none";
+					}
+					document.getElementById('wordContainer').style.display = 'block';
+					renderGroupSelector();
+					updateActiveFilterLink();
+					updateUrlParams();
+					essayManager.hide();
+					return;
 				}
-				document.getElementById('wordContainer').style.display = 'block';
-				renderGroupSelector();
-				updateActiveFilterLink();
-				updateUrlParams();
-				essayManager.hide();
-				return;
-			}
 			if (filterType === 'read') {
 				document.getElementById('readPanel').style.display = 'block';
 				document.getElementById('wordContainer').style.display = 'none';
@@ -1281,6 +1299,26 @@
 				document.getElementById('readPanel').style.display = 'none';
 				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
 			}
+			if (isGroupWithSearch) {
+				currentSearchQuery = urlParams.query;
+				searchInput.value = decodeURIComponent(urlParams.title || '');
+				searchInput.readOnly = true;
+				searchInput.style.backgroundColor = '#e3f2fd';
+				searchInput.style.border = '1px solid #2196F3';
+				document.querySelector('.search-box .checkbox').style.display = 'none';
+
+				// 执行搜索
+				defaultFilteredData = [...originalWordData.data];
+				currentWordData = [...defaultFilteredData];
+				isSorted = false;
+				sortBtn.textContent = '按字母排序';
+				searchWords();
+				updateActiveFilterLink();
+				essayManager.hide();
+				return;
+			}
+
+
 			defaultFilteredData = wordManager.getFilteredWords(originalWordData.data, filterType);
 			currentWordData = [...defaultFilteredData];
 			originalSearchResult = [];
@@ -1327,7 +1365,7 @@
 						if (wordList) {
 							const queryString = wordList;
 							let title = encodeURIComponent('【' + subCategoryName + "】类");
-							const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}`;
+							 const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}&filter=group`;
 							window.location.href = newUrl;
 						} else {
 							console.warn(`分类 "${subCategoryName}" 的单词列表为空或格式不正确:${wordListString}`);
@@ -1363,7 +1401,6 @@
 					const unitButtonsDiv = document.createElement('div');
 					unitButtonsDiv.className = 'group-selector';
 					unitButtonsDiv.style.cssText = 'padding-left:2rem;display:flex; flex-wrap:wrap; gap:10px;';
-
 					units.forEach(unit => {
 						const label = document.createElement('label');
 						const button = document.createElement('span');
@@ -1373,7 +1410,7 @@
 							if (wordListString) {
 								const queryString = wordListString.trim().replace(/,$/g, '');
 								let title = encodeURIComponent(`【${grade} - ${unit.unit}】`);
-								const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}`;
+								const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}&filter=group`;
 								window.location.href = newUrl;
 							} else {
 								console.warn(`单元 "${unit.unit}" 的单词列表为空:${unit.W}`);
@@ -1385,8 +1422,6 @@
 					groupContainer.appendChild(unitButtonsDiv);
 				}
 			}
-
-
 			container.appendChild(groupContainer);
 		}
 		function exportCache() {
@@ -1454,9 +1489,7 @@
 				<button class="sort-btn" onclick="exportCache()">导出数据</button>
 				<label class="sort-btn" style="cursor:pointer;">
 					导入数据
-					<input type="file" id="importFile" accept=".txt"
-						   onchange="importCache(this.files[0])"
-						   style="display:none;">
+					<input type="file" id="importFile" accept=".txt" onchange="importCache(this.files[0])" style="display:none;">
 				</label>
 				<a href="https://www.zhaozi.cn/html/fonts/en/other/2021-08-12/29566.html" target="_blank" style="bottom:-35px;right:20px;font-size:12px;color:#222;position:absolute;">下载舒窈衡水体 - 字体文件</a>
 				</div>
@@ -1535,7 +1568,6 @@
 				fuzzy:params.get('fuzzy') !== 'false',
 				filter:params.get('filter') || 'all',
 				cache:params.get('cache') || '',
-
 				title:params.get('title') || ''
 			};
 		}
@@ -1616,8 +1648,16 @@
 		function updateActiveFilterLink() {
 			filterLinks.forEach(link => {
 				const href = link.getAttribute('href');
-				const filter = href.includes('filter=') ? href.split('filter=')[1] :'all';
+				const filter = href.includes('filter=') ? href.split('filter=')[1] : 'all';
 				link.classList.toggle('active', filter === currentFilter);
+				const urlParams = getParamsFromUrl();
+				if (urlParams.filter === 'group' && (urlParams.query || urlParams.title)) {
+					if (filter === 'group') {
+						link.classList.add('active');
+					} else {
+						link.classList.remove('active');
+					}
+				}
 			});
 		}
 		var originalSearchResult = [];
@@ -1628,10 +1668,9 @@
 			let limit=wordsPerPage;
 
 			const urlParams = getParamsFromUrl();
-			// 检查是否同时包含 title 和 q 参数
 			const groupSearch = !!urlParams.title && !!urlParams.query;
-			const query = groupSearch ? urlParams.query :searchInput.value.trim(); // 如果是特殊模式，使用 q 参数
-			currentSearchQuery = query; // 这个变量会被 highlightSearchTerms 使用
+			const query = groupSearch ? urlParams.query :searchInput.value.trim();
+			currentSearchQuery = query;
 
 			if (!query) {
 				currentWordData = [...defaultFilteredData];
@@ -1648,13 +1687,7 @@
 				}else{
 					var searchTerms = query.replace(/ |　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
 				}
-
-				// --- 修改开始：调整模糊搜索逻辑 ---
-				// 如果是特殊模式 (groupSearch)，则忽略 fuzzy 参数，强制使用特殊逻辑
-				// 否则，使用原有的逻辑
 				const isFuzzy = groupSearch ? false :(urlParams.title ? urlParams.fuzzy :fuzzySearchCheckbox.checked);
-				// --- 修改结束 ---
-
 				const termIndexMap = new Map();
 				searchTerms.forEach((term, index) => {
 					termIndexMap.set(term.toLowerCase(), index);
@@ -1663,21 +1696,15 @@
 				const scoredWords = defaultFilteredData.map(word => {
 					let score = 0;
 					let matchedTermIndex = -1;
-
-					// --- 修改开始：根据模式应用不同的搜索逻辑 ---
 					if (groupSearch) {
-						// 特殊模式：URL 含 title 且含 q
 						searchTerms.forEach(term => {
-							// 1. word.W 完整匹配且区分大小写
-							if (word.W === term) { // 完全匹配，区分大小写
-								score += 100; // 高分
+							if (word.W === term) {
+								score += 100;
 								matchedTermIndex = termIndexMap.get(term.toLowerCase());
 							}
-
-							// 2. word.I + word.K 模糊搜索 (合并后搜索)，但不搜索单词，避免模糊搜索列出错误项目
 							let  combinedSearchText = ((word.I || '') + ' ' + (word.K || '')).replace(/[a-z]/ig,"");
 							if (combinedSearchText.toLowerCase().includes(term.toLowerCase())) {
-								score += 10; // 较低分
+								score += 10;
 								if (matchedTermIndex === -1) {
 									matchedTermIndex = termIndexMap.get(term.toLowerCase());
 								}
@@ -1691,7 +1718,6 @@
 							}*/
 						});
 					} else {
-						// 原有模式：普通搜索
 						searchTerms.forEach(term => {
 							const wordText = word.W.toLowerCase();
 							const searchTerm = term.toLowerCase();
@@ -1729,7 +1755,6 @@
 							}
 						});
 					}
-					// --- 修改结束 ---
 					return { word, score, matchedTermIndex };
 				});
 
@@ -1913,7 +1938,7 @@
 			wordCard.innerHTML = `
 				<div class="word-header">
 					<div class="word-main">
-						<span class="word" title="${wordTitle}">${hightlight(word.W,word.W)}</span>
+						<span class="word ${word.W.length>18?'long':''}" title="${wordTitle}">${hightlight(word.W,word.W)}</span>
 						<span class="phonetic" title="${phoneticTitle}">${word.Y}</span>
 						${explanationHtml}
 					</div>
