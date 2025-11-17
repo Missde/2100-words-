@@ -1,6 +1,6 @@
 
 		var originalWordData = {
-			total: 2360,
+			total:2360,
 			data:[
 				//前2100个
 					{P:1,W:"the",Y:"/ði; ðə/",C:"art. 这；那",E:"The cat is on the chair.",F:"猫在椅子上。"},
@@ -43,7 +43,7 @@
 					{P:1,W:"this",Y:"/ðɪs/",C:"pron. 这个",E:"This is my new book.",F:"这是我的新书。"},
 					{P:1,W:"their",Y:"/ðeə(r)/",C:"pron. 他们的",E:"Their classroom is big.",F:"他们的教室很大。"},
 					{P:1,W:"my",Y:"/maɪ/",C:"pron. 我的",E:"My favorite color is green.",F:"我最喜欢的颜色是绿色。"},
-					{P:1,W:"by",Y:"/baɪ/",C:"prep. 通过；乘",E:"She goes to work by bus.",F:"她乘公交车去上班。"},
+					{P:1,W:"by",Y:"/baɪ/",C:"prep. 通过；乘",E:"She goes to work by bus./They are sitting by the West Lack.",F:"她乘公交车去上班。/他们正坐在西湖边。"},
 					{P:1,W:"so",Y:"/səʊ/",C:"conj. 所以",E:"It was raining, so we stayed home.",F:"下雨了，所以我们待在家里。"},
 					{P:1,W:"one",Y:"/wʌn/",C:"num. 一",E:"I have one sister.",F:"我有一个妹妹。"},
 					{P:1,W:"more",Y:"/mɔː(r)/",C:"adj. 更多的",E:"I want more water.",F:"我想要更多的水。",I:"much/many的比较级"},
@@ -183,7 +183,7 @@
 					{P:1,W:"teacher",Y:"/ˈtiːtʃə(r)/",C:"n. 老师",E:"Our English teacher is from America.",F:"我们的英语老师来自美国。"},
 					{P:1,W:"live",Y:"/lɪv/",C:"v. 居住",E:"I live in a small town.",F:"我住在一个小镇上。"},
 					{P:1,W:"show",Y:"/ʃəʊ/",C:"v. 展示",E:"Can you show me your photos?",F:"你能给我看看你的照片吗？"},
-					{P:1,W:"must",Y:"/mʌst/",C:"modal v. 必须",E:"You must finish your homework.",F:"你必须完成你的作业。"},
+					{P:1,W:"must",Y:"/mʌst/",C:"modal v. 必须<i>客观</i>",E:"You must finish your homework.",F:"你必须完成你的作业。"},
 					{P:1,W:"father",Y:"/ˈfɑːðə(r)/",C:"n. 父亲",E:"My father is a doctor.",F:"我的父亲是一名医生。"},
 					{P:1,W:"today",Y:"/təˈdeɪ/",C:"adv. 今天",E:"Today is Monday.",F:"今天是星期一。"},
 					{P:1,W:"woman",Y:"/ˈwʊmən/",C:"n. 女人",I:"复数women",E:"That woman is my aunt.",F:"那个女人是我的阿姨。"},
@@ -2515,6 +2515,9 @@
 					{P:2,W:"waitress",Y:"/ˈweɪtrəs/",C:"n. 女服务员",E:"The waitress brings us the menu.",F:"女服务员给我们拿来菜单。"},
 					{P:2,W:"app",Y:"/æp/",C:"n. 应用程序",E:"This app helps me learn English words.",F:"这个应用程序帮我学习英语单词。"},
 					{P:2,W:"sunbathe",Y:"/ˈsʌnbeɪð/",C:"v. 晒日光浴",E:"People like to sunbathe on the beach.",F:"人们喜欢在海滩上晒日光浴。"},
+					{P:2,W:"beneath",Y:"/bɪˈniːθ/",C:"prep. 在...下面",E:"The cat is sleeping beneath the table.",F:"猫在桌子下面睡觉。"},
+					{P:2,W:"towards",Y:"/təˈwɔːdz/",C:"prep. 朝向",E:"He walked towards the school gate.",F:"他朝学校大门走去。"},
+					{P:2,W:"complex",Y:"/ˈkɒmpleks/",C:"adj. 复杂的",E:"This math problem is too complex for me.",F:"这道数学题对我来说太复杂了。"},
 
 				//简写缩写
 					{P:3,W:"Mr",Y:"/ˈmɪstə(r)/",C:"n. 先生",E:"Mr Wang is our Chinese teacher.",F:"王先生是我们的语文老师。",K:"缩写"},
@@ -2629,7 +2632,7 @@
 					{P:1,W:"not … at all",Y:"/nɒt æt ɔːl/",C:"phr. 一点也不",E:"I'm not tired at all after the rest.",F:"休息后我一点也不累。"},
 					{P:1,W:"late for",Y:"/leɪt fɔː(r)/",C:"phr. 迟到",E:"Don't be late for school tomorrow.",F:"明天上学不要迟到。"},
 					{P:1,W:"on time",Y:"/ɒn taɪm/",C:"phr. 准时",E:"The train arrived on time this morning.",F:"火车今天早上准时到达。"},
-					{P:1,W:"have to",Y:"/hæv tu/",C:"phr. 必须",E:"I have to finish my homework first.",F:"我必须先完成作业。"},
+					{P:1,W:"have to",Y:"/hæv tu/",C:"phr. 必须<i>主观</i>",E:"I have to finish my homework first.",F:"我必须先完成作业。"},
 					{P:1,W:"of course",Y:"/ɒv kɔːs/",C:"phr. 当然",E:"May I use your pen? - Of course.",F:"我可以用你的笔吗？——当然。"},
 					{P:1,W:"mobile phone",Y:"/ˈməʊbaɪl fəʊn/",C:"n. 手机",E:"Mobile phones are useful in our daily life.",F:"手机在我们日常生活中很有用。"},
 					{P:1,W:"turn off",Y:"/tɜːn ɒf/",C:"phr. 关闭",E:"Please turn off the light when you leave.",F:"离开时请关灯。"},
@@ -3098,7 +3101,19 @@
 					{P:1,W:"see a doctor",Y:"/siː ə ˈdɒktə(r)/",C:"phr. 看医生",E:"You should see a doctor if you feel sick.",F:"如果你感觉不舒服，应该去看医生。"},
 					{P:1,W:"take a deep breath",Y:"/teɪk ə diːp breθ/",C:"phr. 深呼吸",E:"Take a deep breath when you feel nervous.",F:"当你感到紧张时，深呼吸。"},
 					{P:1,W:"count to ten",Y:"/kaʊnt tu ten/",C:"phr. 数到十",E:"Count to ten to calm down when you are angry.",F:"生气时数到十让自己冷静下来。"},
+					{P:2,W:"on top of",Y:"/ɒn tɒp ɒv/",C:"phr. 在...上面",E:"The book is on top of the desk.",F:"书在桌子上面。"},
+					{P:1,W:"on the left",Y:"/ɒn ðə left/",C:"phr. 在左边",E:"The library is on the left of the teaching building.",F:"图书馆在教学楼的左边。"},
+					{P:1,W:"on the right",Y:"/ɒn ðə raɪt/",C:"phr. 在右边",E:"The playground is on the right of our school.",F:"操场在我们学校的右边。"},
+					{P:2,W:"away from",Y:"/əˈweɪ frəm/",C:"phr. 远离",E:"Please stay away from the deep water.",F:"请远离深水区。"},
+					{P:2,W:"out of",Y:"/aʊt ɒv/",C:"phr. 从...出来",E:"The students ran out of the classroom after class.",F:"下课后学生们跑出了教室。"},
 
+					{P:1,W:"English class",Y:"/ˈɪŋɡlɪʃ klɑːs/",C:"n. 英语课",E:"We have English class every day.",F:"我们每天都有英语课。"},
+					{P:1,W:"music class",Y:"/ˈmjuːzɪk klɑːs/",C:"n. 音乐课",E:"We sing songs in music class.",F:"我们在音乐课上唱歌。"},
+					{P:1,W:"PE class",Y:"/ˌpiː ˈiː klɑːs/",C:"n. 体育课",E:"We play basketball in PE class.",F:"我们在体育课上打篮球。"},
+					{P:1,W:"get up",Y:"/ɡet ʌp/",C:"phr. 起床",E:"I get up at 6:30 every morning.",F:"我每天早上6:30起床。"},
+					{P:1,W:"go to school",Y:"/ɡəʊ tu skuːl/",C:"phr. 去上学",E:"We go to school from Monday to Friday.",F:"我们周一到周五去上学。"},
+					{P:1,W:"go home",Y:"/ɡəʊ həʊm/",C:"phr. 回家",E:"Students go home at 4:30 in the afternoon.",F:"学生们下午4:30回家。"},
+					{P:1,W:"just a minute",Y:"/dʒʌst ə ˈmɪnɪt/",C:"phr. 稍等片刻",E:"Just a minute, I'm coming!",F:"稍等片刻，我马上来！"},
 
 				//地点、书名
 					{P:3,W:"the Yangtze",Y:"/ðə ˈjæŋtsi/",C:"n. 长江",E:"The Yangtze is the longest river in China.",F:"长江是中国最长的河流。",K:"地点"},
@@ -3584,15 +3599,15 @@
 					"be动词":"is,was,are,were,am,be,been,being",
 					"基础动词":"have,has,had,do,doing,does,will,would,can,could,may,might,must,should,shall,let,make,put,keep,come,go,get,take,give,see,look,find,know,think,say,tell,become,seem,feel",
 
-					"单复一致": "police,fish,deer,sheep,Chinese,Japanese,series,species,means,aircraft,spacecraft,information,news,advice,knowledge,furniture,luggage,baggage,homework,evidence,money,music,rice,bread,water,coffee,tea,milk,sugar,salt,paper,weather,traffic,research,progress,work",
-					"单复特殊": "man,men,woman,women,child,children,foot,feet,tooth,teeth,goose,geese,mouse,mice,louse,lice,ox,oxen,person,people"
+					"单复一致":"police,fish,deer,sheep,Chinese,Japanese,series,species,means,aircraft,spacecraft,information,news,advice,knowledge,furniture,luggage,baggage,homework,evidence,money,music,rice,bread,water,coffee,tea,milk,sugar,salt,paper,weather,traffic,research,progress,work",
+					"单复特殊":"man,men,woman,women,child,children,foot,feet,tooth,teeth,goose,geese,mouse,mice,louse,lice,ox,oxen,person,people"
 				},
 				"数量词":{
 					"基数词":"zero,one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,thirty,forty,fifty,sixty,seventy,eighty,ninety,hundred,thousand,million,billion",
 					"序数词":"first,second,third,fourth,fifth,sixth,seventh,eighth,ninth,tenth,eleventh,twelfth,thirteenth,fourteenth,fifteenth,sixteenth,seventeenth,eighteenth,nineteenth,twentieth,thirtieth,fortieth,fiftieth,sixtieth,seventieth,eightieth,ninetieth,hundredth,thousandth,millionth",
 					"数量表达":"number,amount,total,score,point,percent,part,half,quarter,double,couple,pair,group,lot,plenty,enough,more,most,less,least,several,few,little,many,much,some,any,all,whole,full,empty",
 				},
-				"形容词副词": {
+				"形容词副词":{
 					"外貌特征":"big,small,tall,short,long,beautiful,ugly,pretty,handsome,fat,thin,slim,young,old,curly",
 					"品质状态":"good,better,best,bad,worse,worst,excellent,perfect,terrible,awful,wonderful,fantastic,amazing,lovely,nice,great,real,true,false,right,wrong,correct",
 					"状态特征":"happy,sad,angry,tired,sleepy,hungry,thirsty,sick,ill,healthy,strong,weak,rich,poor,busy,free,full,empty,open,closed,clean,dirty,neat,messy,tidy,wet,dry,hot,cold,warm,cool",
@@ -3630,12 +3645,12 @@
 					"出行活动":"travel,trip,journey,tour,visit,go,come,arrive,leave,return,walk,run,fly,drive,ride",
 				},
 				"自然世界":{
-					"宠物": "animal,pet,cat,kitten,dog,puppy,rabbit,fish,bird,parrot,hen,duck,duckling,goose",
-					"野生": "cheetah,deer,elephant,tiger,lion,leopard,monkey,gorilla,panda,bear,wolf,fox,zebra,giraffe,koala,kangaroo,camel,rhino,hippo,dragon",
-					"鸟禽": "bird,eagle,hawk,owl,sparrow,pigeon,swan,penguin,goose,duck,chicken,hen,rooster,parrot",
-					"水生": "fish,whale,dolphin,shark,seal,octopus,penguin,frog,turtle,crab,shrimp,lobster",
-					"昆虫": "insect,butterfly,bee,ant,spider,fly,mosquito,dragonfly,snake,lizard,frog,turtle,dinosaur",
-					"牲畜": "sheep,goat,cow,ox,pig,horse,donkey,mule,chicken,duck,goose,rabbit",
+					"宠物":"animal,pet,cat,kitten,dog,puppy,rabbit,fish,bird,parrot,hen,duck,duckling,goose",
+					"野生":"cheetah,deer,elephant,tiger,lion,leopard,monkey,gorilla,panda,bear,wolf,fox,zebra,giraffe,koala,kangaroo,camel,rhino,hippo,dragon",
+					"鸟禽":"bird,eagle,hawk,owl,sparrow,pigeon,swan,penguin,goose,duck,chicken,hen,rooster,parrot",
+					"水生":"fish,whale,dolphin,shark,seal,octopus,penguin,frog,turtle,crab,shrimp,lobster",
+					"昆虫":"insect,butterfly,bee,ant,spider,fly,mosquito,dragonfly,snake,lizard,frog,turtle,dinosaur",
+					"牲畜":"sheep,goat,cow,ox,pig,horse,donkey,mule,chicken,duck,goose,rabbit",
 					"植物":"moss,plant,tree,leaves,wood,flower,grass,leaf,fruit,apple,orange,banana,grape,vegetable,potato,tomato,carrot,rice,corn,bamboo,rose,lotus,peony,ginkgo",
 					"自然环境":"nature,hill,earth,sky,air,water,river,lake,sea,ocean,mountain,forest,beach,desert,island,field,land,soil,stone,rock,sand,mud,cave",
 					"天气温度":"weather,rain,snow,wind,cloud,sunshine,storm,lightning,thunder,ice,cold,hot,warm,cool,dry,wet,climate,temperature",
@@ -3657,6 +3672,13 @@
 					"季节":"spring,summer,autumn,fall,winter,season,",
 					"月份":"January,February,March,April,May,June,July,August,September,October,November,December",
 					"频率顺序":"always,often,usually,sometimes,never,seldom,once,twice,again,first,second,third,fourth,last,next,finally,recently,lately",
+				},
+				"方向方位":{
+					"东南西北":"east,west,south,north",
+					"相对位置":"up,on,above,down,under,below,left,right,in,front,back,behind,inside,outside,top,bottom,center,middle",
+					"动态方向":"towards,away from,into,out of,across,through,over",
+					"常见短语":"on top of,under,beneath,on the left,on the right,in front of,in the middle,between,next to,beside,near,close to,opposite,among",
+					"其它":"by,around,along,here,there,where,everywhere,somewhere,anywhere,far,at"
 				},
 				"身心健康":{
 					"身体部位":"body,head,hair,face,eye,nose,mouth,ear,tongue,throat,tooth,teeth,neck,shoulder,arm,hand,finger,leg,foot,feet,knee,heel,elbow",
@@ -3684,8 +3706,6 @@
 				"其它":{
 					"颜色":"color,red,blue,green,yellow,black,white,grey,brown,pink,purple,orange,gold,silver",
 					"形状":"shape,size,form,line,circle,square,round,straight,long,short,tall,high,low,wide,narrow,big,small,large,thick,thin,heavy,light,deep,",
-					"方向":"left,right,up,down,front,back,top,bottom,center,middle,east,west,south,north,inside,outside,",
-					"方位":"in,on,at,under,over,above,below,behind,between,among,around,across,through,along,near,far,inside,outside,here,there,where,everywhere,somewhere,anywhere,close,away",
 					"国家":"国家",
 					"语言":"语种",
 					"地点":"地点",
