@@ -1684,11 +1684,11 @@
 				switch(e.key) {
 					case 'ArrowLeft':
 						e.preventDefault();
-						goToPreviousPage();
+						document.querySelector('#pagination .page-btn:first-of-type').click();
 						break;
 					case 'ArrowRight':
 						e.preventDefault();
-						goToNextPage();
+						document.querySelector('#pagination .page-btn:last-of-type').click();
 						break;
 				}
 			});
