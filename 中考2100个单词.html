@@ -15,6 +15,7 @@
 		h1 a.active {background-color:#2196F3;color:white;border-color:#1976d2;font-weight:bold;}
 		body {font-family:Arial, sans-serif;line-height:1.6;max-width:1000px;margin:0 auto;padding:60px 0 20px 0px; font-family:"舒窈衡水体shuyaohengshuiti";}
 		.controls {display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:15px;}
+		.controls.hide{display:none;}
 		.search-box {display:flex;gap:10px;flex:1;min-width:250px;}
 		#searchInput {flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:1rem;}
 		.group-menu{flex:1;border:1px solid #ddd;background:#fff;padding:5px 0 0 10px;border-radius:5px;}
@@ -36,7 +37,7 @@
 		.word {font-size:1.5rem;font-weight:bold;margin-right:0px;cursor:pointer;padding-left:3px;}
 		.word-main .long{font-size:1.2rem;}
 
-		.phonetic {color:#666;font-style:italic;margin:0 5px 0 0;cursor:pointer;font-size:0.7rem;font-family:"微软雅黑";}
+		.phonetic {color:#666;margin:0 5px 0 0;cursor:pointer;font-size:0.7rem;font-family:"微软雅黑";}
 		.explanation {color:#333;font-size:0.8rem;}
 		.explanation.verb-link {cursor:pointer; color:#1976d2;}
 		.explanation.verb-link:hover {text-decoration:underline;}
@@ -126,9 +127,13 @@
 		#unitSelectorContainer{border:3px solid #eee;1padding:10px;border-radius:10px;margin-bottom:20px;}
 		#unitSelectorContainer:before{content:"批量标注已学的单词";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
 		/* 分类选择器样式 */
-		.group-selector { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px; padding-left:10px; }
-		.group-selector label { display:inline-flex; align-items:center; cursor:pointer;padding:3px 10px; border-radius:15px;font-size:1rem;transition:all 0.2s;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff;}
+		.group-selector { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;padding-left:2rem;}
+		.group-selector label {position:relative;display:inline-flex; align-items:center; cursor:pointer;padding:3px 10px; border-radius:15px;font-size:1rem;transition:all 0.2s;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff;}
 		.group-selector label:hover{background-color:#2196F3;color:#fff;}
+		.group-selector label i{text-align:center;font-style: normal;position:absolute;right:0;top:0;margin-top:-10px;width:10px;height:10px;line-height:6px;padding:3px;font-size:.6rem;background:#eef7ff;border-radius:50%;color:#2196F3;border:1px solid #a0cfff;border-bottom:0;}
+		.group-selector label i.duo{color:#f00;}
+		.group-selector label:hover i{background:#2196F3;color:#fff;border-color:#2196F3}
+
 		.group-category-header {margin:10px 0 5px 10px;clear:both; width:100%;font-size:.9rem;}
 		.group-category-h1:before{content:"单元单词列表";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
 		.group-category-h2:before{content:"单词分类列表";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:20px;}
@@ -241,12 +246,12 @@
 			body{font-size:1rem;padding:0 20px;}
 			.highlight {color:#000;}
 			.word-main{height:30px;line-height:30px;}
-			.word,.word *{font-size:1.1rem;color:#f00;}
+			.word,.word *{font-size:1.5rem;color:#f00;}
 			.word-header,.example{margin:0;padding:0;}
 			.word-card{box-shadow:none;margin:0 0 3px 0;padding:2px 5px;position:relative;height:92px;overflow:hidden;}
 			.word-index {position:absolute; top:5px; right:5px;bottom:auto;left:auto;color:#666;font-size:0.7rem;border:none;}
 			.print-footer {display:block;position:fixed;bottom:10px;right:10px;font-size:0.8rem;color:#666;}
-			.example-english{font-size:1rem;margin:0;padding:0;line-height:18px;-display:block;}
+			.example-english{font-size:1.2rem;margin:0;padding:0;line-height:18px;-display:block;}
 			.chinesebox{display:inline-block;}
 			.word-card.forget,.word-card.learned {border-left-width:2px;}
 			body.essay-panel-visible {padding:0;}
@@ -1266,11 +1271,11 @@
 		function applyFilter(filterType) {
 			currentFilter = filterType;
 			const urlParams = getParamsFromUrl();
-			const isGroupWithSearch = filterType === 'group' && (urlParams.query || urlParams.title);
-			if (filterType === 'group' && !isGroupWithSearch) {
+			const isGroupMenu = filterType === 'group' && (urlParams.query && urlParams.title);
+			if (filterType === 'group' && !isGroupMenu) {
 					// 纯分组视图
 					document.getElementById('readPanel').style.display = 'none';
-					document.querySelector('.controls').style.display = 'none';
+					document.querySelector('.controls').classList.add("hide");
 					document.getElementById('pagination').classList.add("hide");
 					if(document.getElementById("cachediv")){
 						document.getElementById("cachediv").style.display = "none";
@@ -1287,24 +1292,24 @@
 				document.getElementById('readPanel').style.display = 'block';
 				document.getElementById('wordContainer').style.display = 'none';
 				document.getElementById('pagination').classList.add("hide");
-				document.querySelector('.controls').style.display = 'none';
+				document.querySelector('.controls').classList.add("hide");
 				if (!readAloudManager) {
 					readAloudManager = new ReadAloudManager();
 				}
 			}else if (filterType === 'cache') {
 				document.getElementById('readPanel').style.display = 'none';
-				document.querySelector('.controls').style.display = 'none';
+				document.querySelector('.controls').classList.add("hide");
 				document.getElementById('wordContainer').style.display = 'none';
 				document.getElementById('pagination').classList.add("hide");
 				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "block";
 			}else {
-				document.querySelector('.controls').style.display = 'block';
+				document.querySelector('.controls').classList.remove("hide");
 				document.getElementById('wordContainer').style.display = 'block';
 				document.getElementById('pagination').classList.remove("hide");
 				document.getElementById('readPanel').style.display = 'none';
 				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
 			}
-			if (isGroupWithSearch) {
+			if (isGroupMenu) {
 				currentSearchQuery = urlParams.query;
 				searchInput.style.display="none";
 				document.querySelector('.search-box .checkbox').style.display = 'none';
@@ -1482,22 +1487,17 @@
 				groupContainer.appendChild(temp);
 
 				for (const [grade, units] of Object.entries(groupedDaixue)) {
-					const gradeHeader = document.createElement('div');
-					gradeHeader.className = 'group-category-header';
-					gradeHeader.textContent = `${grade}:`;
-					groupContainer.appendChild(gradeHeader);
-
 					const unitButtonsDiv = document.createElement('div');
 					unitButtonsDiv.className = 'group-selector';
-					unitButtonsDiv.style.cssText = 'padding-left:2rem;display:flex; flex-wrap:wrap; gap:10px;';
+					//unitButtonsDiv.style.cssText = 'padding-left:2rem;display:flex; flex-wrap:wrap; gap:10px;';
 					units.forEach(unit => {
 						const label = document.createElement('label');
 						const button = document.createElement('span');
-						button.innerHTML = unit.unit;
 						button.onclick = () => {
 							const wordListString = unit.W;
 							if (wordListString) {
 								const queryString = wordListString.trim().replace(/,$/g, '');
+								console.log(wordListString);
 								let title = encodeURIComponent(`【${grade} - ${unit.unit}】`);
 								const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}&filter=group`;
 								window.location.href = newUrl;
@@ -1505,9 +1505,18 @@
 								console.warn(`单元 "${unit.unit}" 的单词列表为空:${unit.W}`);
 							}
 						};
+						let i=unit.W.split(',').filter(Boolean).length || 0;
+						button.innerHTML = unit.unit+"<i class='"+(unit.unit.replace(/[a-z]/ig,'')>0 && i>=50?'duo':'')+"'>"+i+"</i>";
+						button.title=grade+" "+unit.unit+" 共有"+i+"个单词";
 						label.appendChild(button);
 						unitButtonsDiv.appendChild(label);
 					});
+
+					const gradeHeader = document.createElement('div');
+					gradeHeader.className = 'group-category-header';
+					gradeHeader.textContent = `${grade}：`;
+					groupContainer.appendChild(gradeHeader);
+
 					groupContainer.appendChild(unitButtonsDiv);
 				}
 			}
@@ -1561,12 +1570,12 @@
 			const url = URL.createObjectURL(blob);
 			const a = document.createElement('a');
 			a.href = url;
-			a.download = `中考单词_cache_${new Date().toISOString().split('T')[0]}.txt`;
+			a.download = `中考单词标记_${new Date().toISOString().split('T')[0]}.txt`;
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);
 			URL.revokeObjectURL(url);
-			toastManager.show('缓存导出成功', 'success', 2000);
+			toastManager.show('成功导出标记', 'success', 2000);
 		}
 		function importCache(file) {
 			if (!file) {
@@ -1574,7 +1583,7 @@
 				if (importFile && importFile.files.length > 0) {
 					file = importFile.files[0];
 				} else {
-					toastManager.show('请选择要导入的文件', 'warning', 2000);
+					toastManager.show('请选择要导入的标记文件', 'warning', 2000);
 					return;
 				}
 			}
@@ -1588,7 +1597,7 @@
 					wordManager.loadFromStorage();
 					wordManager.loadUnitSelectionsFromStorage();
 					wordManager.updateLearnedWordsWithUnits();
-					toastManager.show('缓存导入成功', 'success', 2000);
+					toastManager.show('成功导入标记', 'success', 2000);
 					applyFilter(currentFilter);
 				} catch (error) {
 					toastManager.show('文件格式错误', 'error', 2000);
@@ -1602,18 +1611,18 @@
 			cacheDiv.style.cssText = 'margin:5px 0; display:flex; gap:10px;position:relative;';
 			cacheDiv.innerHTML = `<div id="cachediv">
 				<button class="sort-btn" onclick="
-					if(confirm('确定要清除所有缓存数据吗？此操作不可撤销。')) {
+					if(confirm('确定要清除所有标记吗？此操作不可撤销。')) {
 						localStorage.clear();
 						wordManager.loadFromStorage();
 						wordManager.loadUnitSelectionsFromStorage();
 						wordManager.updateLearnedWordsWithUnits();
 						applyFilter(currentFilter);
-						toastManager.show('缓存已清除', 'info', 2000);
+						toastManager.show('标记已清除', 'info', 2000);
 					}
-				">清除缓存</button>
-				<button class="sort-btn" onclick="exportCache()">导出数据</button>
+				">清除标记</button>
+				<button class="sort-btn" onclick="exportCache()">导出标记</button>
 				<label class="sort-btn" style="cursor:pointer;">
-					导入数据
+					导入标记
 					<input type="file" id="importFile" accept=".txt" onchange="importCache(this.files[0])" style="display:none;">
 				</label>
 				<a href="https://www.zhaozi.cn/html/fonts/en/other/2021-08-12/29566.html" target="_blank" style="bottom:-35px;right:20px;font-size:12px;color:#222;position:absolute;">下载舒窈衡水体 - 字体文件</a>
@@ -1803,7 +1812,7 @@
 			} else {
 				if(groupSearch){
 					var searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-					if(urlParams.title.indexOf("Unit")>-1)limit=90;
+					if(urlParams.title.indexOf("Unit")>-1)limit=50;
 					//if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
 				}else{
 					//如果没有,增加按空格分词。目的兼容【must, have to】这种情况
@@ -1910,7 +1919,10 @@
 					const searchTerm = term.toLowerCase();
 					const foundWord = originalWordData.data.find(word => word.W.toLowerCase() === searchTerm);
 					const foundInCurrentResults = currentWordData.some(word => word.W.toLowerCase() === searchTerm);
-					if(!foundWord)l+='"'+term+'",';
+					if(!foundWord){
+						l+='"'+term+'",';
+						if (/[\u4e00-\u9fa5]/.test(term))return;
+					}
 
 					if (foundWord && !foundInCurrentResults) {
 						// 按频率分组
@@ -1940,8 +1952,7 @@
 						}
 					}
 				});
-				if(!l)console.log(l);
-
+				if(l!='')console.log(l+'  注意大小');
 				// 生成一条合并的提示
 				let combinedMessage = [];
 				// 添加不在当前分类中的单词
@@ -1955,17 +1966,17 @@
 				}
 
 				// 添加完全未找到的单词
-				if (missingWords.notFound.length > 0) {
+				if (missingWords.notFound.length > 0 && currentWordData.length>0) {
 					combinedMessage.push(`${missingWords.notFound.join('、')} 未在词库中找到`);
 				}
 
 				// 只显示一条提示
+				if(currentFilter=="high" || currentFilter=="medium" || currentFilter=="low" )
 				if (combinedMessage.length > 0) {
 					toastManager.show(combinedMessage.join('<hr style="border:none;height:1px;background:linear-gradient(90deg, transparent, #fff, transparent);width:80%;margin:10px auto;"/>'), 'info', 8000);
 				}
 
 
-				if(l)console.log(l+'  注意大小');
 			}
 			totalPages = Math.ceil(currentWordData.length / limit);
 			if (currentPage > totalPages) currentPage = 1;
@@ -2332,7 +2343,7 @@
 					const href = link.getAttribute('href');
 					const filter = href.includes('filter=') ? href.split('filter=')[1] :'all';
 					currentPage = 1;
-					if (filter === 'cache') {
+					if (filter === 'cache' || filter === 'read' || filter === 'group') {
 						searchInput.value = '';
 						currentSearchQuery = '';
 					}
