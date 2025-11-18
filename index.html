@@ -1233,7 +1233,7 @@
 		if(!isTTSSupported)document.body.classList.add('no-tts');
 
 		const isEdge = /Edg\//i.test(navigator.userAgent) || /Edge\//i.test(navigator.userAgent);
-		const wordsPerPage = isMobile ? 5 :20;
+		const wordsPerPage = 20;//isMobile ? 5 :20;
 		let totalPages = Math.ceil(currentWordData.length / wordsPerPage);
 		let currentPage = 1;
 		let currentAudio = null;
@@ -1971,7 +1971,7 @@
 				}
 
 				// 只显示一条提示
-				if(currentFilter=="high" || currentFilter=="medium" || currentFilter=="low" )
+				if(currentFilter=="high" || currentFilter=="medium" || currentFilter=="low" || currentFilter=="group" )
 				if (combinedMessage.length > 0) {
 					toastManager.show(combinedMessage.join('<hr style="border:none;height:1px;background:linear-gradient(90deg, transparent, #fff, transparent);width:80%;margin:10px auto;"/>'), 'info', 8000);
 				}
