@@ -129,7 +129,7 @@
 		#unitSelectorContainer:before{content:"批量标注已学的单词";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
 		/* 分类选择器样式 */
 		.group-selector { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;padding-left:2rem;}
-		.group-selector label {position:relative;display:inline-flex; align-items:center; cursor:pointer;padding:3px 10px; border-radius:15px;font-size:1rem;transition:all 0.2s;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff;}
+		.group-selector label {position:relative;display:inline-flex; align-items:center; cursor:pointer;padding:3px 10px;margin-bottom:5px;border-radius:15px;font-size:1rem;transition:all 0.2s;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff;}
 		.group-selector label:hover{background-color:#2196F3;color:#fff;}
 		.group-selector label i{text-align:center;font-style: normal;position:absolute;right:0;top:0;margin-top:-10px;width:10px;height:10px;line-height:6px;padding:3px;font-size:.6rem;background:#eef7ff;border-radius:50%;color:#2196F3;border:1px solid #a0cfff;border-bottom:0;}
 		.group-selector label i.duo{color:#f00;}
@@ -2034,13 +2034,16 @@
 			const endIndex = Math.min(startIndex + limit, currentWordData.length);
 			const pageWords = currentWordData.slice(startIndex, endIndex);
 			if(!(originalWordData.essay && originalWordData.essay.some(e => e.p === currentPage))){
-				let words='这些单词【'+pageWords.map(w => w.word).join(', ')+'】';
+				let words='这些单词【'+pageWords.map(w => w.W).join(', ')+'】';
 				//步骤1
-				console.log('用'+words+'①写一篇90~110字左右的中考作文，方便中考学生学习。②[重点]必须包括上面的20个单词。③要求积极向上、语句通顺、语法正确、逻辑清晰。④尽量不用使用外国人名、外国地名，禁止宗教、网游内容。');
+				console.log('用'+words+'①写一篇90~110字左右的中考作文，方便中考学生学习。②[重点]必须包括上面的20个单词。③要求积极向上、语句通顺、语法正确、逻辑清晰。④尽量不用使用外国人名、外国地名，禁止宗教、网游内容。⑤注意分段，每段字数不要太长。');
 				//步骤2
 				console.log('这是一篇初中生作文，请检查。①必须包括'+words+'。如果没有，请在适当位置补充。②修改语法、逻辑错误。③作文内容简洁及符合初中生水平，字数在90~110字。');
 				//步骤3
 				console.log('作文改成这样如何？看看一共多少字，如果>120字，请精简。你再判断一下是否包含了【'+words+'】全部单词，如果缺少，请在适当的位置补充，但不要修改太多内容。');
+				//步骤4
+				console.log('将上面作文中的'+words+'按顺序做成学习卡，格式是：1.单词		句子. (句子翻译)   如果一条句子包含多个其中的单词，后面跳过重复单词，仅提示出现在第几句即可。');
+
 			}
 			if (pageWords.length === 0) {
 				wordContainer.innerHTML = '<div class="no-results">没有找到匹配的单词</div>';
