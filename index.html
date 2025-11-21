@@ -1272,7 +1272,8 @@
 		function applyFilter(filterType) {
 			currentFilter = filterType;
 			const urlParams = getParamsFromUrl();
-			const isGroupMenu = filterType === 'group' && (urlParams.query && urlParams.title);
+			//const isGroupMenu = filterType === 'group' && (urlParams.query && urlParams.title);
+			const isGroupMenu = filterType === 'group' && !!urlParams.title;
 			if (filterType === 'group' && !isGroupMenu) {
 					// 纯分组视图
 					document.getElementById('readPanel').style.display = 'none';
@@ -1311,7 +1312,47 @@
 				if(document.getElementById("cachediv")) document.getElementById("cachediv").style.display = "none";
 			}
 			if (isGroupMenu) {
-				currentSearchQuery = urlParams.query;
+				//currentSearchQuery = urlParams.query;
+
+
+				//不再使用url传递分类单词
+				//currentSearchQuery = urlParams.query;
+				let wordListString = '';
+				let cleanTitle = decodeURIComponent(urlParams.title || '')
+					.replace('【', '')
+					.replace('】类', '')
+					.replace('】', '')
+					.trim();
+				let isGradeUnit = false;
+
+				const gradeMatch = cleanTitle.match(/^(.+?)\s*-\s*(.+)$/);
+				if (gradeMatch) {
+					const gradeName = gradeMatch[1].trim();
+					const unitName = gradeMatch[2].trim();
+					isGradeUnit = true;
+					const unitData = originalWordData.daixue.find(u => u.grade === gradeName && u.unit === unitName);
+					if (unitData) {
+						wordListString = unitData.W.trim().replace(/,$/, '');
+					}
+				} else {
+					for (const [topCategoryName, subCategories] of Object.entries(originalWordData.group)) {
+						if (subCategories[cleanTitle]) {
+							wordListString = subCategories[cleanTitle].trim().replace(/,$/, '');
+							break;
+						}
+					}
+				}
+
+				if (!wordListString) {
+					console.warn(`未找到分类 "${cleanTitle}" 对应的单词列表`);
+					currentSearchQuery = '';
+					defaultFilteredData = [];
+				} else {
+					currentSearchQuery = wordListString;
+				}
+				//
+
+
 				searchInput.style.display="none";
 				document.querySelector('.search-box .checkbox').style.display = 'none';
 
@@ -1344,7 +1385,7 @@
 			setTimeout(() => {
 				// 如果是从分类页面进入，显示同级分类导航
 				const urlParams = getParamsFromUrl();
-				if (urlParams.title && urlParams.query && filterType === 'group') {
+				if (!!urlParams.title && filterType === 'group') {
 					// 确保搜索框被隐藏
 					const searchBox = document.querySelector('.search-box');
 					if (searchBox)searchBox.style.display = 'none';
@@ -1447,7 +1488,7 @@
 					}
 
 					if (queryString) {
-						const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}&filter=group`;
+						const newUrl = `?q=list&fuzzy=false&title=${title}&filter=group`;//${encodeURIComponent(queryString)}
 						window.location.href = newUrl;
 					}
 				});
@@ -1500,7 +1541,7 @@
 								const queryString = wordListString.trim().replace(/,$/g, '');
 								console.log(wordListString);
 								let title = encodeURIComponent(`【${grade} - ${unit.unit}】`);
-								const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}&filter=group`;
+								const newUrl = `?q=list&fuzzy=false&title=${title}&filter=group`;
 								window.location.href = newUrl;
 							} else {
 								console.warn(`单元 "${unit.unit}" 的单词列表为空:${unit.W}`);
@@ -1546,7 +1587,7 @@
 						if (wordList) {
 							const queryString = wordList;
 							let title = encodeURIComponent('【' + subCategoryName + "】类");
-							 const newUrl = `?q=${encodeURIComponent(queryString)}&fuzzy=false&title=${title}&filter=group`;
+							 const newUrl = `?q=list&fuzzy=false&title=${title}&filter=group`;
 							window.location.href = newUrl;
 						} else {
 							console.warn(`分类 "${subCategoryName}" 的单词列表为空或格式不正确:${wordListString}`);
@@ -1800,6 +1841,8 @@
 			const urlParams = getParamsFromUrl();
 			const groupSearch = !!urlParams.title && !!urlParams.query;
 			let query = groupSearch ? urlParams.query :searchInput.value.trim();
+
+			if(groupSearch)query = currentSearchQuery
 			currentSearchQuery = query;
 
 			if (!query) {
@@ -1886,7 +1929,25 @@
 					return { word, score, matchedTermIndex };
 				});
 
-				let filteredAndScored = scoredWords
+				let filteredAndScored = [];
+				if (groupSearch) {
+					const termSet = new Set(searchTerms.map(t => t.toLowerCase()));
+					const wordMap = new Map();
+					originalWordData.data.forEach(word => {
+						wordMap.set(word.W.toLowerCase(), word);
+					});
+
+					searchTerms.forEach(term => {
+						const lowerTerm = term.toLowerCase();
+						const found = wordMap.get(lowerTerm);
+						if (found) {
+							filteredAndScored.push(found);
+						} else {
+							// 若未找到，也可考虑模糊匹配（可选）
+						}
+					});
+				}else{
+					filteredAndScored = scoredWords
 					.filter(item => item.score > 0)
 					.sort((a, b) => {
 						if (a.matchedTermIndex !== b.matchedTermIndex) {
@@ -1899,7 +1960,7 @@
 						return b.score - a.score;
 					})
 					.map(item => item.word);
-
+				}
 				originalSearchResult = [...filteredAndScored];
 				currentWordData = [...originalSearchResult];
 

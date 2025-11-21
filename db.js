@@ -2548,6 +2548,32 @@
 					{P:3,W:"dragonfly",Y:"/ˈdræɡənflaɪ/",C:"n. 蜻蜓",E:"The dragonfly is flying over the pond.",F:"蜻蜓在池塘上空飞翔。"},
 					{P:3,W:"lizard",Y:"/ˈlɪzəd/",C:"n. 蜥蜴",E:"The lizard is crawling on the rock.",F:"蜥蜴在岩石上爬行。"},
 					{P:3,W:"donkey",Y:"/ˈdɒŋki/",C:"n. 驴",E:"The donkey is carrying heavy bags.",F:"驴驮着沉重的袋子。"},
+					{P:3,W:"mend",Y:"/mend/",C:"v. 修理",E:"My father can mend the broken chair.",F:"我父亲能修好这把坏椅子。"},
+					{P:3,W:"foolish",Y:"/ˈfuːlɪʃ/",C:"adj. 愚蠢的",E:"It is foolish to go out in the heavy rain.",F:"下大雨时出门是愚蠢的。"},
+					{P:3,W:"exit",Y:"/ˈeksɪt/",C:"n. 出口",E:"Please use the emergency exit in case of fire.",F:"如遇火情请使用紧急出口。"},
+					{P:3,W:"melt",Y:"/melt/",C:"v. 融化",E:"The ice cream began to melt in the sun.",F:"冰淇淋在阳光下开始融化了。"},
+					{P:3,W:"innocent",Y:"/ˈɪnəsnt/",C:"adj. 无辜的",E:"The child looked at me with innocent eyes.",F:"孩子用无辜的眼神看着我。"},
+					{P:3,W:"guilty",Y:"/ˈɡɪlti/",C:"adj. 有罪的",E:"He felt guilty for breaking the window.",F:"他因打破窗户而感到内疚。"},
+					{P:3,W:"unlike",Y:"/ʌnˈlaɪk/",C:"prep. 不像",E:"Unlike his brother, he likes reading books.",F:"与他哥哥不同，他喜欢读书。"},
+					{P:3,W:"fewer",Y:"/ˈfjuːə(r)/",C:"adj. 更少的",E:"There are fewer students in the classroom today.",F:"今天教室里的学生更少。"},
+					{P:3,W:"fewest",Y:"/ˈfjuːɪst/",C:"adj. 最少的",E:"This group has the fewest members.",F:"这个小组的成员最少。"},
+					{P:3,W:"vulgar",Y:"/ˈvʌlɡə(r)/",C:"adj. 粗俗的",E:"We should avoid using vulgar language.",F:"我们应该避免使用粗俗的语言。"},
+					{P:3,W:"reward",Y:"/rɪˈwɔːd/",C:"n. 奖励",E:"She received a reward for her hard work.",F:"她因努力工作而获得了奖励。"},
+					{P:3,W:"rough",Y:"/rʌf/",C:"adj. 粗糙的",E:"The surface of the stone is very rough.",F:"石头的表面非常粗糙。"},
+
+					{P:3,W:"mend",Y:"/mend/",C:"v. 修理",E:"Can you help me mend this broken toy?",F:"你能帮我修理这个坏了的玩具吗？"},
+					{P:3,W:"foolish",Y:"/ˈfuːlɪʃ/",C:"adj. 愚蠢的",E:"It would be foolish to go out without an umbrella in this rain.",F:"这样的雨天不带伞出门是愚蠢的。"},
+					{P:3,W:"entrance",Y:"/ˈentrəns/",C:"n. 入口",E:"Please wait for me at the school entrance.",F:"请在学校入口处等我。"},
+					{P:3,W:"exit",Y:"/ˈeksɪt/",C:"n. 出口",E:"We should find the nearest exit in case of emergency.",F:"我们应该找到最近的出口以防紧急情况。"},
+					{P:3,W:"melt",Y:"/melt/",C:"v. 融化",E:"Snow begins to melt when spring comes.",F:"春天来临时雪开始融化。"},
+					{P:3,W:"innocent",Y:"/ˈɪnəsnt/",C:"adj. 无辜的",E:"The little boy gave an innocent smile.",F:"小男孩露出了无辜的微笑。"},
+					{P:3,W:"guilty",Y:"/ˈɡɪlti/",C:"adj. 有罪的",E:"He felt guilty about forgetting his mother's birthday.",F:"他因忘记母亲的生日而感到内疚。"},
+					{P:3,W:"unlike",Y:"/ʌnˈlaɪk/",C:"prep. 不像",E:"Unlike his sister, he enjoys playing sports.",F:"与他姐姐不同，他喜欢运动。"},
+					{P:3,W:"rude",Y:"/ruːd/",C:"adj. 粗鲁的",E:"It's rude to interrupt when others are speaking.",F:"别人说话时打断是不礼貌的。"},
+					{P:3,W:"messy",Y:"/ˈmesi/",C:"adj. 凌乱的",E:"His bedroom is always messy.",F:"他的卧室总是很凌乱。"},
+					{P:3,W:"reward",Y:"/rɪˈwɔːd/",C:"n. 奖励",E:"She got a reward for finding the lost dog.",F:"她因找到了丢失的狗而获得了奖励。"},
+					{P:3,W:"rough",Y:"/rʌf/",C:"adj. 粗糙的",E:"The rough paper hurt my fingers.",F:"粗糙的纸划伤了我的手指。"},
+
 
 				//简写缩写
 					{P:3,W:"Mr",Y:"/ˈmɪstə(r)/",C:"n. 先生",E:"Mr Wang is our Chinese teacher.",F:"王先生是我们的语文老师。",K:"缩写"},
@@ -3389,10 +3415,9 @@
 					{P:3,W:"Jenny",Y:"/ˈdʒeni/",C:"n. 珍妮",K:"人名",E:"Jenny is helping her mother clean the house.",F:"珍妮正在帮妈妈打扫房子。"},
 					{P:3,W:"Timo",Y:"/ˈtiːməʊ/",C:"n. 蒂莫",K:"人名",E:"Timo is from Finland.",F:"蒂莫来自芬兰。"},
 					{P:3,W:"Halla",Y:"/ˈhælə/",C:"n. 哈拉",K:"人名",E:"Halla is a good swimmer.",F:"哈拉是个游泳好手。"},
-					{P:3,W:"William",Y:"/ˈwɪljəm/",C:"n. 威廉",K:"人名",E:"William is good at playing chess.",F:"威廉擅长下棋。"},
-					{P:3,W:"Shakespeare",Y:"/ˈʃeɪkspɪə(r)/",C:"n. 莎士比亚",K:"人名",E:"Shakespeare wrote many famous plays.",F:"莎士比亚写了许多著名戏剧。"},
-					{P:3,W:"Florence",Y:"/ˈflɒrəns/",C:"n. 佛罗伦斯",I:"人名/地名)",E:"Florence Nightingale was a famous nurse.",F:"佛罗伦斯·南丁格尔是一位著名护士。"},
-					{P:3,W:"Nightingale",Y:"/ˈnaɪtɪŋɡeɪl/",C:"n. 南丁格尔",K:"人名",E:"Nightingale is called the founder of modern nursing.",F:"南丁格尔被称为现代护理的创始人。"},
+					{P:3,W:"William Shakespeare",Y:"/ˈʃeɪkspɪə(r)/",C:"n. 莎士比亚",K:"人名",E:"Shakespeare wrote many famous plays.",F:"莎士比亚写了许多著名戏剧。"},
+					{P:3,W:"Florence Nightingale",Y:"/ˈflɒrəns/",C:"n. 佛罗伦斯",I:"人名/地名)",E:"Florence Nightingale was a famous nurse.",F:"佛罗伦斯·南丁格尔是一位著名护士。"},
+
 					{P:3,W:"CPC",Y:"/ˌsiːpiːˈsiː/",C:"n. 中国共产党",E:"The CPC leads the Chinese people.",F:"中国共产党领导中国人民。"},
 					{P:3,W:"Judy",Y:"/ˈdʒuːdi/",C:"n. 朱迪",K:"人名",E:"Judy is practicing speaking English.",F:"朱迪正在练习说英语。"},
 					{P:3,W:"Ella",Y:"/ˈelə/",C:"n. 埃拉",K:"人名",E:"Ella is singing a song in the music class.",F:"埃拉正在音乐课上唱歌。"},
@@ -3410,7 +3435,6 @@
 					{P:3,W:"Davis",Y:"/ˈdeɪvɪs/",C:"n. 戴维斯",I:"姓氏",K:"人名",E:"Mr. Davis is our English teacher.",F:"戴维斯先生是我们的英语老师。"},
 					{P:3,W:"Lopez",Y:"/ˈləʊpez/",C:"n. 洛佩兹",I:"姓氏",K:"人名",E:"Ms. Lopez teaches us Spanish.",F:"洛佩兹女士教我们西班牙语。"},
 					{P:3,W:"Hayes",Y:"/heɪz/",C:"n. 海斯",I:"姓氏",K:"人名",E:"Mr. Hayes teaches history at our school.",F:"海斯先生在我们学校教历史。"},
-
 			],
 			dongci:[
 				{W:"agree",C:"同意",F:{A:"agree",B:"agreed",C:"agreed",D:"agreeing"},exp:{A:["I agree with your idea. | 我同意你的想法。","She agrees to help us. | 她同意帮助我们。"],B:["He agreed to the plan yesterday. | 他昨天同意了这个计划。","They agreed on the time last week. | 他们上周就时间达成了一致。"],C:["I have agreed with him. | 我已经同意他了。","She has agreed to come. | 她已经同意来了。"],D:["We are agreeing on the plan now. | 我们现在正在就计划达成一致。","They are agreeing with each other. | 他们正在互相同意对方的观点。"]}},
@@ -3634,21 +3658,13 @@
 					"基础动词":"have,has,had,do,doing,does,will,would,can,could,may,might,must,should,shall,let,make,put,keep,come,go,get,take,give,see,look,find,know,think,say,tell,become,seem,feel",
 
 					"单复一致":"police,fish,deer,sheep,Chinese,Japanese,series,species,means,aircraft,spacecraft,information,news,advice,knowledge,furniture,luggage,baggage,homework,evidence,money,music,rice,bread,water,coffee,tea,milk,sugar,salt,paper,weather,traffic,research,progress,work",
-					"单复特殊":"man,men,woman,women,child,children,foot,feet,tooth,teeth,goose,geese,mouse,mice,louse,lice,ox,oxen,person,people"
-				},
-				"数量词":{
-					"基数词":"zero,one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,thirty,forty,fifty,sixty,seventy,eighty,ninety,hundred,thousand,million,billion",
-					"序数词":"first,second,third,fourth,fifth,sixth,seventh,eighth,ninth,tenth,eleventh,twelfth,thirteenth,fourteenth,fifteenth,sixteenth,seventeenth,eighteenth,nineteenth,twentieth,thirtieth,fortieth,fiftieth,sixtieth,seventieth,eightieth,ninetieth,hundredth,thousandth,millionth",
-					"数量表达":"number,amount,total,score,point,percent,part,half,quarter,double,couple,pair,group,lot,plenty,enough,more,most,less,least,several,few,little,many,much,some,any,all,whole,full,empty",
-				},
-				"形容词副词":{
-					"外貌特征":"big,small,tall,short,long,beautiful,ugly,pretty,handsome,fat,thin,slim,young,old,curly",
-					"品质状态":"good,better,best,bad,worse,worst,excellent,perfect,terrible,awful,wonderful,fantastic,amazing,lovely,nice,great,real,true,false,right,wrong,correct",
-					"状态特征":"happy,sad,angry,tired,sleepy,hungry,thirsty,sick,ill,healthy,strong,weak,rich,poor,busy,free,full,empty,open,closed,clean,dirty,neat,messy,tidy,wet,dry,hot,cold,warm,cool",
-					"程度数量":"very,much,more,less,quite,almost,enough,too,so,rather",
-					"性质特征":"possible,impossible,easy,difficult,hard,simple,complex,clear,important,necessary,valuable,helpful,creative,successful,interesting,exciting,boring,surprised,traditional,modern,ancient,classical,regular,special,usual,unusual,common,normal,strange,different,same,similar,exact,digital,electric,medical,scientific,environmental,national,international,social,personal,public,private"
-				},
+					"单复特殊":"man,men,woman,women,child,children,foot,feet,tooth,teeth,goose,geese,mouse,mice,louse,lice,ox,oxen,person,people",
 
+					"反义词":'above,below,after,before,all,none,alone,together,always,sometimes,answer,question,back,front,bad,good,badly,well,beautiful,ugly,begin,end,best,worst,better,worse,big,small,black,white,borrow,lend,both,neither,break,mend,busy,free,buy,sell,cheap,expensive,clean,dirty,clever,foolish,cloudy,sunny,cold,hot,come,go,cool,warm,danger,safety,day,night,dead,alive,down,up,dry,wet,early,late,easy,difficult,empty,full,entrance,exit,fall,rise,far,near,fast,slow,first,last,forget,remember,freeze,melt,give,take,glad,sad,great,small,happy,sad,hard,easy,hate,love,here,there,high,low,hold,drop,holiday,weekday,ill,healthy,in,out,innocent,guilty,inside,outside,into,out of,kill,save,laugh,cry,leave,arrive,left,right,light,heavy,like,unlike,lose,find,many,few,miss,catch,more,less,most,least,move,stop,fat,thin,polite,rude,thin,thick,town,country,whole,part,wide,narrow,with,without,teach,learn,boring,interesting,much,little,tidy,messy,never,ever,next,last,nobody,everybody,nothing,everything,now,then,open,close,pain,pleasure,pass,fail,poor,rich,pull,push,punish,reward,rainy,dry,serious,funny,short,long,shy,outgoing,sleep,wake,smooth,rough,start,reach,strong,weak,full,empty',
+					//"反义词":'big,small,glad,sad,easy,difficult,fat,thin,first,last,dry,wet,empty,full,above,below,after,before,all,none,alone,together,always,sometimes,answer,question,back,front,bad,good,badly,well,beautiful,ugly,begin,end,best,worst,better,worse,black,white,borrow,lend,both,neither,break,mend,busy,free,buy,sell,cheap,expensive,clean,dirty,clever,foolish,cloudy,sunny,cold,hot,come,go,cool,warm,danger,safety,day,night,dead,alive,down,up,early,late,entrance,exit,fall,rise,far,near,fast,slow,forget,remember,freeze,melt,give,take,great,small,happy,sad,hard,easy,hate,love,here,there,high,low,hold,drop,holiday,weekday,ill,healthy,in,out,innocent,guilty,inside,outside,into,out of,kill,save,laugh,cry,leave,arrive,left,right,light,heavy,like,unlike,lose,find,many,few,miss,catch,more,less,most,least,move,stop,polite,rude,thin,thick,town,country,whole,part,wide,narrow,with,without,teach,learn,boring,interesting,much,little,tidy,messy,never,ever,next,last,nobody,everybody,nothing,everything,now,then,open,close,pain,pleasure,pass,fail,poor,rich,pull,push,punish,reward,rainy,dry,serious,funny,short,long,shy,outgoing,sleep,wake,smooth,rough,start,reach,strong,weak,full,empty',
+
+
+				},
 				"时间概念":{
 					"时间单位":"time,year,month,week,day,hour,minute,second,morning,afternoon,evening,night,midnight,daytime,lifetime,period,era,age,century",
 					"时间点":"today,tomorrow,yesterday,now,then,past,present,future,nowadays",
@@ -3663,6 +3679,18 @@
 					"动态方向":"towards,away from,into,out of,across,through,over",
 					"常见短语":"on top of,under,beneath,on the left,on the right,in front of,in the middle,between,next to,beside,near,close to,opposite,among",
 					"其它":"by,around,along,here,there,where,everywhere,somewhere,anywhere,far,at"
+				},
+				"数量词":{
+					"基数词":"zero,one,two,three,four,five,six,seven,eight,nine,ten,eleven,twelve,thirteen,fourteen,fifteen,sixteen,seventeen,eighteen,nineteen,twenty,thirty,forty,fifty,sixty,seventy,eighty,ninety,hundred,thousand,million,billion",
+					"序数词":"first,second,third,fourth,fifth,sixth,seventh,eighth,ninth,tenth,eleventh,twelfth,thirteenth,fourteenth,fifteenth,sixteenth,seventeenth,eighteenth,nineteenth,twentieth,thirtieth,fortieth,fiftieth,sixtieth,seventieth,eightieth,ninetieth,hundredth,thousandth,millionth",
+					"数量表达":"number,amount,total,score,point,percent,part,half,quarter,double,couple,pair,group,lot,plenty,enough,more,most,less,least,several,few,little,many,much,some,any,all,whole,full,empty",
+				},
+				"形容词副词":{
+					"外貌特征":"big,small,tall,short,long,beautiful,ugly,pretty,handsome,fat,thin,slim,young,old,curly",
+					"品质状态":"good,better,best,bad,worse,worst,excellent,perfect,terrible,awful,wonderful,fantastic,amazing,lovely,nice,great,real,true,false,right,wrong,correct",
+					"状态特征":"happy,sad,angry,tired,sleepy,hungry,thirsty,sick,ill,healthy,strong,weak,rich,poor,busy,free,full,empty,open,closed,clean,dirty,neat,messy,tidy,wet,dry,hot,cold,warm,cool",
+					"程度数量":"very,much,more,less,quite,almost,enough,too,so,rather",
+					"性质特征":"possible,impossible,easy,difficult,hard,simple,complex,clear,important,necessary,valuable,helpful,creative,successful,interesting,exciting,boring,surprised,traditional,modern,ancient,classical,regular,special,usual,unusual,common,normal,strange,different,same,similar,exact,digital,electric,medical,scientific,environmental,national,international,social,personal,public,private"
 				},
 				"人物关系":{
 					"家人":"mother,father,mom,dad,parent,son,daughter,child,children,kid,baby,boy,girl",
