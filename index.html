@@ -1872,15 +1872,15 @@
 				const scoredWords = defaultFilteredData.map(word => {
 					let score = 0;
 					let matchedTermIndex = -1;
-					if (groupSearch) {
+					if (1==2) {
 						searchTerms.forEach(term => {
 							if (word.W === term) {
-								score += 100;
+								score += 30000;
 								matchedTermIndex = termIndexMap.get(term.toLowerCase());
 							}
 							let  combinedSearchText = ((word.I || '') + ' ' + (word.K || '')).replace(/[a-z]/ig,"");
 							if (combinedSearchText.toLowerCase().includes(term.toLowerCase())) {
-								score += 10;
+								score += 3000;
 								if (matchedTermIndex === -1) {
 									matchedTermIndex = termIndexMap.get(term.toLowerCase());
 								}
@@ -1902,24 +1902,24 @@
 							const exampleChinese = word.F.toLowerCase();
 							if (isFuzzy) {
 								if (wordText === searchTerm) {
-									score+=100;
+									score+=30000;
 									matchedTermIndex = termIndexMap.get(searchTerm);
 								}
 								else if (wordText.includes(searchTerm)) {
-									score+=10;
+									score+=3000;
 									if (matchedTermIndex === -1)matchedTermIndex = termIndexMap.get(searchTerm);
 								}
 								if (explanation.includes(searchTerm) || example.includes(searchTerm)) {
-									score+=1;
+									score+=100;
 									if (matchedTermIndex === -1)matchedTermIndex = termIndexMap.get(searchTerm);
 								}
 								if (exampleChinese.includes(searchTerm)) {
-									score+=3;
+									score+=300;
 									if (matchedTermIndex === -1)matchedTermIndex = termIndexMap.get(searchTerm);
 								}
 							} else {
 								if (wordText === searchTerm) {
-									score=100;
+									score=10000;
 									matchedTermIndex = termIndexMap.get(searchTerm);
 								}
 							}
@@ -1929,8 +1929,10 @@
 					return { word, score, matchedTermIndex };
 				});
 
+				/*
 				let filteredAndScored = [];
 				if (groupSearch) {
+					//按先后顺序排序
 					const termSet = new Set(searchTerms.map(t => t.toLowerCase()));
 					const wordMap = new Map();
 					originalWordData.data.forEach(word => {
@@ -1947,6 +1949,7 @@
 						}
 					});
 				}else{
+				*/
 					filteredAndScored = scoredWords
 					.filter(item => item.score > 0)
 					.sort((a, b) => {
@@ -1960,7 +1963,7 @@
 						return b.score - a.score;
 					})
 					.map(item => item.word);
-				}
+				//}
 				originalSearchResult = [...filteredAndScored];
 				currentWordData = [...originalSearchResult];
 

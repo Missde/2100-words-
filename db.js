@@ -776,7 +776,7 @@
 					{P:2,W:"usual",Y:"/ˈjuːʒuəl/",C:"adj. 通常的",E:"I arrived at the usual time.",F:"我在平常的时间到了。"},
 					{P:2,W:"bit",Y:"/bɪt/",C:"n. 一点；少量",E:"I feel a bit tired.",F:"我感觉有点累。"},
 					{P:2,W:"power",Y:"/ˈpaʊə(r)/",C:"n. 力量；电力",E:"The wind has great power.",F:"风有很大的力量。"},
-					{P:2,W:"scientist",Y:"/ˈsaɪəntɪst/",C:"n. 科学家",E:"A scientist works in a lab.",F:"科学家在实验室工作。"},
+					{P:2,W:"scientist",Y:"/ˈsaɪəntɪst/",C:"n. 科学家",E:"A scientist works in a lab.",F:"科学家在实验室工作。注：职业+ 单数名词时省略(一个)"},
 					{P:2,W:"sit",Y:"/sɪt/",C:"v. 坐",E:"Please sit down.",F:"请坐。"},
 					{P:2,W:"wear",Y:"/weə/,/wer/",C:"v. 穿；戴",E:"I wear a uniform to school.",F:"我穿校服去学校。"},
 					{P:2,W:"foot",Y:"/fʊt/",C:"n. 脚；英尺",E:"My foot hurts.",F:"我的脚疼。"},
@@ -3661,8 +3661,6 @@
 					"单复特殊":"man,men,woman,women,child,children,foot,feet,tooth,teeth,goose,geese,mouse,mice,louse,lice,ox,oxen,person,people",
 
 					"反义词":'above,below,after,before,all,none,alone,together,always,sometimes,answer,question,back,front,bad,good,badly,well,beautiful,ugly,begin,end,best,worst,better,worse,big,small,black,white,borrow,lend,both,neither,break,mend,busy,free,buy,sell,cheap,expensive,clean,dirty,clever,foolish,cloudy,sunny,cold,hot,come,go,cool,warm,danger,safety,day,night,dead,alive,down,up,dry,wet,early,late,easy,difficult,empty,full,entrance,exit,fall,rise,far,near,fast,slow,first,last,forget,remember,freeze,melt,give,take,glad,sad,great,small,happy,sad,hard,easy,hate,love,here,there,high,low,hold,drop,holiday,weekday,ill,healthy,in,out,innocent,guilty,inside,outside,into,out of,kill,save,laugh,cry,leave,arrive,left,right,light,heavy,like,unlike,lose,find,many,few,miss,catch,more,less,most,least,move,stop,fat,thin,polite,rude,thin,thick,town,country,whole,part,wide,narrow,with,without,teach,learn,boring,interesting,much,little,tidy,messy,never,ever,next,last,nobody,everybody,nothing,everything,now,then,open,close,pain,pleasure,pass,fail,poor,rich,pull,push,punish,reward,rainy,dry,serious,funny,short,long,shy,outgoing,sleep,wake,smooth,rough,start,reach,strong,weak,full,empty',
-					//"反义词":'big,small,glad,sad,easy,difficult,fat,thin,first,last,dry,wet,empty,full,above,below,after,before,all,none,alone,together,always,sometimes,answer,question,back,front,bad,good,badly,well,beautiful,ugly,begin,end,best,worst,better,worse,black,white,borrow,lend,both,neither,break,mend,busy,free,buy,sell,cheap,expensive,clean,dirty,clever,foolish,cloudy,sunny,cold,hot,come,go,cool,warm,danger,safety,day,night,dead,alive,down,up,early,late,entrance,exit,fall,rise,far,near,fast,slow,forget,remember,freeze,melt,give,take,great,small,happy,sad,hard,easy,hate,love,here,there,high,low,hold,drop,holiday,weekday,ill,healthy,in,out,innocent,guilty,inside,outside,into,out of,kill,save,laugh,cry,leave,arrive,left,right,light,heavy,like,unlike,lose,find,many,few,miss,catch,more,less,most,least,move,stop,polite,rude,thin,thick,town,country,whole,part,wide,narrow,with,without,teach,learn,boring,interesting,much,little,tidy,messy,never,ever,next,last,nobody,everybody,nothing,everything,now,then,open,close,pain,pleasure,pass,fail,poor,rich,pull,push,punish,reward,rainy,dry,serious,funny,short,long,shy,outgoing,sleep,wake,smooth,rough,start,reach,strong,weak,full,empty',
-
 
 				},
 				"时间概念":{
