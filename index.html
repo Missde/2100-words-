@@ -729,14 +729,38 @@
 				this.panel.classList.remove('has-audio', 'has-tts');
 				document.body.classList.remove('essay-panel-visible');
 			}
-			checkAndShowEssay(page) {
-				const essay = originalWordData.essay.find(e => e.p === page);
+			async checkAndShowEssay(page) {
+				let essay = originalWordData.essay.find(e => e.p === page);
 				if (essay && currentFilter === 'all' && !currentSearchQuery) {
 					this.show(essay);
-				} else {
-					this.hide();
+					return;
 				}
+				//
+				if (currentFilter === 'all' && !currentSearchQuery) {
+					return new Promise((resolve) => {
+						const script = document.createElement('script');
+						script.src = `essay/${page}.js`;
+						script.onerror = () => {
+							this.hide();
+							resolve();
+						};
+						script.onload = () => {
+							if (window.essayData && window.essayData.p === page) {
+								originalWordData.essay.push(window.essayData);
+								this.show(window.essayData);
+								delete window.essayData;
+							} else {
+								this.hide();
+							}
+							script.remove();
+							resolve();
+						};
+						document.head.appendChild(script);
+					});
+				}
+				this.hide();
 			}
+
 		}
 		class WordStateManager {
 			constructor() {
@@ -1342,7 +1366,6 @@
 						}
 					}
 				}
-
 				if (!wordListString) {
 					console.warn(`未找到分类 "${cleanTitle}" 对应的单词列表`);
 					currentSearchQuery = '';
@@ -1380,7 +1403,7 @@
 			searchWords();
 			updateActiveFilterLink();
 			renderUnitSelector();
-			essayManager.checkAndShowEssay(currentPage);
+			//essayManager.checkAndShowEssay(currentPage);
 
 			setTimeout(() => {
 				// 如果是从分类页面进入，显示同级分类导航
@@ -1841,7 +1864,6 @@
 			const urlParams = getParamsFromUrl();
 			const groupSearch = !!urlParams.title && !!urlParams.query;
 			let query = groupSearch ? urlParams.query :searchInput.value.trim();
-
 			if(groupSearch)query = currentSearchQuery
 			currentSearchQuery = query;
 
@@ -1872,7 +1894,7 @@
 				const scoredWords = defaultFilteredData.map(word => {
 					let score = 0;
 					let matchedTermIndex = -1;
-					if (1==2) {
+					if (groupSearch) {
 						searchTerms.forEach(term => {
 							if (word.W === term) {
 								score += 30000;
@@ -1984,8 +2006,8 @@
 					const foundWord = originalWordData.data.find(word => word.W.toLowerCase() === searchTerm);
 					const foundInCurrentResults = currentWordData.some(word => word.W.toLowerCase() === searchTerm);
 					if(!foundWord){
-						l+='"'+term+'",';
 						if (/[\u4e00-\u9fa5]/.test(term))return;
+						l+='"'+term+'",';
 					}
 
 					if (foundWord && !foundInCurrentResults) {
@@ -2089,7 +2111,7 @@
 			renderWordCards(limit);
 			renderPagination(limit);
 			updatePrintFooter(limit);
-			essayManager.checkAndShowEssay(limit);
+			essayManager.checkAndShowEssay(currentPage);
 		}
 		function renderWordCards(limit) {
 			if(!limit)limit=wordsPerPage;
@@ -2097,18 +2119,21 @@
 			const startIndex = (currentPage - 1) * limit;
 			const endIndex = Math.min(startIndex + limit, currentWordData.length);
 			const pageWords = currentWordData.slice(startIndex, endIndex);
-			if(!(originalWordData.essay && originalWordData.essay.some(e => e.p === currentPage))){
-				let words='这些单词【'+pageWords.map(w => w.W).join(', ')+'】';
-				//步骤1
-				console.log('用'+words+'①写一篇90~110字左右的中考作文，方便中考学生学习。②[重点]必须包括上面的20个单词。③要求积极向上、语句通顺、语法正确、逻辑清晰。④尽量不用使用外国人名、外国地名，禁止宗教、网游内容。⑤注意分段，每段字数不要太长。');
-				//步骤2
-				console.log('这是一篇初中生作文，请检查。①必须包括'+words+'。如果没有，请在适当位置补充。②修改语法、逻辑错误。③作文内容简洁及符合初中生水平，字数在90~110字。');
-				//步骤3
-				console.log('作文改成这样如何？看看一共多少字，如果>120字，请精简。你再判断一下是否包含了【'+words+'】全部单词，如果缺少，请在适当的位置补充，但不要修改太多内容。');
-				//步骤4
-				console.log('将上面作文中的'+words+'按顺序做成学习卡，格式是：1.单词		句子. (句子翻译)   如果一条句子包含多个其中的单词，后面跳过重复单词，仅提示出现在第几句即可。');
 
-			}
+			setTimeout(function(){
+				if(!(originalWordData.essay && originalWordData.essay.some(e => e.p === currentPage))){
+					let words='这些单词【'+pageWords.map(w => w.W).join(', ')+'】';
+					//步骤1
+					console.log('用'+words+'①写一篇90~110字左右的中考作文，方便中考学生学习。②[重点]必须包括上面的20个单词。③要求积极向上、语句通顺、语法正确、逻辑清晰。④尽量不用使用外国人名、外国地名，禁止宗教、网游内容。⑤注意分段，每段字数不要太长。');
+					//步骤2
+					console.log('这是一篇初中生作文，请检查。①必须包括'+words+'。如果没有，请在适当位置补充。②修改语法、逻辑错误。③作文内容简洁及符合初中生水平，字数在90~110字。');
+					//步骤3
+					console.log('作文改成这样如何？看看一共多少字，如果>120字，请精简。你再判断一下是否包含了【'+words+'】全部单词，如果缺少，请在适当的位置补充，但不要修改太多内容。');
+					//步骤4
+					console.log('将上面作文中的'+words+'按顺序做成学习卡，格式是：1.单词		句子. (句子翻译)   如果一条句子包含多个其中的单词，后面跳过重复单词，仅提示出现在第几句即可。');
+
+				}
+			},1000);
 			if (pageWords.length === 0) {
 				wordContainer.innerHTML = '<div class="no-results">没有找到匹配的单词</div>';
 				return;
@@ -2390,7 +2415,7 @@
 			currentPage = page;
 			updateDisplay(limit);
 			updateUrlParams();
-			essayManager.checkAndShowEssay(currentPage);
+			//essayManager.checkAndShowEssay(currentPage);
 			window.scrollTo({ top:0, behavior:'smooth' });
 		}
 		function updatePrintFooter(limit) {
@@ -2472,7 +2497,7 @@
 			initKeyboardNavigation();
 			applyFilter(currentFilter);
 			setTimeout(() => {
-				essayManager.checkAndShowEssay(currentPage);
+				//essayManager.checkAndShowEssay(currentPage);
 				const urlParams = getParamsFromUrl();
 				if (urlParams.title && urlParams.query)groupBabyLis();
 			}, 100);
