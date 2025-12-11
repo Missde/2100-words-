@@ -14,7 +14,7 @@
 		h1 a:last{padding-right:0;}
 		h1 a:hover { color:#1976d2;background-color:#e3f2fd;border-color:#2196F3;}
 		h1 a.active {background-color:#2196F3;color:white;border-color:#1976d2;font-weight:bold;}
-		body {line-height:1.6;max-width:1000px;margin:0 auto;padding:60px 0 20px 0px; font-family:"hengshuiti", "微软雅黑", sans-serif;}
+		body {line-height:1.6rem;max-width:1000px;margin:0 auto;padding:60px 0 20px 0px; font-family:"hengshuiti", "微软雅黑", sans-serif;}
 		.controls {display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:15px;}
 		.controls.hide{display:none;}
 		.search-box {display:flex;gap:10px;flex:1;min-width:250px;}
@@ -29,8 +29,8 @@
 		.sort-btn {padding:8px 16px;background-color:#2196F3;color:white;border:none;border-radius:4px;cursor:pointer;transition:background-color 0.3s;}
 		.sort-btn:hover {background-color:#0b7dda;}
 		.word-card {border:1px solid #ddd;border-radius:8px;padding:5px 15px;margin-bottom:10px;box-shadow:0 2px 4px rgba(0,0,0,0.1);position:relative;width:calc(50% - 10px);display:inline-block;vertical-align:top;box-sizing:border-box;height:110px;overflow:hidden;}
-		.word-card:nth-child(odd) {margin-right:10px;clear:both;}
-		.word-card:nth-child(even) {margin-left:10px;float:right;}
+		.-word-card:nth-child(odd) {margin-right:10px;clear:both;}
+		.word-card:nth-child(even) {float:right;}
 		.word-card.forget {background-color:#fff8f8; border-left:4px solid #ff6b6b;}
 		.word-card.learned {background-color:#FCFFFC; border-left:4px solid #4caf50;}
 		.word-header {display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
@@ -63,9 +63,12 @@
 		.no-results {text-align:center;padding:40px;color:#666;font-size:1.2rem;}
 		.highlight {color:red;}
 		.word-index {text-decoration:none;position:absolute; bottom:10px; right:20px; color:#999; font-size:0.9rem;border:1px solid #ddd;padding:3px;line-height:17px;height:17px;min-width:17px;text-align:center;border-radius:50%;}
-		.word-index.high-frequency { border-color:#ff4444; background-color:#ffebee; color:#c62828;}
-		.word-index.medium-frequency { border-color:#ff9800; background-color:#fff3e0; color:#ef6c00;}
-		.word-index.low-frequency { border-color:#4caf50; background-color:#e8f5e8; color:#2e7d32;}
+		.high-frequency .word-index{ border-color:#ff4444; background-color:#ffebee; color:#c62828;}
+		.medium-frequency .word-index{ border-color:#ff9800; background-color:#fff3e0; color:#ef6c00;}
+		.low-frequency .word-index { border-color:#4caf50; background-color:#e8f5e8; color:#2e7d32;}
+		.low-name .word{color:#666}
+
+
 		.print-footer {display:none;}
 		.toast-container {position:fixed;top:60px;right:20px;z-index:1000;max-width:300px;}
 		.toast {background:#333;color:white;padding:12px 16px;margin-bottom:10px;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,0.15);transform:translateX(100%);opacity:0;transition:all 0.3s ease;cursor:pointer;}
@@ -131,7 +134,7 @@
 		.group-selector { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px;padding-left:2rem;}
 		.group-selector label {position:relative;display:inline-flex; align-items:center; cursor:pointer;padding:3px 10px;margin-bottom:5px;border-radius:15px;font-size:1rem;transition:all 0.2s;color:#0078d7;background:#eef7ff;border:1px solid #a0cfff;}
 		.group-selector label:hover{background-color:#2196F3;color:#fff;}
-		.group-selector label i{text-align:center;font-style: normal;position:absolute;right:0;top:0;margin-top:-10px;width:10px;height:10px;line-height:6px;padding:3px;font-size:.6rem;background:#eef7ff;border-radius:50%;color:#2196F3;border:1px solid #a0cfff;border-bottom:0;}
+		.group-selector label i{text-align:center;font-style: normal;position:absolute;right:0;top:0;margin-top:-10px;height:10px;line-height:6px;padding:5px 6px 0 3px;font-size:.8rem;background:#eef7ff;border-radius:50%;color:#2196F3;border:1px solid #a0cfff;border-bottom:0;}
 		.group-selector label i.duo{color:#f00;}
 		.group-selector label:hover i{background:#2196F3;color:#fff;border-color:#2196F3}
 
@@ -244,20 +247,46 @@
 		@media print {
 			.essay-panel.show,
 			h1,.controls,.audio-btn,.pagination,.essay-panel,.toast-container,.search-box{display:none}
-			body{font-size:1rem;padding:0 20px;}
+			body{font-size:1rem;padding:0 10px;line-height:1.3rem;}
 			.highlight {color:#000;}
 			.word-main{height:30px;line-height:30px;}
 			.word,.word *{font-size:1.5rem;color:#f00;}
 			.word-header,.example{margin:0;padding:0;}
-			.word-card{box-shadow:none;margin:0 0 3px 0;padding:2px 5px;position:relative;height:92px;overflow:hidden;}
+			.word-card{box-shadow:none;margin:0 0 3px 0;padding:2px 5px;position:relative;height:92px;overflow:hidden;width:calc(50% - 2px);}
 			.word-index {position:absolute; top:5px; right:5px;bottom:auto;left:auto;color:#666;font-size:0.7rem;border:none;}
-			.print-footer {display:block;position:fixed;bottom:10px;right:10px;font-size:0.8rem;color:#666;}
-			.example-english{font-size:1.2rem;margin:0;padding:0;line-height:18px;-display:block;}
+			.print-footer {display:block;position:fixed;bottom:10px;right:10px;font-size:0.8rem;color:#666;font-family:"微软雅黑"}
+			.example-english{font-size:1.2rem;margin:0;padding:0;line-height:18px;}
 			.chinesebox{display:inline-block;}
 			.word-card.forget,.word-card.learned {border-left-width:2px;}
 			body.essay-panel-visible {padding:0;}
 			body.essay-panel-visible.big {padding:0;}
+
+			/* .m_group .print-footer{display:none;} */
+			.m_group .high-frequency .word{color:#ff4444}
+			.m_group .medium-frequency .word{color:#ff9800}
+			.m_group .low-frequency .word{color:#4caf50}
+			.m_group .low-name .word{color:#666}
+
+			.m_group24 .word-card{height:86px}
+			.m_group26 .word-card{height:80px;}
+			.m_group28 .word-card{height:74px}
+			.m_group30 .word-card{height:68px}
+			.m_group32 .word-card{height:64px}
+			.m_group34 .word-card{height:60px}
+			.m_group36 .word-card{height:56px}
+			.m_group38 .word-card{height:54px}
+			.m_group40 .word-card{height:52px}
+
+			.m_group2 .word-card{margin:0 0 1px 0;}
+			.m_group2 .word-main{height:23px;line-height:20px;}
+			.m_group2 .example{line-height:15px;}
+			.m_group2 .example-english{font-size:.9rem;}
+			.m_group2 .example-chinese{font-size:.7rem;}
+			.m_group2 .word,.m_group .word *{font-size:1.3rem;}
+			.m_group2 .phonetic {font-size:0.6rem;}
+
 		}
+
 	</style>
 </head>
 <body>
@@ -1297,6 +1326,8 @@
 			currentFilter = filterType;
 			const urlParams = getParamsFromUrl();
 			//const isGroupMenu = filterType === 'group' && (urlParams.query && urlParams.title);
+			document.body.className='m_'+filterType;
+
 			const isGroupMenu = filterType === 'group' && !!urlParams.title;
 			if (filterType === 'group' && !isGroupMenu) {
 					// 纯分组视图
@@ -1372,8 +1403,27 @@
 					defaultFilteredData = [];
 				} else {
 					currentSearchQuery = wordListString;
+					if(filterType=="group" && urlParams.title.indexOf("Unit")>-1){
+						let l=wordListString.split(',').filter(Boolean).length;
+						//单元单词，尽量1张打印完(正反面)
+						if(l>76)document.body.className+=' m_group40 m_group2';
+						else if(l>72)document.body.className+=' m_group38 m_group2';
+						else if(l>68)document.body.className+=' m_group36 m_group2';
+						else if(l>64)document.body.className+=' m_group34 m_group2';
+						else if(l>60)document.body.className+=' m_group32 m_group2';
+						else if(l>56)document.body.className+=' m_group30 m_group2';
+						else if(l>52)document.body.className+=' m_group28';
+						else if(l>48)document.body.className+=' m_group26';
+						else if(l>44)document.body.className+=' m_group24';
+						//else if(l>40)document.body.className+=' m_group22';
+						//默认每页22个
+						console.log(printFooter);
+						setTimeout(function(){
+							printFooter.textContent=cleanTitle+" 共"+l+"个单词";
+						},1000);
+					}
 				}
-				//
+
 
 
 				searchInput.style.display="none";
@@ -1877,7 +1927,7 @@
 			} else {
 				if(groupSearch){
 					var searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-					if(urlParams.title.indexOf("Unit")>-1)limit=50;
+					if(urlParams.title.indexOf("Unit")>-1)limit=80;
 					//if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
 				}else{
 					//如果没有,增加按空格分词。目的兼容【must, have to】这种情况
@@ -2185,8 +2235,15 @@
 				case 3:
 					frequencyClass = 'low-frequency';
 					frequencyTitle = '低频词';
+
+					if( /(人名|姓氏|作品)/.test((word.K || "") + (word.I || "")))frequencyClass += ' low-name';
+
 					break;
 			}
+
+			wordCard.className+=" "+frequencyClass;
+
+
 			//英语例句 - 高亮
 			const englishExamples = word.E.split('/').map(example => example.trim()).filter(example => example);
 			let englishExamplesHtml = '';
@@ -2221,7 +2278,7 @@
 					${englishExamplesHtml}
 					${chineseExamplesHtml}
 				</div>
-				<a class="word-index ${frequencyClass}" title="查看单词 ${word.W}" href="https://www.iciba.com/word?w=${word.W}" target="_blank">${index}</a>
+				<a class="word-index" title="查看单词 ${word.W}" href="https://www.iciba.com/word?w=${word.W}" target="_blank">${index}</a>
 			`;
 			const wordElement = wordCard.querySelector('.word');
 			const phoneticElement = wordCard.querySelector('.phonetic');
