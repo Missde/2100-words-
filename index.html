@@ -1748,7 +1748,7 @@
 						.replace(/<script src="db.js">/i, '<script>var originalWordData='+JSON.stringify(originalWordData, null, 2));
 				window.download2100 = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
 				extraButtons = `
-					<button class="sort-btn" onclick="window.open('shuyaohengshuiti.ttf')" style="float:right;margin-left:10px;download2100">下载英文字体 (衡水体)</button>
+					<button class="sort-btn" onclick="window.open('shuyaohengshuiti.ttf')" style="float:right;margin-left:10px;download2100">下载英文字体&nbsp;&nbsp;<font style="color:#ccc">(衡水体)</font></button>
 					<button class="sort-btn" style="float:right;download2100" onclick="(function(){
 						const a = document.createElement('a');
 						a.href = window.download2100;
