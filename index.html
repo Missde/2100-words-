@@ -714,8 +714,8 @@
 				this.currentEssay = essay;
 				//this.title.textContent = "《 "+essay.tit+" 》";
 
-				this.title.innerHTML = `<a href="javascript:void(0)" onclick="window.print()" title="按Ctrl + P，打印本页单词" style="float:left;color:#fff;text-decoration: none;font-size:1.5rem;cursor:pointer;">🖶</a>&nbsp;
-					<a href="essay/${essay.p}.docx" title="下载作文，加深单词学习" style="text-decoration: none;font-size:1.2rem;cursor:pointer;">📄</a><span>《 ${essay.tit} 》</span>`;
+				this.title.innerHTML = `<a href="javascript:void(0)" onclick="window.print()" title="按Ctrl + P，打印本页单词" style="float:left;color:#fff;text-decoration: none;font-size:1.3rem;cursor:pointer;">🖶</a>&nbsp;
+					<a href="essay/${essay.p}.docx" title="下载作文，并打印，加深学习" style="text-decoration: none;font-size:1.2rem;cursor:pointer;">⬇️</a><span>《 ${essay.tit} 》</span>`;
 
 
 				const startIndex = (currentPage - 1) * limit;
