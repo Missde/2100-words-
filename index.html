@@ -8,7 +8,7 @@
 	<title>初中2100单词</title>
 	<style>
 		@font-face {font-family: 'hengshuiti';src: url('shuyaohengshuiti.ttf') format('truetype');}
-		h1 {margin:0 0 15px 0;padding:0; text-align:center;position:fixed; top:0; left:0; right:0; background-color:white;z-index:1001;box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+		h1 {margin:0 0 15px 0;padding:10px 0; text-align:center;position:fixed; top:0; left:0; right:0; background-color:white;z-index:1001;box-shadow:0 2px 4px rgba(0,0,0,0.1);}
 		h1 a { display:inline-block;padding:3px 13px;margin:0 5px;background-color:#f5f5f5;color:#333;text-decoration:none;border-radius:20px;border:1px solid #ddd;font-size:1.1rem;transition:all 0.2s ease;}
 		h1 a:first{padding-left:0;}
 		h1 a:last{padding-right:0;}
@@ -712,7 +712,12 @@
 				if(!limit)limit=wordsPerPage;
 				if (this.currentEssay && this.currentEssay.p === essay.p)return;
 				this.currentEssay = essay;
-				this.title.textContent = "《 "+essay.tit+" 》";
+				//this.title.textContent = "《 "+essay.tit+" 》";
+
+				this.title.innerHTML = `<a href="javascript:void(0)" onclick="window.print()" title="按Ctrl + P，打印本页单词" style="float:left;color:#fff;text-decoration: none;font-size:1.5rem;cursor:pointer;">🖶</a>&nbsp;
+					<a href="essay/${essay.p}.docx" title="下载作文，加深单词学习" style="text-decoration: none;font-size:1.2rem;cursor:pointer;">📄</a><span>《 ${essay.tit} 》</span>`;
+
+
 				const startIndex = (currentPage - 1) * limit;
 				const endIndex = Math.min(startIndex + limit, currentWordData.length);
 				const pageWords = currentWordData.slice(startIndex, endIndex).map(word => word.W.toLowerCase());
@@ -724,6 +729,10 @@
 				});
 				const paragraphs = processedContent.split('\n').filter(p => p.trim() !== '');
 				processedContent = paragraphs.map(paragraph =>`<p>${paragraph}</p>`).join('');
+
+
+
+
 				this.content.innerHTML = processedContent;
 				const hasAudio = essay.mp3 && essay.mp3.trim() !== '';
 				if (hasAudio) {
