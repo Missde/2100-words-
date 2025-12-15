@@ -4,8 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
-	<meta name="author" content="Missde整理：①词频列表取自蝶变背单词。②例句、作文由豆包+DeepSeek生成。③作文朗读：微软语音库"/>
 	<title>初中2100单词</title>
+	<meta name="author" content="Missde整理：①词频列表取自蝶变背单词。②例句、作文由豆包+DeepSeek生成。③作文朗读：微软语音库"/>
+	<meta name="description" content="在蝶变背单词2100个单词的基础上，补充了人教版3~9年级英语课本后面的全部单词及短语。其中单词约600个、短语约620个、人名地名书名约300个、缩写单词约50个">
 	<style>
 		/* @font-face {font-family: 'hengshuiti';src: url('shuyaohengshuiti.ttf') format('truetype');} */
 		@font-face {
@@ -1622,6 +1623,7 @@
 					const unitButtonsDiv = document.createElement('div');
 					unitButtonsDiv.className = 'group-selector';
 					//unitButtonsDiv.style.cssText = 'padding-left:2rem;display:flex; flex-wrap:wrap; gap:10px;';
+					let u_word_num=0;
 					units.forEach(unit => {
 						const label = document.createElement('label');
 						const button = document.createElement('span');
@@ -1638,15 +1640,16 @@
 							}
 						};
 						let i=unit.W.split(',').filter(Boolean).length || 0;
+						if(unit.unit.indexOf("Unit")>-1)u_word_num+=i;
 						button.innerHTML = unit.unit+"<i class='"+(unit.unit.replace(/[a-z]/ig,'')>0 && i>=50?'duo':'')+"'>"+i+"</i>";
-						button.title=grade+" "+unit.unit+" 共有"+i+"个单词";
+						button.title=grade+" "+unit.unit+" 共有"+i+"个单词/短语";
 						label.appendChild(button);
 						unitButtonsDiv.appendChild(label);
 					});
 
 					const gradeHeader = document.createElement('div');
 					gradeHeader.className = 'group-category-header';
-					gradeHeader.textContent = `${grade}：`;
+					gradeHeader.textContent = `${grade}，共${u_word_num}个：`;
 					groupContainer.appendChild(gradeHeader);
 
 					groupContainer.appendChild(unitButtonsDiv);
