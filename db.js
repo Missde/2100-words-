@@ -3545,7 +3545,6 @@
 					{P:3,W:"The Final Problem",Y:"/ðə ˈfaɪnl ˈprɒbləm/",C:"n. 《最后一案》",K:"作品 书名",E:"The Final Problem is a famous Sherlock Holmes story.",F:"《最后一案》是一个著名的夏洛克·福尔摩斯故事。"},
 					{P:3,W:"The Three Body Problem",Y:"/ðə θriː ˈbɒdi ˈprɒbləm/",C:"n. 《三体》",K:"作品 书名",E:"The Three Body Problem is a popular Chinese science fiction novel.",F:"《三体》是一部受欢迎的中国科幻小说。"},
 					{P:3,W:"Around the World in Eighty Days",Y:"/əˈraʊnd ðə wɜːld ɪn ˈeɪti deɪz/",C:"n. 《八十天环游地球》",K:"作品 书名",E:"Around the World in Eighty Days is an adventure novel.",F:"《八十天环游地球》是一部冒险小说。"},
-					{P:3,W:"Sherlock Holmes",Y:"/ˈʃɜːlɒk həʊmz/",C:"n. 夏洛克·福尔摩斯",K:"作品 书名",E:"Sherlock Holmes is a great detective in many stories.",F:"夏洛克·福尔摩斯是许多故事中的大侦探。"},
 					{P:3,W:"The Romance of the Three Kingdoms",Y:"/ðə rəʊˈmæns ɒv ðə θriː ˈkɪŋdəmz/",C:"n. 《三国演义》",K:"作品 书名",E:"The Romance of the Three Kingdoms is one of the Four Great Classical Novels of China.",F:"《三国演义》是中国四大名著之一。"},
 					{P:3,W:"Oliver Twist",Y:"/ˈɒlɪvə twɪst/",C:"n. 《雾都孤儿》",K:"作品 书名",E:"Oliver Twist is a novel by Charles Dickens.",F:"《雾都孤儿》是查尔斯·狄更斯的小说。"},
 					{P:3,W:"Alice's Adventures in Wonderland",Y:"/ˈælɪsɪz ədˈventʃəz ɪn ˈwʌndəlænd/",C:"n. 《爱丽丝梦游仙境》",K:"作品 书名",E:"Alice's Adventures in Wonderland is a classic children's book.",F:"《爱丽丝梦游仙境》是一本经典的儿童读物。"},
@@ -3724,7 +3723,6 @@
 					{P:3,W:"Tilly",Y:"/ˈtɪli/",C:"n. 蒂莉 (人名)",K:"人名",E:"Tilly is playing with her little brother in the garden.",F:"蒂莉正在花园里和她的弟弟玩耍。"},
 					{P:3,W:"Ji-Hoon",Y:"/ˈdʒiː huːn/",C:"n. 志勋",K:"人名",E:"Ji-Hoon is from South Korea.",F:"志勋来自韩国。"},
 					{P:3,W:"Kaito",Y:"/ˈkaɪtəʊ/",C:"n. 海斗",K:"人名",E:"Kaito is studying Chinese in Beijing.",F:"海斗正在北京学习中文。"},
-					{P:3,W:"Sherlock Holmes",Y:"/ˈʃɜːlɒk həʊmz/",C:"n. 夏洛克·福尔摩斯",E:"Sherlock Holmes is a great detective in many stories.",F:"夏洛克·福尔摩斯是许多故事中的大侦探。"},
 					{P:3,W:"Charles Dickens",Y:"/tʃɑːlz ˈdɪkɪnz/",C:"n. 查尔斯·狄更斯",K:"人名",E:"Charles Dickens wrote many famous novels.",F:"查尔斯·狄更斯写了许多著名的小说。"},
 					{P:3,W:"Lewis Carroll",Y:"/ˈluːɪs ˈkærəl/",C:"n. 刘易斯·卡罗尔",K:"人名",E:"Lewis Carroll wrote Alice's Adventures in Wonderland.",F:"刘易斯·卡罗尔创作了《爱丽丝梦游仙境》。"},
 					{P:3,W:"Frances Hodgson Burnett",Y:"/ˈfrɑːnsɪs ˈhɒdʒsən bɜːˈnet/",C:"n. 弗朗西丝·霍奇森·伯内特",K:"人名",E:"Frances Hodgson Burnett wrote The Secret Garden.",F:"弗朗西丝·霍奇森·伯内特创作了《秘密花园》。"},
@@ -3734,6 +3732,7 @@
 					{P:3,W:"Colin",Y:"/ˈkɒlɪn/",C:"n. 科林",K:"人名",E:"Colin is a sickly boy in The Secret Garden.",F:"科林是《秘密花园》中一个体弱多病的男孩。"},
 					{P:3,W:"Ernest Hemingway",Y:"/ˈɜːnɪst ˈhemɪŋweɪ/",C:"n. 欧内斯特·海明威",K:"人名",E:"Ernest Hemingway was a great American writer.",F:"欧内斯特·海明威是一位伟大的美国作家。"},
 					{P:3,W:"Robert",Y:"/ˈrɒbət/",C:"n. 罗伯特",K:"人名",E:"Robert is playing basketball on the playground.",F:"罗伯特正在操场上打篮球。"},
+					{P:3,W:"Sherlock Holmes",Y:"/ˈʃɜːlɒk həʊmz/",C:"n. 夏洛克·福尔摩斯",K:"人名",E:"Sherlock Holmes is a great detective in many stories.",F:"夏洛克·福尔摩斯是许多故事中的大侦探。"},
 
 			],
 			dongci:[
