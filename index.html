@@ -1311,6 +1311,7 @@
 		let currentFilter = 'all';
 		let defaultFilteredData = [...currentWordData];
 		let unitSelectorContainer = document.getElementById('unitSelectorContainer');
+		const domain='https://2100words.netlify.app/';//公网网址 / 用于下载
 		const wordContainer = document.getElementById('wordContainer');
 		const pagination = document.getElementById('pagination');
 		const searchInput = document.getElementById('searchInput');
@@ -1742,9 +1743,9 @@
 			if (window.location.protocol === 'https:' && !isMobile) {
 				var html=document.documentElement.outerHTML
 						.replace("download2100","display:none;")
-						.replace("essay/${page}.js","https://2100words.netlify.app/essay/${page}.js")
-						.replace("essay/${essay.p}.docx","https://2100words.netlify.app/essay/${essay.p}.docx")
-						.replace("this.currentEssay.mp3+'.mp3'","'https://2100words.netlify.app/'+this.currentEssay.mp3+'.mp3'")
+						.replace("essay/${page}.js",domain+"essay/${page}.js")
+						.replace("essay/${essay.p}.docx",domain+"essay/${essay.p}.docx")
+						.replace("this.currentEssay.mp3+'.mp3'","domain+this.currentEssay.mp3+'.mp3'")
 						.replace(/<script src="db.js">/i, '<script>var originalWordData='+JSON.stringify(originalWordData, null, 2));
 				window.download2100 = URL.createObjectURL(new Blob([html], { type: 'text/html;charset=utf-8' }));
 				extraButtons = `
