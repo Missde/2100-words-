@@ -210,6 +210,9 @@
 		.readPanel .set select{padding:6px 10px; border-radius:4px; border:1px solid #ccc;width:300px}
 		.readPanel .setbox{display:flex; flex-wrap:wrap; gap:15px; align-items:center;}
 
+		.github{display:none;}
+		.m_cache .github{display:block;}
+
 		/* 移动端响应式样式 */
 		@media screen and (max-width:600px) {
 			body {padding:80px 10px 20px;font-size:14px;}
@@ -1767,7 +1770,10 @@
 					})()">下载本程序&nbsp;&nbsp;<font style="color:#ccc">(1个网页)</font></button>
 				`;
 			}
-
+			const tempDiv = document.createElement('div');
+			tempDiv.className ="github";
+			tempDiv.innerHTML = '中考2100个单词Github开源URL： <a href="https://github.com/Missde/2100-words-" target="_blank">https://github.com/Missde/2100-words-</a>';
+			unitSelectorContainer.parentNode.insertBefore(tempDiv, unitSelectorContainer.nextSibling);
 
 			const cacheDiv = document.createElement('div');
 			cacheDiv.style.cssText = 'margin:5px 0; display:flex; gap:10px;position:relative;';
