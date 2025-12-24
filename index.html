@@ -32,6 +32,12 @@
 		.group-menu button{background: #EAF5FC; border: none; padding: 4px 10px;margin:0 0 5px 10px; border-radius: 15px; cursor: pointer; font-size: 0.9rem; transition: 0.2s; min-width: 60px; text-align: center;}
 		.group-menu button.on{background:#1588E5;color:#fff;}
 
+		.group-menu .write{transition:background-color 0.3s;font-size:14px;border:1px solid #2196F3;font-weight:400;min-width:auto;padding:1px 5px;margin-right:5px;border-radius:3px;}
+		.group-menu .write.on{background:#2196F3;color:#fff;}
+
+
+		.hide-en .word,.hide-en .phonetic,.hide-en .example-english{display:none}
+
 		.search-box .checkbox{border:1px solid #ddd;border-radius:4px;padding:0 4px;line-height:40px;font-size:.8rem;}
 		#fuzzySearch {width:18px;height:18px;vertical-align:sub;}
 		.sort-btn {padding:8px 16px;background-color:#2196F3;color:white;border:none;border-radius:4px;cursor:pointer;transition:background-color 0.3s;}
@@ -1553,9 +1559,26 @@
 			// 在搜索框的位置插入导航栏
 			const controls = document.querySelector('.controls');
 			let siblingNav = document.getElementById('group-menu');
-
 			// 设置标题
-			siblingNav.innerHTML = `<b>${parentCategory}</b>`;
+			siblingNav.innerHTML = `<b onclick="window.print()" title="打印当前网页">${parentCategory}</b>`;
+
+			//隐藏英文和音标 开关
+			let hideen=document.createElement('button');
+			hideen.className = 'write';
+			hideen.textContent="默写";
+			hideen.addEventListener('click', () => {
+				if (hideen.classList.contains('on')) {
+					hideen.classList.remove('on');
+					document.getElementById('wordContainer').classList.remove('hide-en');
+				} else {
+					hideen.classList.add('on');
+					document.getElementById('wordContainer').classList.add('hide-en');
+				}
+
+			})
+			siblingNav.prepend(hideen);
+
+
 
 			// 添加同级分类按钮
 			siblingCategories.forEach(category => {
