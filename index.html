@@ -28,8 +28,8 @@
 		.search-box{display:flex;gap:10px;flex:1;min-width:250px;}
 		#searchInput{flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:1rem;}
 		.group-menu{flex:1;border:1px solid #ddd;background:#fff;padding:5px 0 0 10px;border-radius:5px;}
-		.group-menu b{color:#1588E5}
-		.group-menu button{background:#EAF5FC; border:none; padding:4px 10px;margin:0 0 5px 10px; border-radius:15px; cursor:pointer; font-size:0.9rem; transition:0.2s; min-width:60px; text-align:center;}
+		.group-menu b{color:#1588E5;margin-right:10px;}
+		.group-menu button{background:#EAF5FC; border:none; padding:4px 10px;margin:0 10px 5px 0; border-radius:15px; cursor:pointer; font-size:0.9rem; transition:0.2s; min-width:60px; text-align:center;}
 		.group-menu button.on{background:#1588E5;color:#fff;}
 
 		.group-menu .write{transition:background-color 0.3s;font-size:14px;border:1px solid #2196F3;font-weight:400;min-width:auto;padding:1px 5px;margin-right:5px;border-radius:3px;}
@@ -228,7 +228,7 @@
 			h1 a{display:inline-block;margin:0px;font-size:0.9rem;font-weight:400;}
 			.controls{flex-direction:column;align-items:stretch;gap:10px;}
 			.search-box .checkbox{width:40px;line-height:20px;}
-			.sort-btn{padding:0 5px;}
+			/*.sort-btn{padding:0 5px;}*/
 			.word-card{width:100%;display:block;margin:0 0 10px 0 !important;height:auto;min-height:110px;}
 			.word-card:nth-child(odd),.word-card:nth-child(even){margin:0 0 10px 0;float:none;clear:both;}
 			.word-header{flex-direction:column;align-items:flex-start;margin-bottom:0;}
@@ -243,6 +243,8 @@
 			.word-index{bottom:10px;right:15px;min-width:13px;height:13px;line-height:13px;font-size:.7rem;}
 			.pagination{gap:5px;margin-top:20px;}
 			.page-btn{padding:6px 12px;font-size:0.9rem;}
+
+
 			.toast-container{top:10px;right:10px;left:10px;max-width:none;}
 			.verb-modal{width:95%;margin:20px 10px;}
 			.verb-modal-title{font-size:1.5rem;}
@@ -736,8 +738,9 @@
 				if(this.currentEssay && this.currentEssay.p === essay.p)return;
 				this.currentEssay = essay;
 				//this.title.textContent = "《 "+essay.tit+" 》";
-
-				this.title.innerHTML = `<a href="javascript:void(0)" onclick="window.print()" title="按Ctrl + P，打印本页单词" style="float:left;color:#fff;text-decoration:none;font-size:1.3rem;cursor:pointer;">🖶</a>&nbsp;
+				let none=isMobile?'none':'block';
+				if(isMobile)this.title.innerHTML =`<span>《 ${essay.tit} 》</span>`;
+				else this.title.innerHTML = `<a href="javascript:void(0)" onclick="window.print()" title="按Ctrl + P，打印本页单词" style="display:${none};float:left;color:#fff;text-decoration:none;font-size:1.3rem;cursor:pointer;">🖨️</a>&nbsp;
 					<a href="essay/${essay.p}.docx" title="下载作文，并打印，加深学习" style="text-decoration:none;font-size:1.2rem;cursor:pointer;">⬇️</a><span>《 ${essay.tit} 》</span>`;
 
 
@@ -2696,15 +2699,14 @@
 			result = result.replace(/<i>/g,"<i>").replace(/<\/i>/g,"</i>");
 			return result;
 		}
-		function renderPagination(limit){
-			if(!limit) limit = wordsPerPage;
+		function renderPagination(limit) {
+			if (!limit) limit = wordsPerPage;
 			const totalPagesForRender = Math.ceil(currentWordData.length / limit);
-
 			pagination.innerHTML = '';
-			if(totalPagesForRender <= 1) return;
+			if (totalPagesForRender <= 1) return;
 
-			const prevBtn = createPageBtn('上一页', currentPage > 1,() =>{
-				if(currentPage > 1){
+			const prevBtn = createPageBtn('上一页', currentPage > 1, () => {
+				if (currentPage > 1) {
 					essayManager.pauseAudio();
 					essayManager.pauseTTS();
 					essayManager.resetAudio();
@@ -2713,47 +2715,55 @@
 					currentPage--;
 					updateDisplay(limit);
 					updateUrlParams();
-					window.scrollTo({ top:0, behavior:'smooth' });
+					window.scrollTo({ top: 0, behavior: 'smooth' });
 				}
 			});
-			pagination.appendChild(prevBtn);
+			pagination.appendChild(prevBtn)
+			let pageNumbers = [];
 
-			const maxVisiblePages = 5;
-			let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-			let endPage = Math.min(totalPagesForRender, startPage + maxVisiblePages - 1);
+			if (isMobile) {
+				// 移动端
+				const start = Math.max(1, currentPage - 1);
+				const end = Math.min(totalPagesForRender, currentPage + 1);
+				for (let i = start; i <= end; i++) {
+					pageNumbers.push(i);
+				}
+			} else {
+				// 桌面端
+				const maxVisiblePages = 8;
+				let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+				let endPage = Math.min(totalPagesForRender, startPage + maxVisiblePages - 1);
+				if (endPage - startPage + 1 < maxVisiblePages) {
+					startPage = Math.max(1, endPage - maxVisiblePages + 1);
+				}
 
-			if(endPage - startPage + 1 < maxVisiblePages){
-				startPage = Math.max(1, endPage - maxVisiblePages + 1);
+				if (startPage > 1) {
+					pageNumbers.push(1);
+					if (startPage > 2) pageNumbers.push('ellipsis-start');
+				}
+
+				for (let i = startPage; i <= endPage; i++)pageNumbers.push(i);
+				if (endPage < totalPagesForRender) {
+					if (endPage < totalPagesForRender - 1) pageNumbers.push('ellipsis-end');
+					pageNumbers.push(totalPagesForRender);
+				}
 			}
 
-			if(startPage > 1){
-				pagination.appendChild(createPageBtn('1', true,() => goToPage(1, limit)));
-				if(startPage > 2){
+			pageNumbers.forEach(num => {
+				if (num === 'ellipsis-start' || num === 'ellipsis-end') {
 					const ellipsis = document.createElement('span');
 					ellipsis.className = 'ellipsis';
 					ellipsis.textContent = '...';
 					pagination.appendChild(ellipsis);
+				} else {
+					const pageBtn = createPageBtn(num.toString(), true, () => goToPage(num, limit));
+					if (num === currentPage) pageBtn.classList.add('active');
+					pagination.appendChild(pageBtn);
 				}
-			}
+			});
 
-			for(let i = startPage; i <= endPage; i++){
-				const pageBtn = createPageBtn(i.toString(), true,() => goToPage(i, limit));
-				if(i === currentPage) pageBtn.classList.add('active');
-				pagination.appendChild(pageBtn);
-			}
-
-			if(endPage < totalPagesForRender){
-				if(endPage < totalPagesForRender - 1){
-					const ellipsis = document.createElement('span');
-					ellipsis.className = 'ellipsis';
-					ellipsis.textContent = '...';
-					pagination.appendChild(ellipsis);
-				}
-				pagination.appendChild(createPageBtn(totalPagesForRender.toString(), true,() => goToPage(totalPagesForRender, limit)));
-			}
-
-			const nextBtn = createPageBtn('下一页', currentPage < totalPagesForRender,() =>{
-				if(currentPage < totalPagesForRender){
+			const nextBtn = createPageBtn('下一页', currentPage < totalPagesForRender, () => {
+				if (currentPage < totalPagesForRender) {
 					essayManager.pauseAudio();
 					essayManager.pauseTTS();
 					essayManager.resetAudio();
@@ -2762,7 +2772,7 @@
 					currentPage++;
 					updateDisplay(limit);
 					updateUrlParams();
-					window.scrollTo({ top:0, behavior:'smooth' });
+					window.scrollTo({ top: 0, behavior: 'smooth' });
 				}
 			});
 			pagination.appendChild(nextBtn);
