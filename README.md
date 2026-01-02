@@ -3,8 +3,6 @@
 
 > 🌐 浏览中考 2100 单词 https://2100words.netlify.app/
 
-> [📌 通过视频查看中考 2100 单词](https://www.bilibili.com/video/BV14Ey4BcE76/?share_source=copy_web&vd_source=5177cc438457adc895a5b52112bb49a7)
-
 初中阶段学生通常接触词汇量超过 3000，但**掌握中考核心 2100 单词**，已足以在考试中取得优异成绩。
 
 为此，我开发了这个轻量级网页工具，专为中考英语备考设计，帮助高效记忆、巩固与应用核心词汇。
