@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 	<title>初中2100单词</title>
-	<meta name="author" content="Missde整理：①词频列表取自蝶变背单词。②例句、作文由豆包+DeepSeek生成。③作文朗读：微软语音库"/>
+	<meta name="author" content="Missde整理：①词频列表取自蝶变背单词。②例句、作文由豆包+DeepSeek生成。③作文朗读：微软语音库 ④我是波波老师呐 的完形短语"/>
 	<meta name="description" content="在蝶变背单词2100个单词的基础上，补充了人教版3~9年级英语课本后面的全部单词及短语。其中单词约600个、短语约620个、人名地名书名约300个、缩写单词约50个">
 	<style>
 		/* @font-face{font-family:'hengshuiti';src:url('shuyaohengshuiti.ttf') format('truetype');} */
@@ -42,12 +42,13 @@
 		#fuzzySearch{width:18px;height:18px;vertical-align:sub;}
 		.sort-btn{padding:8px 16px;background:#2196F3;color:white;border:none;border-radius:4px;cursor:pointer;transition:background-color 0.3s;}
 		.sort-btn:hover{background:#0b7dda;}
-		.word-card{border:1px solid #ddd;border-radius:8px;padding:5px 15px;margin-bottom:10px;box-shadow:0 2px 4px rgba(0,0,0,0.1);position:relative;width:calc(50% - 10px);display:inline-block;vertical-align:top;box-sizing:border-box;height:110px;overflow:hidden;}
+		.word-card{border:1px solid #ddd;border-radius:8px;height:120px;padding:5px 15px;margin-bottom:10px;box-shadow:0 2px 4px rgba(0,0,0,0.1);position:relative;width:calc(50% - 10px);display:inline-block;vertical-align:top;box-sizing:border-box;overflow:hidden;}
+		.m_duanyu .word-card{height:130px;}
 		.word-card:nth-child(odd){margin-right:10px;clear:both;}
 		.word-card:nth-child(even){float:right;}
 		.word-card.forget{background:#fff8f8; border-left:4px solid #ff6b6b;}
 		.word-card.learned{background:#FCFFFC; border-left:4px solid #4caf50;}
-		.word-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+		.word-header{display:flex;justify-content:space-between;align-items:flex-start;/* margin-bottom:10px; */}
 		.word-main{height:40px;overflow:hidden;line-height:40px;flex:1;}
 		.word{font-size:1.5rem;font-weight:bold;margin-right:0px;cursor:pointer;padding-left:3px;}
 		.word-main .long{font-size:1.2rem;}
@@ -62,9 +63,9 @@
 		.audio-btn{text-indent:5px;font-size:1.3rem;color:white;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color 0.3s;}
 		.audio-btn.playing{background:#2196F3;}
 		.example{border-top:1px dashed #eee;}
-		.example-english{transition:all 0.3s ease;}
+		.example-english{transition:all 0.3s ease;font-size:1.2rem;line-height:.8rem;}
 		.example-english:hover{color:#1976d2;}
-		.example-chinese{color:#aaa;font-size:.8rem;}
+		.example-chinese{color:#aaa;font-size:.9rem;}
 		.pagination{display:block;text-align:center;margin-top:30px;gap:10px;flex-wrap:wrap;clear:both;}
 		.pagination.hide{display:none;}
 		.page-btn{overflow:hidden;margin-right:10px;padding:8px 16px;border:1px solid #ddd;border-radius:4px;background:white;cursor:pointer;transition:all 0.2s;}
@@ -155,6 +156,7 @@
 		.group-category-header{margin:10px 0 5px 10px;clear:both; width:100%;font-size:.9rem;}
 		.group-category-h1:before{content:"单元单词列表";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:10px;}
 		.group-category-h2:before{content:"单词分类列表";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:20px;}
+		.group-category-h3:before{content:"完形填空短语";display:block;background:#eee;padding:5px 10px;border-radius:3px;margin-bottom:20px;}
 		/* 作文内容层样式 */
 		.essay-panel.show{display:block;}
 		.essay-panel{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);width:calc(100% - 20px);max-width:900px;background:white;border:2px solid #2196F3;border-radius:12px;box-shadow:0 -8px 25px rgba(0, 0, 0, 0.15);z-index:1000;overflow:hidden;display:none;padding-bottom:10px;transition:all 0.3s ease;}
@@ -273,6 +275,7 @@
 			.word,.word *{font-size:1.5rem;color:#f00;}
 			.word-header,.example{margin:0;padding:0;}
 			.word-card{box-shadow:none;margin:0 0 3px 0;padding:2px 5px;position:relative;height:92px;overflow:hidden;width:calc(50% - 2px);}
+			.word-card:nth-child(odd){margin-right:0px}
 			.word-index{position:absolute; top:5px; right:5px;bottom:auto;left:auto;color:#666;font-size:0.7rem;border:none;}
 			.print-footer{display:block;position:fixed;bottom:10px;right:10px;font-size:0.8rem;color:#666;font-family:"微软雅黑"}
 			.example-english{font-size:1.2rem;margin:0;padding:0;line-height:18px;}
@@ -306,6 +309,8 @@
 			.m_group2 .phonetic{font-size:0.6rem;}
 
 			.m_group2 .word-main .long{font-size:1rem;}
+
+			.m_duanyu .word-card{height:103px;}
 
 		}
 
@@ -406,7 +411,10 @@
 	</div>
 
 
-	<script src="db.js"></script>
+	<!--
+		<script src="db.js"></script>
+	-->
+		<script src="https://jsd.onmicrosoft.cn/gh/Missde/2100-words-@main/db.js?202615"></script>
 	<script>
 		class SpeechManager{
 			constructor(){
@@ -1641,6 +1649,20 @@
 					if(unitData){
 						wordListString = unitData.W.trim().replace(/,$/, '');
 					}
+				}else if (cleanTitle.endsWith('短语')) {
+					const phraseCat = cleanTitle.replace(/短语$/, '').trim();
+					const phraseData = originalWordData.duanyu?.[phraseCat];
+					if (phraseData) {
+
+						wordListString = Object.keys(phraseData).join(',');
+						isPhraseCategory = true;
+
+
+					} else {
+						defaultFilteredData = [];
+						currentWordData = [];
+						console.warn(`未找到短语分类: ${phraseCat}`);
+					}
 				} else{
 					for(const [topCategoryName, subCategories] of Object.entries(originalWordData.group)){
 						if(subCategories[cleanTitle]){
@@ -1655,24 +1677,32 @@
 					defaultFilteredData = [];
 				} else{
 					currentSearchQuery = wordListString;
-					if(filterType=="group" && urlParams.title.indexOf("Unit")>-1){
+					if(filterType=="group"){
 						let l=wordListString.split(',').filter(Boolean).length;
-						//单元单词，尽量1张打印完(正反面)
-						if(l>76)document.body.className+=' m_group40 m_group2';
-						else if(l>72)document.body.className+=' m_group38 m_group2';
-						else if(l>68)document.body.className+=' m_group36 m_group2';
-						else if(l>64)document.body.className+=' m_group34 m_group2';
-						else if(l>60)document.body.className+=' m_group32 m_group2';
-						else if(l>56)document.body.className+=' m_group30 m_group2';
-						else if(l>52)document.body.className+=' m_group28';
-						else if(l>48)document.body.className+=' m_group26';
-						else if(l>44)document.body.className+=' m_group24';
-						//else if(l>40)document.body.className+=' m_group22';
-						//默认每页22个
-						console.log(printFooter);
-						setTimeout(function(){
-							printFooter.textContent=cleanTitle+" 共"+l+"个单词";
-						},1000);
+						if(urlParams.title.indexOf("Unit")>-1){
+							//单元单词，尽量1张打印完(正反面)
+							if(l>76)document.body.className+=' m_group40 m_group2';
+							else if(l>72)document.body.className+=' m_group38 m_group2';
+							else if(l>68)document.body.className+=' m_group36 m_group2';
+							else if(l>64)document.body.className+=' m_group34 m_group2';
+							else if(l>60)document.body.className+=' m_group32 m_group2';
+							else if(l>56)document.body.className+=' m_group30 m_group2';
+							else if(l>52)document.body.className+=' m_group28';
+							else if(l>48)document.body.className+=' m_group26';
+							else if(l>44)document.body.className+=' m_group24';
+							//else if(l>40)document.body.className+=' m_group22';
+							//默认每页22个
+
+							setTimeout(function(){
+								printFooter.textContent=cleanTitle+" 共"+l+"个单词";
+							},1000);
+						}else if(urlParams.title.indexOf("】短语")>-1){
+							document.body.className+=" m_duanyu";
+							setTimeout(function(){
+								printFooter.textContent=`【${cleanTitle.replace(/短语$/,"")}】短语 共${l}个`;
+							},1000);
+						}
+
 					}
 				}
 
@@ -1744,37 +1774,45 @@
 			let parentCategory = null;
 			let siblingCategories = [];
 			let isGradeUnit = false;
+			let isDuanyu = false;
 
-			// 检查是否为年级单元格式
-			const gradeMatch = cleanTitle.match(/^(.+?)\s*-\s*(.+)$/);
-			if(gradeMatch){
-				const gradeName = gradeMatch[1].trim();
-				const unitName = gradeMatch[2].trim();
-				cleanTitle = unitName;
+			if (cleanTitle.endsWith('短语')) {
+				isDuanyu = true;
+				const phraseCat = cleanTitle.replace(/短语$/, '').trim();
+				currentCategory = phraseCat;
+				parentCategory = '固定短语';
+				siblingCategories = Object.keys(originalWordData.duanyu || {});
+			}else{
+				// 检查是否为年级单元格式
+				const gradeMatch = cleanTitle.match(/^(.+?)\s*-\s*(.+)$/);
+				if(gradeMatch){
+					const gradeName = gradeMatch[1].trim();
+					const unitName = gradeMatch[2].trim();
+					cleanTitle = unitName;
 
-				// 收集同年级的所有单元
-				const unitsInGrade = originalWordData.daixue
-					.filter(unit => unit.grade === gradeName)
-					.map(unit => unit.unit);
+					// 收集同年级的所有单元
+					const unitsInGrade = originalWordData.daixue
+						.filter(unit => unit.grade === gradeName)
+						.map(unit => unit.unit);
 
-				if(unitsInGrade.length > 0){
-					parentCategory = gradeName;
-					currentCategory = unitName;
-					siblingCategories = unitsInGrade;
-					isGradeUnit = true;
-				}
-			} else{
-				// 检查是否在group分类中
-				for(const [topCategoryName, subCategories] of Object.entries(originalWordData.group)){
-					if(subCategories[cleanTitle]){
-						parentCategory = topCategoryName;
-						currentCategory = cleanTitle;
-						siblingCategories = Object.keys(subCategories);
-						break;
+					if(unitsInGrade.length > 0){
+						parentCategory = gradeName;
+						currentCategory = unitName;
+						siblingCategories = unitsInGrade;
+						isGradeUnit = true;
+					}
+				} else{
+					// 检查是否在group分类中
+					for(const [topCategoryName, subCategories] of Object.entries(originalWordData.group)){
+						if(subCategories[cleanTitle]){
+							parentCategory = topCategoryName;
+							currentCategory = cleanTitle;
+							siblingCategories = Object.keys(subCategories);
+							break;
+						}
 					}
 				}
 			}
-
 			if(!currentCategory || siblingCategories.length === 0) return;
 
 
@@ -1816,15 +1854,19 @@
 					let queryString = '';
 					let title = '';
 
-					if(!isGradeUnit && originalWordData.group[parentCategory] && originalWordData.group[parentCategory][category]){
-						queryString = originalWordData.group[parentCategory][category].trim().replace(/,$/, '');
+					if (isDuanyu) {
+						queryString=1;
+						title = encodeURIComponent(`【${category}】短语`);
+
+					}else if(!isGradeUnit && originalWordData.group[parentCategory] && originalWordData.group[parentCategory][category]){
+						queryString = 1;//originalWordData.group[parentCategory][category].trim().replace(/,$/, '');
 						title = encodeURIComponent(`【${category}】类`);
 					} else if(isGradeUnit){
 						const unitData = originalWordData.daixue.find(u =>
 							u.grade === parentCategory && u.unit === category
 						);
 						if(unitData){
-							queryString = unitData.W.trim().replace(/,$/, '');
+							queryString = 1;//unitData.W.trim().replace(/,$/, '');
 							title = encodeURIComponent(`【${parentCategory} - ${category}】`);
 						}
 					}
@@ -1943,6 +1985,32 @@
 				groupContainer.appendChild(subCategoryButtonsDiv);
 			}
 			container.appendChild(groupContainer);
+
+
+
+			const temp3 = document.createElement('div');
+			temp3.className = 'group-category-h3';
+			groupContainer.appendChild(temp3);
+
+
+			const phraseButtonsDiv = document.createElement('div');
+			phraseButtonsDiv.className = 'group-selector';
+			phraseButtonsDiv.style.cssText = 'padding-left:2rem;display:flex; flex-wrap:wrap; gap:10px;';
+
+			for (const [catName, phrases] of Object.entries(originalWordData.duanyu)) {
+				const label = document.createElement('label');
+				const button = document.createElement('span');
+				button.textContent = catName;
+				button.onclick = () => {
+					const title = encodeURIComponent(`【${catName}】短语`);
+					const newUrl = `?q=list&fuzzy=false&title=${title}&filter=group`;
+					window.location.href = newUrl;
+				};
+				label.appendChild(button);
+				phraseButtonsDiv.appendChild(label);
+			}
+
+			groupContainer.appendChild(phraseButtonsDiv);
 		}
 		function exportCache(){
 			const cacheData ={
@@ -2230,7 +2298,30 @@
 				if(groupSearch){
 					var searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
 					if(urlParams.title.indexOf("Unit")>-1)limit=90;
-					//if(searchTerms.length>10)limit=90;//多个词同时搜索，1页显示90个
+
+					 //判断是否是“短语”分类（标题以“短语”结尾）
+					const cleanTitle = decodeURIComponent(urlParams.title || '').trim();
+					if (cleanTitle.endsWith('短语')) {
+						limit=90;
+						const phraseCat = cleanTitle.replace(/短语$|【|】/g, '').trim();
+						const phraseData = originalWordData.duanyu?.[phraseCat];
+						if (phraseData) {
+							var phraseWordList = Object.entries(phraseData).map(([phrase, info]) => ({
+								W: phrase,
+								Y: "", // 无音标
+								C: info.C,
+								E: info.E,
+								F: info.F,
+								P: 1 // 默认高频
+							}));
+							currentWordData = phraseWordList;
+							originalSearchResult = [...phraseWordList];
+							totalPages = Math.ceil(currentWordData.length / limit);
+							updateDisplay(limit);
+							updateUrlParams();
+							return;
+						}
+					}
 				}else{
 					//如果没有,增加按空格分词。目的兼容【must, have to】这种情况
 					query=query.replace(/　|，|。|、/g,',');
