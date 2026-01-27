@@ -75,7 +75,7 @@
 		.ellipsis{align-items:center;padding:0 8px;color:#666;}
 		.word-page{display:none;}
 		.word-page.active{display:block;}
-		.no-results{text-align:center;padding:40px;color:#666;font-size:1.2rem;}
+		.no-results{text-align:center;padding:40px;color:#666;font-size:1rem;}
 		.highlight{color:red;}
 		.word-index{text-decoration:none;position:absolute; bottom:10px; right:20px; color:#999; font-size:0.9rem;border:1px solid #ddd;padding:3px;line-height:17px;height:17px;min-width:17px;text-align:center;border-radius:50%;}
 		.high-frequency .word-index{ border-color:#ff4444; background:#ffebee; color:#c62828;}
@@ -412,9 +412,9 @@
 
 
 	<!--
-		<script src="db.js"></script>
-	-->
 		<script src="https://jsd.onmicrosoft.cn/gh/Missde/2100-words-@main/db.js?202615"></script>
+	-->
+		<script src="db.js"></script>
 	<script>
 		class SpeechManager{
 			constructor(){
@@ -2578,7 +2578,12 @@
 				}
 			},1000);
 			if(pageWords.length === 0){
-				wordContainer.innerHTML = '<div class="no-results">没有找到匹配的单词</div>';
+				let message = '没有找到匹配的单词';
+				const searchQuery = currentSearchQuery.trim();
+				//if (searchQuery && /^[a-zA-Z]+$/.test(searchQuery)) {
+					message += `<br/><a href="https://www.iciba.com/word?w=${encodeURIComponent(searchQuery)}" target="_blank" style="color:#1976d2;">去有道词典查询： <font style="color:#f00;">${searchQuery}"</font></a>`;
+				//}
+				wordContainer.innerHTML = `<div class="no-results">${message}</div>`;
 				return;
 			}
 			pageWords.forEach((word, index) =>{
