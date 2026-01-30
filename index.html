@@ -38,6 +38,7 @@
 
 		.hide-en .word,.hide-en .phonetic,.hide-en .example-english{display:none}
 
+
 		.search-box .checkbox{border:1px solid #ddd;border-radius:4px;padding:0 4px;line-height:40px;font-size:.8rem;}
 		#fuzzySearch{width:18px;height:18px;vertical-align:sub;}
 		.sort-btn{padding:8px 16px;background:#2196F3;color:white;border:none;border-radius:4px;cursor:pointer;transition:background-color 0.3s;}
@@ -277,7 +278,7 @@
 			.word-card{box-shadow:none;margin:0 0 3px 0;padding:2px 5px;position:relative;height:92px;overflow:hidden;width:calc(50% - 2px);}
 			.word-card:nth-child(odd){margin-right:0px}
 			.word-index{position:absolute; top:5px; right:5px;bottom:auto;left:auto;color:#666;font-size:0.7rem;border:none;}
-			.print-footer{display:block;position:fixed;bottom:10px;right:10px;font-size:0.8rem;color:#666;font-family:"微软雅黑"}
+			.print-footer{display:block;position:fixed;bottom:-5px;right:10px;font-size:0.6rem;color:#666;font-family:"微软雅黑";padding:0 10px;border-radius:5px;}
 			.example-english{font-size:1.2rem;margin:0;padding:0;line-height:18px;}
 			.chinesebox{display:inline-block;}
 			.word-card.forget,.word-card.learned{border-left-width:2px;}
@@ -290,15 +291,16 @@
 			.m_group .low-frequency .word{color:#4caf50}
 			.m_group .low-name .word{color:#666}
 
-			.m_group24 .word-card{height:86px}
+			.m_group24 .word-card{height:83px}
 			.m_group26 .word-card{height:80px;}
-			.m_group28 .word-card{height:74px}
+			.m_group28 .word-card{height:71px}
 			.m_group30 .word-card{height:68px}
-			.m_group32 .word-card{height:64px}
+			.m_group32 .word-card{height:63px}
 			.m_group34 .word-card{height:60px}
 			.m_group36 .word-card{height:56px}
-			.m_group38 .word-card{height:54px}
-			.m_group40 .word-card{height:52px}
+			.m_group38 .word-card{height:53px}
+			.m_group40 .word-card{height:50px}
+			.m_group42 .word-card{height:48px}
 
 			.m_group2 .word-card{margin:0 0 1px 0;}
 			.m_group2 .word-main{height:23px;line-height:20px;}
@@ -312,6 +314,10 @@
 
 			.m_duanyu .word-card{height:103px;}
 
+
+			/* 听写 打印样式 */
+			.hide-en .example-chinese{font-size:.7rem;}
+			.hide-en .explanation{font-size:.7rem;}
 		}
 
 
@@ -362,8 +368,8 @@
 				</div>
 				<div>
 					<label>语速:</label>
-					<input type="range" id="rateSlider" min="0.5" max="2" step="0.1" value="0.9">
-					<span id="rateValue">0.9</span>
+					<input type="range" id="rateSlider" min="0.5" max="2" step="0.1" value="0.8">
+					<span id="rateValue">0.8</span>
 				</div>
 				<div>
 					<label>音调:</label>
@@ -1566,7 +1572,12 @@
 				if(element)element.classList.add('reading-ing');
 				text=text.trim().replace(/[.,;:!?]+$/, '').split(/\s+/).filter(w => w).join(' , ');
 
-				const rate = parseFloat(document.getElementById('rateSlider')?.value || 0.9);
+				let rate=1;
+				if(element.classList.contains('example-chinese')){
+					rate = 1;//中文句子朗读速度
+				}else{
+					rate = parseFloat(document.getElementById('rateSlider')?.value || 0.8);
+				}
 				const pitch = parseFloat(document.getElementById('pitchSlider')?.value || 1.0);
 				await speechManager.speak(text, rate, pitch, 1.0);
 			} catch(error){
@@ -1681,7 +1692,8 @@
 						let l=wordListString.split(',').filter(Boolean).length;
 						if(urlParams.title.indexOf("Unit")>-1){
 							//单元单词，尽量1张打印完(正反面)
-							if(l>76)document.body.className+=' m_group40 m_group2';
+							if(l>80)document.body.className+=' m_group42 m_group2';
+							else if(l>76)document.body.className+=' m_group40 m_group2';
 							else if(l>72)document.body.className+=' m_group38 m_group2';
 							else if(l>68)document.body.className+=' m_group36 m_group2';
 							else if(l>64)document.body.className+=' m_group34 m_group2';
@@ -2580,10 +2592,10 @@
 			if(pageWords.length === 0){
 				let message = '没有找到匹配的单词';
 				const searchQuery = currentSearchQuery.trim();
-				//if (searchQuery && /^[a-zA-Z]+$/.test(searchQuery)) {
-					message += `<br/><a href="https://www.iciba.com/word?w=${encodeURIComponent(searchQuery)}" target="_blank" style="color:#1976d2;">去有道词典查询： <font style="color:#f00;">${searchQuery}"</font></a>`;
-				//}
-				wordContainer.innerHTML = `<div class="no-results">${message}</div>`;
+				if (searchQuery) {// && /^[a-zA-Z]+$/.test(searchQuery)
+					message += `<br/><a target="iciba" href="https://www.iciba.com/word?w=${encodeURIComponent(searchQuery)}" target="_blank" style="color:#1976d2;">去有道词典查询： <font style="color:#f00;">${searchQuery}"</font></a>`;
+					wordContainer.innerHTML = `<div class="no-results">${message}</div>`;
+				}
 				return;
 			}
 			pageWords.forEach((word, index) =>{
@@ -2690,7 +2702,7 @@
 					${englishExamplesHtml}
 					${chineseExamplesHtml}
 				</div>
-				<a class="word-index" title="有道搜单词 ${word.W}" href="https://www.iciba.com/word?w=${word.W}" target="_blank">${index}</a>
+				<a class="word-index" title="有道搜单词 ${word.W}" href="https://www.iciba.com/word?w=${word.W}" target="iciba">${index}</a>
 			`;
 			const wordElement = wordCard.querySelector('.word');
 			const phoneticElement = wordCard.querySelector('.phonetic');
@@ -2707,7 +2719,7 @@
 					verbManager.show(word.W);
 				});
 			}
-			const exampleElements = wordCard.querySelectorAll('.example-english');
+			var exampleElements = wordCard.querySelectorAll('.example-english');
 			if(isTTSSupported)
 			exampleElements.forEach(example =>{
 				example.style.cursor = 'pointer';
@@ -2720,6 +2732,19 @@
 					}
 				});
 			});
+
+			var exampleElements = wordCard.querySelectorAll('.example-chinese');
+			if(isTTSSupported)
+			exampleElements.forEach(example =>{
+				example.style.cursor = 'pointer';
+				example.title = '点击朗读中文例句';
+				example.addEventListener('click',(e) =>{
+					e.stopPropagation();
+					speakEnglishExample(example.innerText, example);
+				});
+			});
+
+
 			return wordCard;
 		}
 		function handleWordClick(word, element, type){
