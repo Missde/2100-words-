@@ -128,8 +128,9 @@
 		.verb-example-item:nth-child(odd){background:#f0f4f8;}
 
 		.verb-examples .example-chinese{font-size:.9rem;}
-
-		.reading-ing{background:#2196F3;color:#1976d2;transition:all 0.3s ease;}
+		.en{transition:all 0.3s ease;}
+		.reading-ing{background:#2196F3;color:#1976d2;}
+		.example-chinese.reading-ing,
 		.example-english.reading-ing{background:#e3f2fd;padding:0px 6px;border-radius:4px;}
 		.verb-example-item.reading-ing{background:#e3f2fd;border-left-color:#2196F3;transform:translateX(5px);font-size:1.3rem;}
 		.read-sentence.reading-ing{background:#e3f2fd;color:#1976d2;border:#2196F3;transform:scale(1.02);}
@@ -292,7 +293,7 @@
 			.m_group .low-name .word{color:#666}
 
 			.m_group24 .word-card{height:83px}
-			.m_group26 .word-card{height:80px;}
+			.m_group26 .word-card{height:76px;}
 			.m_group28 .word-card{height:71px}
 			.m_group30 .word-card{height:68px}
 			.m_group32 .word-card{height:63px}
@@ -1594,21 +1595,21 @@
 
 			const isGroupMenu = filterType === 'group' && !!urlParams.title;
 			if(filterType === 'group' && !isGroupMenu){
-					// 纯分组视图
-					document.getElementById('readPanel').style.display = 'none';
-					document.querySelector('.controls').classList.add("hide");
-					document.getElementById('pagination').classList.add("hide");
-					if(document.getElementById("cachediv")){
-						document.getElementById("cachediv").style.display = "none";
-						document.getElementById("unitSelectorContainer").style.display = "none";
-					}
-					document.getElementById('wordContainer').style.display = 'block';
-					renderGroupSelector();
-					updateActiveFilterLink();
-					updateUrlParams();
-					essayManager.hide();
-					return;
+				// 纯分组视图
+				document.getElementById('readPanel').style.display = 'none';
+				document.querySelector('.controls').classList.add("hide");
+				document.getElementById('pagination').classList.add("hide");
+				if(document.getElementById("cachediv")){
+					document.getElementById("cachediv").style.display = "none";
+					document.getElementById("unitSelectorContainer").style.display = "none";
 				}
+				document.getElementById('wordContainer').style.display = 'block';
+				renderGroupSelector();
+				updateActiveFilterLink();
+				updateUrlParams();
+				essayManager.hide();
+				return;
+			}
 			if(filterType === 'read'){
 				document.getElementById('readPanel').style.display = 'block';
 				document.getElementById('wordContainer').style.display = 'none';
@@ -1764,8 +1765,8 @@
 
 		}
 		function groupBabyLis(){
-			defaultFilteredData = [...originalWordData.data];
-			currentWordData = [...defaultFilteredData];
+			//defaultFilteredData = [...originalWordData.data];
+			//currentWordData = [...defaultFilteredData];
 			const urlParams = getParamsFromUrl();
 			const titleParam = urlParams.title;
 			if(!titleParam) return;
@@ -1989,7 +1990,6 @@
 					groupContainer.appendChild(unitButtonsDiv);
 				}
 			}
-
 			const temp = document.createElement('div');
 			temp.className = 'group-category-h2';
 			groupContainer.appendChild(temp);
@@ -2004,7 +2004,25 @@
 				for(const [subCategoryName, wordListString] of Object.entries(subCategories)){
 					const label = document.createElement('label');
 					const button = document.createElement('span');
-					button.innerHTML = subCategoryName;
+
+					let i = 0;
+					const hasChinese = (text) => /[\u4e00-\u9fa5]/.test(text);
+					const splitKeywords = (str) =>str.trim().split(/[,，\s]+/).map(s => s.trim()).filter(Boolean);
+					const terms = splitKeywords(wordListString);
+					if (terms.some(term => hasChinese(term))) {
+						const termSet = new Set(terms);
+						i = originalWordData.data.filter(word => {
+							if (!word.K) return false;
+							const kWords = word.K.split(/\s+/).map(w => w.trim());
+							return kWords.some(kw => termSet.has(kw));
+						}).length;
+					} else {
+						i = terms.length;
+					}
+					const duoClass = i >= 50 ? 'duo' : '';
+					button.innerHTML = subCategoryName + "<i class='" + duoClass + "'>" + i + "</i>";
+					button.title = topCategoryName + " - " + subCategoryName + " 共有" + i + "个单词/短语";
+
 					button.onclick = () => {
 						const wordList = wordListString.trim().replace(/,$/g, '');
 						if(wordList){
@@ -2026,10 +2044,18 @@
 							// 重新搜索和渲染
 							searchWords();
 
+
 							// 显式显示 controls 和 search-box
 							document.querySelector('.controls').classList.remove('hide');
-							document.querySelector('.search-box').style.display = 'none';
+							document.querySelector('.search-box').classList.remove('hide');
+
+							searchInput.style.display="none";
+							document.querySelector('.search-box .checkbox').style.display = 'none';
+
 							document.getElementById('group-menu').style.display = 'block';
+							document.getElementById('pagination').classList.remove("hide");
+
+
 
 							// 重新调用 groupBabyLis 生成同级分类导航
 							setTimeout(() => groupBabyLis(), 100);
@@ -2053,7 +2079,14 @@
 			for (const [catName, phrases] of Object.entries(originalWordData.duanyu)) {
 				const label = document.createElement('label');
 				const button = document.createElement('span');
-				button.textContent = catName;
+
+				let i = 0;
+				for(var x in phrases){i++};
+				button.innerHTML = catName + "<i class='" + (i >= 50 ? 'duo' : '') + "'>" + i + "</i>";
+				button.title = catName + " 共有" + i + "个短语";
+
+
+				//button.textContent = catName;
 				button.onclick = () => {
 					const phraseData = originalWordData.duanyu?.[catName];
 					if (phraseData) {
@@ -2076,9 +2109,15 @@
 						searchWords();
 
 						// 显式显示 controls 和 search-box
+
 						document.querySelector('.controls').classList.remove('hide');
-						document.querySelector('.search-box').style.display = 'none';
+						document.querySelector('.search-box').classList.remove('hide');
+
+						searchInput.style.display="none";
+						document.querySelector('.search-box .checkbox').style.display = 'none';
+
 						document.getElementById('group-menu').style.display = 'block';
+
 
 						// 重新调用 groupBabyLis 生成同级分类导航
 						setTimeout(() => groupBabyLis(), 100);
@@ -2354,9 +2393,9 @@
 		}
 		var originalSearchResult = [];
 		function searchWords(){
-			if(window.isInitializing){
-				return;
-			}
+			window.scrollTo({top: 0,behavior: 'smooth'});
+			if(window.isInitializing)return;
+
 			let limit=wordsPerPage;
 
 			const urlParams = getParamsFromUrl();

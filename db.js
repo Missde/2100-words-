@@ -2140,6 +2140,7 @@
 					{P:1,W:"married",Y:"/ˈmærid/",C:"adj. 已婚的",E:"They got married last year.",F:"他们去年结婚了。"},
 					{P:2,W:"deer",Y:"/dɪə(r)/",C:"n. 鹿 ",I:"单复一致",E:"We saw a deer in the forest.",F:"我们在森林里看到一只鹿。"},
 					{P:2,W:"ate",Y:"/eɪt/",C:"v. 吃(eat 的过去式)",E:"He ate an apple for breakfast this morning.",F:"他今天早上吃了一个苹果当早餐。"},
+					{P:2,W:"beer",Y:"/bɪə(r)/",C:"n. 啤酒",E:"My father sometimes drinks beer after work.",F:"我父亲有时下班后喝啤酒。"},
 					{P:2,W:"tongue",Y:"/tʌŋ/",C:"n. 舌头",E:"The doctor asked me to stick out my tongue.",F:"医生让我伸出舌头。"},
 					{P:2,W:"colourful",Y:"/ˈkʌləfl/",C:"adj. 多彩的",E:"The garden is colourful in spring.",F:"春天花园色彩缤纷。"},
 					{P:2,W:"firefighter",Y:"/ˈfaɪəfaɪtə(r)/",C:"n. 消防员",E:"The firefighter saved the child.",F:"消防员救了那个孩子。"},
@@ -3487,14 +3488,14 @@
 
 					{P:3,W:"Auld Lang Syne",Y:"/ˌɔːld læŋ ˈsaɪn/",C:"n. 友谊地久天长",E:"People sing Auld Lang Syne on New Year's Eve.",F:"人们在除夕夜唱《友谊地久天长》。",K:"作品 歌曲"},
 					{P:3,W:"Little Red Riding Hood",Y:"/ˈlɪtl red ˈraɪdɪŋ hʊd/",C:"n. 小红帽",E:"Little Red Riding Hood meets a wolf in the forest.",F:"小红帽在森林里遇到了一只狼。",K:"作品书名"},
-					{P:3,W:"Gongbao chicken",Y:"/ɡɒŋ baʊ ˈtʃɪkɪn/",C:"n. 宫保鸡丁",E:"Gongbao chicken is a famous Sichuan dish.",F:"宫保鸡丁是一道著名的川菜。",K:"作品 菜名"},
-					{P:3,W:"Dongpo pork",Y:"/dɒŋ pəʊ pɔːk/",C:"n. 东坡肉",E:"Dongpo pork is a traditional Chinese dish.",F:"东坡肉是一道传统的中国菜。",K:"作品 菜名"},
-					{P:3,W:"Guoqiao Rice Noodles",Y:"/ˈɡwəʊtʃaʊ raɪs ˈnuːdlz/",C:"n. 过桥米线",E:"Guoqiao Rice Noodles is a famous Yunnan dish.",F:"过桥米线是著名的云南菜肴。",K:"作品 菜名"},
+					{P:3,W:"Gongbao chicken",Y:"/ɡɒŋ baʊ ˈtʃɪkɪn/",C:"n. 宫保鸡丁",E:"Gongbao chicken is a famous Sichuan dish.",F:"宫保鸡丁是一道著名的川菜。",K:"菜名"},
+					{P:3,W:"Dongpo pork",Y:"/dɒŋ pəʊ pɔːk/",C:"n. 东坡肉",E:"Dongpo pork is a traditional Chinese dish.",F:"东坡肉是一道传统的中国菜。",K:"菜名"},
+					{P:3,W:"Guoqiao Rice Noodles",Y:"/ˈɡwəʊtʃaʊ raɪs ˈnuːdlz/",C:"n. 过桥米线",E:"Guoqiao Rice Noodles is a famous Yunnan dish.",F:"过桥米线是著名的云南菜肴。",K:"菜名"},
 					{P:3,W:"Chinese chess",Y:"/ˌtʃaɪˈniːz tʃes/",C:"n. 中国象棋",E:"My father teaches me how to play Chinese chess.",F:"我父亲教我如何下中国象棋。",K:"作品"},
 					{P:3,W:"Cinderella",Y:"/ˌsɪndəˈrelə/",C:"n. 灰姑娘",E:"Cinderella is a famous fairy tale.",F:"灰姑娘是一个著名的童话故事。",K:"作品 书名"},
 					{P:3,W:"Titanic",Y:"/taɪˈtænɪk/",C:"n. 泰坦尼克号",E:"The Titanic sank in 1912.",F:"泰坦尼克号于1912年沉没。",K:"作品 电影"},
-					{P:3,W:"Mapo tofu",Y:"/ˈmɑːpəʊ/",C:"n. 麻婆 (豆腐)",E:"Mapo tofu is a famous Sichuan dish.",F:"麻婆豆腐是一道著名的四川菜。",K:"作品 菜名"},
-					{P:3,W:"Beijing roast duck",Y:"/ˌbeɪˈdʒɪŋ rəʊst/",C:"n. 北京烤鸭",E:"We ate Beijing roast duck for dinner.",F:"我们晚餐吃了北京烤鸭。",K:"作品 菜名"},
+					{P:3,W:"Mapo tofu",Y:"/ˈmɑːpəʊ/",C:"n. 麻婆 (豆腐)",E:"Mapo tofu is a famous Sichuan dish.",F:"麻婆豆腐是一道著名的四川菜。",K:"菜名"},
+					{P:3,W:"Beijing roast duck",Y:"/ˌbeɪˈdʒɪŋ rəʊst/",C:"n. 北京烤鸭",E:"We ate Beijing roast duck for dinner.",F:"我们晚餐吃了北京烤鸭。",K:"菜名"},
 
 
 					{P:3,W:"Water Festival",Y:"/ˈwɔːtə(r) ˈfestɪvl/",C:"n. 泼水节",E:"The Water Festival is celebrated in some Southeast Asian countries.",F:"泼水节在一些东南亚国家庆祝。",K:"节日"},
@@ -4022,14 +4023,16 @@
 					"天文地理":"sun,moon,star,earth,planet,space,universe,solar,Mars"
 				},
 				"食物饮品":{
-					"主食类":"rice,noodle,bread,pancake,dumpling,porridge,pizza,hamburger,burger,sandwich,soup,spaghetti,tofu",
-					"水果类":"fruit,apple,banana,grape,strawberry,lemon,watermelon,orange,pear",
-					"蔬菜类":"vegetable,cabbage,carrot,cucumber,onion,potato,tomato,corn,bean,pumpkin,lettuce",
+					"主食":"rice,noodle,bread,pancake,dumpling,porridge,pizza,hamburger,burger,sandwich,soup,spaghetti,tofu",
+					"水果":"fruit,apple,banana,grape,strawberry,lemon,watermelon,orange,pear",
+					"蔬菜":"vegetable,cabbage,carrot,cucumber,onion,potato,tomato,corn,bean,pumpkin,lettuce",
 					"肉蛋海鲜":"meat,beef,pork,mutton,chicken,turkey,fish,egg,sausage",
-					"饮品":"water,tea,juice,cola,coffee,milk,drink",
+					"饮品":"water,tea,juice,cola,coffee,milk,drink,beer",
 					"甜点零食":"cake,biscuit,cookie,candy,chocolate,ice-cream,popcorn,yogurt,yoghurt,pie,mooncake,salad",
-					"调料味道":"salt,sugar,pepper,butter,honey,cream,gravy,mashed,sour,salty,sweet,delicious,fresh,taste"
+					"调料味道":"salt,sugar,pepper,butter,honey,cream,gravy,mashed,sour,salty,sweet,delicious,fresh,taste",
+					"餐具":"bowl,plate,dish,cup,glass,spoon,fork,knife,chopstick,napkin,pot,pan,bottle,box,bag,basket,blender,oven,stove,fridge,refrigerator,tap,scissors,kitchen",
 				},
+
 				"身心健康":{
 					"身体部位":"body,head,hair,face,eye,nose,mouth,ear,tongue,throat,tooth,teeth,neck,shoulder,arm,hand,finger,leg,foot,feet,knee,heel,elbow",
 					"内脏器官":"brain,heart,blood,bone,stomach",
@@ -4060,6 +4063,7 @@
 					"语言":"语种",
 					"地点":"地点",
 					"人名":"人名",
+					"作品":"歌曲,电影,作品",
 					"缩写":"缩写",
 				},
 			},
