@@ -4188,23 +4188,35 @@
 			],
 			duanyu:{
 				"be+形容词+介词": {
-					"be good at": {"C": "擅长","E": "She is good at playing the piano./ He is good at math.","F": "她擅长弹钢琴。/ 他擅长数学。"},
-					"be interested in": {"C": "对…感兴趣","E": "I am interested in learning English./ Are you interested in sports?","F": "我对学习英语感兴趣。/ 你对运动感兴趣吗？"},
-					"be famous for": {"C": "因…而著名","E": "China is famous for the Great Wall./ The town is famous for its hot springs.","F": "中国因长城而闻名。/ 这个城镇以温泉而闻名。"},
-					"be full of": {"C": "充满","E": "The room is full of people./ His life is full of happiness.","F": "房间里挤满了人。/ 他的生活充满幸福。"},
-					"be proud of": {"C": "为…感到骄傲","E": "We are proud of our country./ His parents are proud of him.","F": "我们为我们的国家感到骄傲。/ 他的父母为他感到骄傲。"},
+					"be bad for": {"C": "对...有害","E": "Too much sugar is bad for your teeth./ Smoking is bad for health.","F": "太多糖对你的牙齿有害。/ 吸烟对健康有害。"},
+					"be late for": {"C": "迟到","E": "Don't be late for school again./ He was late for the meeting.","F": "上学别再迟到了。/ 他开会迟到了。"},
+					"be used for": {"C": "被用来做（用途/目的）","E": "A knife is used for cutting things./ This room is used for meetings.","F": "刀是用来切东西的。/ 这个房间是用来开会的。"},
 					"be ready for": {"C": "为…做好准备","E": "Are you ready for the exam?/ We are ready for any challenge.","F": "你为考试做好准备了吗？/ 我们为任何挑战做好了准备。"},
 					"be sorry for": {"C": "为…感到抱歉","E": "I am sorry for being late./ He felt sorry for what he had done.","F": "我为迟到感到抱歉。/ 他为他所做的事感到抱歉。"},
+					"be famous for": {"C": "因…而著名","E": "China is famous for the Great Wall./ The town is famous for its hot springs.","F": "中国因长城而闻名。/ 这个城镇以温泉而闻名。"},
+					"be good for": {"C": "对...有益","E": "Eating vegetables is good for your health./ Regular exercise is good for you.","F": "吃蔬菜对你的健康有益。/ 经常锻炼对你有好处。"},
+					"be good at": {"C": "擅长","E": "She is good at playing the piano./ He is good at math.","F": "她擅长弹钢琴。/ 他擅长数学。"},
+
+					"be interested in": {"C": "对…感兴趣","E": "I am interested in learning English./ Are you interested in sports?","F": "我对学习英语感兴趣。/ 你对运动感兴趣吗？"},
+					"be full of": {"C": "充满","E": "The room is full of people./ His life is full of happiness.","F": "房间里挤满了人。/ 他的生活充满幸福。"},
+					"be proud of": {"C": "为…感到骄傲","E": "We are proud of our country./ His parents are proud of him.","F": "我们为我们的国家感到骄傲。/ 他的父母为他感到骄傲。"},
 					"be afraid of": {"C": "害怕","E": "Many children are afraid of the dark./ She is afraid of dogs.","F": "许多孩子怕黑。/ 她害怕狗。"},
+
 					"be angry with": {"C": "生（某人）的气","E": "The teacher was angry with the noisy students./ Don't be angry with me.","F": "老师对吵闹的学生很生气。/ 别生我的气。"},
-					"be different from": {"C": "与…不同","E": "My idea is different from yours./ Life today is very different from life in the past.","F": "我的想法和你的不同。/ 今天的生活与过去的生活大不相同。"},
-					"be good/bad for": {"C": "对…有益/有害","E": "Reading is good for you./ Smoking is bad for your health.","F": "阅读对你有益。/ 吸烟对你的健康有害。"},
-					"be late for": {"C": "迟到","E": "Don't be late for school again./ He was late for the meeting.","F": "上学不要再迟到了。/ 他开会迟到了。"},
+					"be satisfied with": {"C": "对...满意","E": "The teacher was satisfied with my homework./ Are you satisfied with the result?","F": "老师对我的作业很满意。/ 你对结果满意吗？"},
+					"be pleased with": {"C": "对...感到高兴/满意","E": "My parents were pleased with my good grades./ She was pleased with the gift.","F": "父母对我的好成绩感到高兴。/ 她对礼物很满意。"},
 					"be careful with": {"C": "小心…","E": "Be careful with the glass, it's fragile./ You should be careful with your money.","F": "小心那个玻璃杯，它易碎。/ 你应该小心保管你的钱。"},
-					"be satisfied/pleased with": {"C": "对…满意","E": "The teacher was pleased with my answer./ Are you satisfied with your new job?","F": "老师对我的回答很满意。/ 你对你的新工作满意吗？"},
+					"be satisfied with": {"C": "对…满意","E": "Are you satisfied with your new job?","F": "你对你的新工作满意吗？"},
+					"be pleased with": {"C": "对…满意","E": "The teacher was pleased with my answer.","F": "老师对我的回答很满意。"},
+
 					"be used to": {"C": "习惯于…","E": "He is used to getting up early./ I am not used to the cold weather here.","F": "他习惯于早起。/ 我不习惯这里寒冷的天气。"},
-					"be worried about": {"C": "担心…","E": "She is worried about her son's health./ Don't be worried about the result.","F": "她担心她儿子的健康。/ 不要担心结果。"}
+					"be worried about": {"C": "担心…","E": "She is worried about her son's health./ Don't be worried about the result.","F": "她担心她儿子的健康。/ 不要担心结果。"},
+					"be different from": {"C": "与…不同","E": "My idea is different from yours./ Life today is very different from life in the past.","F": "我的想法和你的不同。/ 今天的生活与过去的生活大不相同。"},
+
+
 				},
+
+
 				"介词/副词": {
 					"at once": {"C": "立刻，马上","E": "Come here at once!/ You should see a doctor at once.","F": "马上过来！/ 你应该立刻去看医生。"},
 					"at last": {"C": "最后，终于","E": "At last, we found the lost key./ He passed the exam at last.","F": "最后，我们找到了丢失的钥匙。/ 他终于通过了考试。"},
@@ -4217,16 +4229,26 @@
 					"in the front of": {"C": "在…前部（内部）","E": "He sits in the front of the classroom./ The driver sits in the front of the bus.","F": "他坐在教室的前部。/ 司机坐在公共汽车的前部。"},
 					"in the end": {"C": "最后，终于","E": "In the end, they decided to go by train./ In the end, good will win.","F": "最后，他们决定坐火车去。/ 最后，善良终将获胜。"},
 					"of course": {"C": "当然","E": "\"Can you help me?\" \"Of course.\"/ Of course, I remember you.","F": "\"你能帮我吗？\" \"当然。\"/ 我当然记得你。"},
-					"for example": {"C": "例如","E": "Many fruits are rich in vitamin C, for example, oranges and lemons./ He likes ball games, for example, basketball and football.","F": "许多水果富含维生素C，例如橙子和柠檬。/ 他喜欢球类运动，例如篮球和足球。"},
-					"a lot of/lots of": {"C": "许多","E": "There are a lot of books in the library./ She has lots of friends.","F": "图书馆里有许多书。/ 她有许多朋友。"},
+					"a lot of": {"C": "大量；许多（正确写法）","E": "There are a lot of books in the library./ He has a lot of friends.","F": "图书馆里有很多书。/ 他有很多朋友。"},
+					"lots of": {"C": "大量；许多（非正式）","E": "Lots of people like listening to music./ I have lots of homework to do today.","F": "许多人喜欢听音乐。/ 我今天有很多作业要做。"},
 					"instead of": {"C": "代替，而不是","E": "Let's play football instead of basketball./ He went there by bus instead of by train.","F": "我们踢足球而不是打篮球吧。/ 他是坐公共汽车而不是坐火车去那里的。"},
 					"listen to": {"C": "听…","E": "Listen to the teacher carefully./ I like to listen to music after school.","F": "仔细听老师讲课。/ 我喜欢放学后听音乐。"},
+					"arrive at": {"C": "到达（小地方）","E": "We will arrive at the airport at 3 pm./ She arrived at the bus stop early.","F": "我们将在下午3点到达机场。/ 她早就到了公交车站。"},
+					"arrive in": {"C": "到达（大地方）","E": "We will arrive in Shanghai tomorrow./ She arrived in China last week.","F": "我们明天将到达上海。/ 她上周到达中国。"},
+				},
+				"for":{
 					"wait for": {"C": "等待","E": "Wait for me at the school gate./ How long have you been waiting for the bus?","F": "在学校门口等我。/ 你等公交车等了多久了？"},
-					"arrive in/at": {"C": "到达（大地点用in，小地点用at）","E": "They arrived in Shanghai yesterday./ We arrived at the station on time.","F": "他们昨天到达了上海。/ 我们准时到达了车站。"},
 					"pay for": {"C": "为…付款","E": "How much did you pay for this bike?/ I'll pay for the dinner.","F": "你为这辆自行车付了多少钱？/ 我来付晚餐的钱。"},
-					"ask for": {"C": "请求，询问","E": "He asked for help when he was in trouble./ If you need anything, just ask for it.","F": "他遇到困难时请求了帮助。/ 如果你需要什么，尽管开口。"}
+					"ask for": {"C": "请求，询问","E": "He asked for help when he was in trouble./ If you need anything, just ask for it.","F": "他遇到困难时请求了帮助。/ 如果你需要什么，尽管开口。"},
+					"care for": {"C": "照顾；喜欢","E": "She cares for her elderly mother./ Would you care for some tea?","F": "她照顾年迈的母亲。/ 你想喝点茶吗？"},
+					"stand for": {"C": "代表；象征","E": "What does the letters UN stand for?/ The olive branch stands for peace.","F": "字母UN代表什么？/ 橄榄枝象征着和平。"},
+					"leave for": {"C": "动身去（某地）","E": "They will leave for Beijing tomorrow morning./ He left for work early.","F": "他们明天早上动身去北京。/ 他很早去上班了。"},
+					"thanks for": {"C": "因...而感谢","E": "Thanks for helping me with my homework./ Thanks for the beautiful gift.","F": "感谢你帮我做作业。/ 谢谢你的美丽礼物。"},
+					"for example": {"C": "例如","E": "Many fruits are rich in vitamin C, for example, oranges and lemons./ He likes ball games, for example, basketball and football.","F": "许多水果富含维生素C，例如橙子和柠檬。/ 他喜欢球类运动，例如篮球和足球。"},
+					"prepare for": {"C": "为...做准备","E": "We need to prepare for the exam next week./ She is preparing for a trip to Beijing.","F": "我们需要为下周的考试做准备。/ 她正在为去北京的旅行做准备。"},
 				},
 				"look":{
+					"look for":{"C":"寻找","E":"I'm looking for my pen./ What are you looking for?","F":"我正在找我的钢笔。/ 你在找什么？"},
 					"look about":{"C":"四下环顾；查看","E":"He looked about but saw no one./ Look about carefully before you cross the street.","F":"他四下张望，但没看到任何人。/ 过马路前要仔细查看周围。"},
 					"look after":{"C":"照顾，照管","E":"She looks after her little brother./ Can you look after my bag for a moment?","F":"她照顾她的弟弟。/ 你能照看一会儿我的包吗？"},
 					"look ahead":{"C":"向前看；规划未来","E":"We need to look ahead and plan for the future./ Look ahead when you're walking.","F":"我们需要向前看，为未来做计划。/ 走路时要向前看。"},
@@ -4234,7 +4256,6 @@
 					"look back":{"C":"回头看；回顾","E":"Don't look back, just keep running./ She looked back and waved goodbye.","F":"别回头看，继续跑。/ 她回过头挥手告别。"},
 					"look back on/upon":{"C":"回顾","E":"He likes to look back on his happy childhood./ When I look back upon those days, I smile.","F":"他喜欢回顾他快乐的童年。/ 当我回顾那些日子时，我笑了。"},
 					"look down on/upon":{"C":"蔑视，瞧不起","E":"It's not good to look down on others./ He looks down upon people who don't work hard.","F":"瞧不起别人是不好的。/ 他瞧不起不努力工作的人。"},
-					"look for":{"C":"寻找","E":"I'm looking for my pen./ What are you looking for?","F":"我正在找我的钢笔。/ 你在找什么？"},
 					"look forward to":{"C":"盼望；期待","E":"I look forward to seeing you soon./ She looks forward to her birthday every year.","F":"我期待很快见到你。/ 她每年都盼望着她的生日。"},
 					"look into":{"C":"向…里面看；调查","E":"He looked into the box and smiled./ The police will look into the accident.","F":"他朝盒子里看了看，笑了。/ 警察将调查这起事故。"},
 					"look on/upon...as":{"C":"把…看作","E":"I look on him as my best friend./ She looks upon this place as her home.","F":"我把他看作我最好的朋友。/ 她把这个地方看作她的家。"},
@@ -4411,6 +4432,14 @@
 					"go to bed":{"C":"上床睡觉","E":"I usually go to bed at 10 PM./ It's late, go to bed now.","F":"我通常晚上10点睡觉。/ 天晚了，现在去睡觉吧。"},
 					"go about":{"C":"着手做；处理","E":"How do you go about learning a new language?/ He goes about his work quietly.","F":"你如何着手学习一门新语言？/ 他默默地做他的工作。"},
 					"go through":{"C":"经历；检查","E":"She went through many difficulties./ Go through your answers before handing in.","F":"她经历了许多困难。/ 交卷前检查一下你的答案。"}
+				},
+				"get":{
+					"get up": {"C": "起床","E": "I usually get up at 6:30 on weekdays./ Get up quickly, or you'll be late for school.","F": "我通常在工作日六点半起床。/ 快起床，不然你上学要迟到了。"},
+					"get back": {"C": "回来；取回","E": "When did you get back from Beijing?/ I need to get back my book from him.","F": "你什么时候从北京回来的？/ 我需要从他那里取回我的书。"},
+					"get along/on with": {"C": "与…相处；进展","E": "How do you get along with your new neighbors?/ How is your work getting along?","F": "你和你的新邻居相处得怎么样？/ 你的工作进展如何？"},
+					"get over": {"C": "克服；从…中恢复","E": "It's hard to get over the loss of a pet./ He finally got over his cold.","F": "很难从失去宠物的悲伤中恢复过来。/ 他终于从感冒中康复了。"},
+					"get ready for": {"C": "为…做准备","E": "Students are getting ready for the final exams./ We need to get ready for the party.","F": "学生们正在为期末考试做准备。/ 我们需要为派对做准备。"},
+					"get together": {"C": "聚会","E": "Our family gets together every Spring Festival./ Let's get together for dinner sometime.","F": "我们家每年春节都会团聚。/ 我们找个时间聚个餐吧。"},
 				},
 				"动词+up":{
 					"bring up":{"C":"抚养；提出（话题）","E":"She was brought up by her grandparents./ He brought up an interesting question.","F":"她是由祖父母抚养长大的。/ 他提出了一个有趣的问题。"},
@@ -4662,12 +4691,6 @@
 					"break off": {"C": "中断；折断","E": "They broke off their conversation when I entered./ He broke off a branch from the tree.","F": "我进来时他们中断了谈话。/ 他从树上折下了一根树枝。"}
 				},
 				"其他": {
-					"get up": {"C": "起床","E": "I usually get up at 6:30 on weekdays./ Get up quickly, or you'll be late for school.","F": "我通常在工作日六点半起床。/ 快起床，不然你上学要迟到了。"},
-					"get back": {"C": "回来；取回","E": "When did you get back from Beijing?/ I need to get back my book from him.","F": "你什么时候从北京回来的？/ 我需要从他那里取回我的书。"},
-					"get along/on with": {"C": "与…相处；进展","E": "How do you get along with your new neighbors?/ How is your work getting along?","F": "你和你的新邻居相处得怎么样？/ 你的工作进展如何？"},
-					"get over": {"C": "克服；从…中恢复","E": "It's hard to get over the loss of a pet./ He finally got over his cold.","F": "很难从失去宠物的悲伤中恢复过来。/ 他终于从感冒中康复了。"},
-					"get ready for": {"C": "为…做准备","E": "Students are getting ready for the final exams./ We need to get ready for the party.","F": "学生们正在为期末考试做准备。/ 我们需要为派对做准备。"},
-					"get together": {"C": "聚会","E": "Our family gets together every Spring Festival./ Let's get together for dinner sometime.","F": "我们家每年春节都会团聚。/ 我们找个时间聚个餐吧。"},
 					"keep up with": {"C": "跟上","E": "Walk slowly, I can't keep up with you./ It's hard to keep up with the latest technology.","F": "走慢点，我跟不上你。/ 很难跟上最新的技术。"},
 					"catch up with": {"C": "赶上","E": "Study hard to catch up with your classmates./ He ran fast and soon caught up with me.","F": "努力学习，赶上你的同学们。/ 他跑得很快，很快就赶上了我。"},
 					"come up with": {"C": "提出，想出","E": "He came up with a good plan./ Can you come up with a better idea?","F": "他想出了一个好计划。/ 你能想出一个更好的主意吗？"},

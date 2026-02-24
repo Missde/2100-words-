@@ -2392,240 +2392,199 @@
 			});
 		}
 		var originalSearchResult = [];
-		function searchWords(){
-			window.scrollTo({top: 0,behavior: 'smooth'});
-			if(window.isInitializing)return;
-
-			let limit=wordsPerPage;
-
+		function searchWords() {
+			if (window.isInitializing) {
+				return;
+			}
+			let limit = wordsPerPage;
 			const urlParams = getParamsFromUrl();
 			const groupSearch = !!urlParams.title && !!urlParams.query;
-			let query = groupSearch ? urlParams.query :searchInput.value.trim();
-			if(groupSearch)query = currentSearchQuery
+			let query = groupSearch ? urlParams.query : searchInput.value.trim();
+			if (groupSearch) query = currentSearchQuery;
 			currentSearchQuery = query;
 
-			if(!query){
+			if (!query) {
 				currentWordData = [...defaultFilteredData];
 				originalSearchResult = [];
-
-				if(isSorted){
+				if (isSorted) {
 					currentWordData.sort((a, b) => a.W.localeCompare(b.W));
 				}
-			} else{
-				if(groupSearch){
-					var searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-					if(urlParams.title.indexOf("Unit")>-1)limit=90;
+			} else {
+				// 双路径分词：短语匹配 + 单词匹配
+				let duanyuSearchTerms = [];
+				let wordSearchTerms = [];
 
-					 //判断是否是“短语”分类（标题以“短语”结尾）
-					const cleanTitle = decodeURIComponent(urlParams.title || '').trim();
-					if (cleanTitle.endsWith('短语')) {
-						limit=90;
-						const phraseCat = cleanTitle.replace(/短语$|【|】/g, '').trim();
-						const phraseData = originalWordData.duanyu?.[phraseCat];
-						if (phraseData) {
-							var phraseWordList = Object.entries(phraseData).map(([phrase, info]) => ({
-								W: phrase,
-								Y: "", // 无音标
-								C: info.C,
-								E: info.E,
-								F: info.F,
-								P: 1 // 默认高频
-							}));
-							currentWordData = phraseWordList;
-							originalSearchResult = [...phraseWordList];
-							totalPages = Math.ceil(currentWordData.length / limit);
-							updateDisplay(limit);
-							updateUrlParams();
-							return;
+				if (groupSearch) {
+					duanyuSearchTerms = query.replace(/　|，|。|、/g, ',')
+						.split(',').map(t => t.trim()).filter(t => t);
+					wordSearchTerms = [...duanyuSearchTerms];
+				} else {
+					const raw = query.trim();
+					if (raw) {
+						duanyuSearchTerms = raw.replace(/　|，|。|、/g, ',')
+							.split(',').map(t => t.trim()).filter(t => t);
+						const normalized = raw
+							.replace(/[,，;；:：　。、]/g, ' ')
+							.replace(/\s+/g, ' ')
+							.trim();
+						if (normalized) {
+							wordSearchTerms = normalized.split(' ').filter(t => t);
 						}
 					}
-				}else{
-					//如果没有,增加按空格分词。目的兼容【must, have to】这种情况
-					query=query.replace(/　|，|。|、/g,',');
-					if(query.indexOf(",")==-1)query=query.replace(/ /g,',');
-					var searchTerms = query.split(',').map(term => term.trim()).filter(term => term);
 				}
-				const isFuzzy = groupSearch ? false :(urlParams.title ? urlParams.fuzzy :fuzzySearchCheckbox.checked);
+
+				// 匹配 duanyu 短语（完整匹配）
+				const matchedDuanyuItems = [];
+				const allDuanyuEntries = [];
+				const duanyuData = originalWordData.duanyu || {};
+				for (const cat in duanyuData) {
+					for (const phrase in duanyuData[cat]) {
+						const entry = duanyuData[cat][phrase];
+						// 确保 entry 是对象
+						const data = typeof entry === 'object' && entry !== null ? entry : {};
+						allDuanyuEntries.push({
+							phrase: phrase,
+							lower: phrase.toLowerCase(),
+							C: data.C || "【短语】",
+							E: data.E || phrase,
+							F: data.F || "（暂无例句）",
+							P: 3
+						});
+					}
+				}
+
+				duanyuSearchTerms.forEach(term => {
+					const termLower = term.toLowerCase();
+					const match = allDuanyuEntries.find(item => item.lower === termLower);
+					if (match) {
+						matchedDuanyuItems.push({
+							W: match.phrase,
+							Y: "",
+							C: match.C,
+							E: match.E,
+							F: match.F,
+							P: match.P
+						});
+					}
+				});
+
+
+
+				// 原有单词搜索逻辑
+				const isFuzzy = groupSearch ? false : (urlParams.title ? urlParams.fuzzy : fuzzySearchCheckbox.checked);
 				const termIndexMap = new Map();
-				searchTerms.forEach((term, index) =>{
+				wordSearchTerms.forEach((term, index) => {
 					termIndexMap.set(term.toLowerCase(), index);
 				});
 
-				const scoredWords = defaultFilteredData.map(word =>{
+				const scoredWords = defaultFilteredData.map(word => {
 					let score = 0;
 					let matchedTermIndex = -1;
-					if(groupSearch){
-						searchTerms.forEach(term =>{
-							if(word.W === term){
+					if (groupSearch) {
+						wordSearchTerms.forEach(term => {
+							if (word.W === term) {
 								score += 30000;
 								matchedTermIndex = termIndexMap.get(term.toLowerCase());
 							}
-							let  combinedSearchText =((word.I || '') + ' ' +(word.K || '')).replace(/[a-z]/ig,"");
-							if(combinedSearchText.toLowerCase().includes(term.toLowerCase())){
+							let combinedSearchText = ((word.I || '') + ' ' + (word.K || '')).replace(/[a-z]/ig, "");
+							if (combinedSearchText.toLowerCase().includes(term.toLowerCase())) {
 								score += 3000;
-								if(matchedTermIndex === -1){
+								if (matchedTermIndex === -1) {
 									matchedTermIndex = termIndexMap.get(term.toLowerCase());
 								}
-							}/*
-							// 3. word.C(释义) 也进行模糊搜索，作为补充
-							if(word.C.toLowerCase().includes(term.toLowerCase())){
-								score += 5; // 更低分
-								if(matchedTermIndex === -1){
-									matchedTermIndex = termIndexMap.get(term.toLowerCase());
-								}
-							}*/
+							}
 						});
-					} else{
-						searchTerms.forEach(term =>{
-							var wordText = word.W.toLowerCase();
-							var searchTerm = term.toLowerCase();
-							const explanation = word.C.toLowerCase()+" "+((word.I || '') + ' ' +(word.K || ''));
-							const example = word.E.toLowerCase();
-							const exampleChinese = word.F.toLowerCase();
-							if(isFuzzy){
-								if(wordText === searchTerm){
-									score+=30000;
+					} else {
+						wordSearchTerms.forEach(term => {
+							const wordText = word.W.toLowerCase();
+							const searchTerm = term.toLowerCase();
+							const explanation = (word.C + ' ' + (word.I || '') + ' ' + (word.K || '')).toLowerCase();
+							const example = (word.E + ' ' + word.F).toLowerCase();
+
+							if (isFuzzy) {
+								if (wordText === searchTerm) {
+									score += 30000;
 									matchedTermIndex = termIndexMap.get(searchTerm);
+								} else if (wordText.includes(searchTerm)) {
+									score += 3000;
+									if (matchedTermIndex === -1) matchedTermIndex = termIndexMap.get(searchTerm);
 								}
-								else if(wordText.includes(searchTerm)){
-									score+=3000;
-									if(matchedTermIndex === -1)matchedTermIndex = termIndexMap.get(searchTerm);
-								}
-								if(explanation.includes(searchTerm) || example.includes(searchTerm)){
-									score+=100;
-									if(matchedTermIndex === -1)matchedTermIndex = termIndexMap.get(searchTerm);
-								}
-								if(exampleChinese.includes(searchTerm)){
-									score+=300;
-									if(matchedTermIndex === -1)matchedTermIndex = termIndexMap.get(searchTerm);
-								}
-							} else{
-								if(wordText === searchTerm){
-									score=10000;
+								if (explanation.includes(searchTerm)) score += 100;
+								if (example.includes(searchTerm)) score += 300;
+							} else {
+								if (wordText === searchTerm) {
+									score = 10000;
 									matchedTermIndex = termIndexMap.get(searchTerm);
 								}
 							}
 						});
 					}
-					//if(score>0)console.log(word,score);
-					return{ word, score, matchedTermIndex };
+					return { word, score, matchedTermIndex };
 				});
 
-				/*
-				let filteredAndScored = [];
-				if(groupSearch){
-					//按先后顺序排序
-					const termSet = new Set(searchTerms.map(t => t.toLowerCase()));
-					const wordMap = new Map();
-					originalWordData.data.forEach(word =>{
-						wordMap.set(word.W.toLowerCase(), word);
-					});
-
-					searchTerms.forEach(term =>{
-						const lowerTerm = term.toLowerCase();
-						const found = wordMap.get(lowerTerm);
-						if(found){
-							filteredAndScored.push(found);
-						} else{
-							// 若未找到，也可考虑模糊匹配（可选）
-						}
-					});
-				}else{
-				*/
-					filteredAndScored = scoredWords
+				const filteredAndScored = scoredWords
 					.filter(item => item.score > 0)
-					.sort((a, b) =>{
-						if(a.matchedTermIndex !== b.matchedTermIndex){
-							// 1. 先按得分降序排列
-							if(b.score !== a.score)return b.score - a.score;
-
-							// 2. 得分相同时，按匹配到的搜索词顺序排列
+					.sort((a, b) => {
+						if (a.matchedTermIndex !== b.matchedTermIndex) {
+							if (b.score !== a.score) return b.score - a.score;
 							return a.matchedTermIndex - b.matchedTermIndex;
 						}
 						return b.score - a.score;
 					})
 					.map(item => item.word);
-				//}
-				originalSearchResult = [...filteredAndScored];
+
+				// 合并结果：短语在前，单词在后
+				originalSearchResult = [...matchedDuanyuItems, ...filteredAndScored];
 				currentWordData = [...originalSearchResult];
 
-				if(isSorted){
-					 currentWordData.sort((a, b) => a.W.localeCompare(b.W));
+				if (isSorted) {
+					currentWordData.sort((a, b) => a.W.localeCompare(b.W));
 				}
-				let l='';
-				// 创建分类存储对象
-				const missingWords ={
-					notInCurrent:{},
-					inDaixue:{},
-					notFound:[]
-				};
 
-				//if(!groupSearch)
-				searchTerms.forEach(term =>{
+				// 缺失词提示
+				let l = '';
+				const missingWords = { notInCurrent: {}, inDaixue: {}, notFound: [] };
+				wordSearchTerms.forEach(term => {
+					if (/[\u4e00-\u9fa5]/.test(term)) return;
 					const searchTerm = term.toLowerCase();
-					const foundWord = originalWordData.data.find(word => word.W.toLowerCase() === searchTerm);
-					const foundInCurrentResults = currentWordData.some(word => word.W.toLowerCase() === searchTerm);
-					if(!foundWord){
-						if(/[\u4e00-\u9fa5]/.test(term))return;
-						l+='"'+term+'",';
-					}
-
-					if(foundWord && !foundInCurrentResults){
-						// 按频率分组
-						let frequency = "";
-						if(foundWord.P == 1) frequency = "高频";
-						else if(foundWord.P == 2) frequency = "中频";
-						else frequency = "低频";
-
-						if(!missingWords.notInCurrent[frequency]){
-							missingWords.notInCurrent[frequency] = [];
-						}
-						missingWords.notInCurrent[frequency].push(`"${term}"`);
-					} else if(!foundWord){
-						const foundInDaixue = findWordInDaixue(searchTerm);
-						if(foundInDaixue){
-							const key = `${foundInDaixue.grade}-${foundInDaixue.unit}`;
-							if(!missingWords.inDaixue[key]){
-								missingWords.inDaixue[key] ={
-									grade:foundInDaixue.grade,
-									unit:foundInDaixue.unit,
-									words:[]
-								};
+					const foundWord = originalWordData.data.find(w => w.W.toLowerCase() === searchTerm);
+					const inResult = currentWordData.some(w => w.W.toLowerCase() === searchTerm);
+					if (!foundWord) l += `"${term}",`;
+					if (foundWord && !inResult) {
+						const freq = foundWord.P === 1 ? "高频" : foundWord.P === 2 ? "中频" : "低频";
+						if (!missingWords.notInCurrent[freq]) missingWords.notInCurrent[freq] = [];
+						missingWords.notInCurrent[freq].push(`"${term}"`);
+					} else if (!foundWord) {
+						const inDaixue = findWordInDaixue(searchTerm);
+						if (inDaixue) {
+							const key = `${inDaixue.grade}-${inDaixue.unit}`;
+							if (!missingWords.inDaixue[key]) {
+								missingWords.inDaixue[key] = { grade: inDaixue.grade, unit: inDaixue.unit, words: [] };
 							}
 							missingWords.inDaixue[key].words.push(`"${term}"`);
-						} else{
+						} else {
 							missingWords.notFound.push(`"${term}"`);
 						}
 					}
 				});
-				if(l!='')console.log(l+'  注意大小');
-				// 生成一条合并的提示
+
 				let combinedMessage = [];
-				// 添加不在当前分类中的单词
-				for(const [freq, words] of Object.entries(missingWords.notInCurrent)){
+				for (const [freq, words] of Object.entries(missingWords.notInCurrent)) {
 					combinedMessage.push(`${words.join('、')} 在 <b style="color:#ff0">${freq}</b> 分类`);
 				}
-
-				// 添加待学单元中的单词
-				for(const [key, data] of Object.entries(missingWords.inDaixue)){
+				for (const [key, data] of Object.entries(missingWords.inDaixue)) {
 					combinedMessage.push(`${data.words.join('、')} 未被收录，出现在课本 <b style="color:#ff0">${data.grade} ${data.unit}</b>`);
 				}
-
-				// 添加完全未找到的单词
-				if(missingWords.notFound.length > 0 && currentWordData.length>0){
+				if (missingWords.notFound.length > 0 && currentWordData.length > 0) {
 					combinedMessage.push(`${missingWords.notFound.join('、')} 未在词库中找到`);
 				}
-
-				// 只显示一条提示
-				if(currentFilter=="high" || currentFilter=="medium" || currentFilter=="low" || currentFilter=="group" )
-				if(combinedMessage.length > 0){
+				if ((currentFilter == "high" || currentFilter == "medium" || currentFilter == "low" || currentFilter == "group") && combinedMessage.length > 0) {
 					toastManager.show(combinedMessage.join('<hr style="border:none;height:1px;background:linear-gradient(90deg, transparent, #fff, transparent);width:80%;margin:10px auto;"/>'), 'info', 8000);
 				}
-
-
 			}
+
 			totalPages = Math.ceil(currentWordData.length / limit);
-			if(currentPage > totalPages) currentPage = 1;
+			if (currentPage > totalPages) currentPage = 1;
 			updateDisplay(limit);
 			updateUrlParams();
 		}
