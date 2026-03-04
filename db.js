@@ -2225,7 +2225,7 @@
 					{P:2,W:"slowly",Y:"/ˈsləʊli/",C:"adv. 慢慢地",E:"Walk slowly and carefully.",F:"慢慢地小心走。"},
 					{P:2,W:"affect",Y:"/əˈfekt/",C:"v. 影响",E:"Weather affects our mood.",F:"天气影响我们的心情。"},
 					{P:2,W:"stormy",Y:"/ˈstɔːmi/",C:"adj. 有暴风雨的",E:"It was a stormy night.",F:"那是个暴风雨的夜晚。"},
-					{P:2,W:"mount",Y:"/maʊnt/",C:"v. 登上",E:"They will mount the hill tomorrow.",F:"他们明天要登上那座山。"},
+					{P:2,W:"mount",Y:"/maʊnt/",C:"v.登上、骑上 n.山峰 ",E:"He mounts his horse. / I can see Mount Tai.",F:"他骑上了他的马。/ 我能看见泰山。"},
 					{P:2,W:"magical",Y:"/ˈmædʒɪkl/",C:"adj. 魔法的",E:"It was a magical experience.",F:"这是一次神奇的体验。"},
 					{P:2,W:"peak",Y:"/piːk/",C:"n. 山峰",E:"We reached the mountain peak.",F:"我们到达了山顶。"},
 					{P:2,W:"tiring",Y:"/ˈtaɪərɪŋ/",C:"adj. 累人的",E:"It was a tiring journey.",F:"这是一次累人的旅程。"},

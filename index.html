@@ -1980,7 +1980,26 @@
 				for(const [subCategoryName, wordListString] of Object.entries(subCategories)){
 					const label = document.createElement('label');
 					const button = document.createElement('span');
-					button.innerHTML = subCategoryName;
+
+					let i = 0;
+					const hasChinese = (text) => /[\u4e00-\u9fa5]/.test(text);
+					const splitKeywords = (str) =>str.trim().split(/[,，\s]+/).map(s => s.trim()).filter(Boolean);
+					const terms = splitKeywords(wordListString);
+					if (terms.some(term => hasChinese(term))) {
+						const termSet = new Set(terms);
+						i = originalWordData.data.filter(word => {
+							if (!word.K) return false;
+							const kWords = word.K.split(/\s+/).map(w => w.trim());
+							return kWords.some(kw => termSet.has(kw));
+						}).length;
+					} else {
+						i = terms.length;
+					}
+					const duoClass = i >= 50 ? 'duo' : '';
+					button.innerHTML = subCategoryName + "<i class='" + duoClass + "'>" + i + "</i>";
+					button.title = topCategoryName + " - " + subCategoryName + " 共有" + i + "个单词/短语";
+
+					//button.innerHTML = subCategoryName;
 					button.onclick =() =>{
 						const wordList = wordListString.trim().replace(/,$/g, '');
 						if(wordList){
@@ -2013,7 +2032,11 @@
 			for (const [catName, phrases] of Object.entries(originalWordData.duanyu)) {
 				const label = document.createElement('label');
 				const button = document.createElement('span');
-				button.textContent = catName;
+				let i = 0;
+				for(var x in phrases){i++};
+				button.innerHTML = catName + "<i class='" + (i >= 50 ? 'duo' : '') + "'>" + i + "</i>";
+				button.title = catName + " 共有" + i + "个短语";
+				//button.textContent = catName;
 				button.onclick = () => {
 					const title = encodeURIComponent(`【${catName}】短语`);
 					const newUrl = `?q=list&fuzzy=false&title=${title}&filter=group`;
@@ -2350,7 +2373,9 @@
 						temp = new Set(temp);
 						for (const [catName, phrases] of Object.entries(originalWordData.duanyu)) {
 							for (const [phraseKey, phraseData] of Object.entries(phrases)) {
-								if (temp.has(normalizeQuery(phraseKey))) {
+								let phraseKey2=normalizeQuery(phraseKey);
+								if(duanyuMatches.some(item => item.W === phraseKey))continue;
+								if (temp.has(phraseKey2)) {
 									duanyuMatches.push({
 										P: 1, // 默认高频
 										W: phraseKey,
@@ -2365,6 +2390,7 @@
 							}
 						}
 					}
+					console.log(duanyuMatches);
 
 				}
 				const isFuzzy = groupSearch ? false :(urlParams.title ? urlParams.fuzzy :fuzzySearchCheckbox.checked);
