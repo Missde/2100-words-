@@ -29,8 +29,9 @@
 		#searchInput{flex:1;padding:8px 12px;border:1px solid #ddd;border-radius:4px;font-size:1rem;}
 		.group-menu{flex:1;border:1px solid #ddd;background:#fff;padding:5px 0 0 10px;border-radius:5px;}
 		.group-menu b{color:#1588E5;margin-right:10px;}
-		.group-menu button{background:#EAF5FC; border:none; padding:4px 10px;margin:0 10px 5px 0; border-radius:15px; cursor:pointer; font-size:0.9rem; transition:0.2s; min-width:60px; text-align:center;}
+		.group-menu button{background:#EAF5FC; border:none; padding:4px 5px;margin:0 3px 5px 0; border-radius:15px; cursor:pointer; font-size:0.9rem; transition:0.2s;text-align:center;}
 		.group-menu button.on{background:#1588E5;color:#fff;}
+		.group-menu button:last-child{margin:0;}
 
 		.group-menu .write{transition:background-color 0.3s;font-size:14px;border:1px solid #2196F3;font-weight:400;min-width:auto;padding:1px 5px;margin-right:5px;border-radius:3px;}
 		.group-menu .write.on{background:#2196F3;color:#fff;}
@@ -86,7 +87,7 @@
 
 
 		.print-footer{display:none;}
-		.toast-container{position:fixed;top:60px;right:20px;z-index:1000;max-width:300px;}
+		.toast-container{position:fixed;top:60px;right:20px;z-index:2000;max-width:300px;}
 		.toast{background:#333;color:white;padding:12px 16px;margin-bottom:10px;border-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,0.15);transform:translateX(100%);opacity:0;transition:all 0.3s ease;cursor:pointer;}
 		.toast.show{transform:translateX(0);opacity:1;}
 		.toast.hide{transform:translateX(100%);opacity:0;}
@@ -227,7 +228,7 @@
 		/* 移动端响应式样式 */
 		@media screen and (max-width:600px){
 			body{padding:50px 10px 20px;font-size:14px;}
-			body:after{margin:20px 0;content:"手机浏览器的朗读效果很差，推荐在电脑上使用win10或win11系统，朗读堪比真人。";border:3px solid #eee;padding:10px;color:#666;display:block;border-radius:10px;background:#f1f1f1;}
+			body:after{margin:20px 0;content:"推荐在win10或win11电脑版Edge浏览器使用本工具，可以调用微软的在线语音来朗读例句。";border:3px solid #eee;padding:10px;color:#666;display:block;border-radius:10px;background:#f1f1f1;}
 			h1{margin:0;line-height:20px;padding:10px;justify-content:left}
 			h1 a{display:inline-block;margin:0px;font-size:0.9rem;font-weight:400;}
 			.controls{flex-direction:column;align-items:stretch;gap:10px;}
@@ -2110,8 +2111,8 @@
 						.replace(/<script src="db.js">/i, '<script>var originalWordData='+JSON.stringify(originalWordData, null, 2));
 				window.download2100 = URL.createObjectURL(new Blob([html],{ type:'text/html;charset=utf-8' }));
 				extraButtons = `
-					<button class="sort-btn" onclick="window.open('shuyaohengshuiti.ttf')" style="float:right;margin-left:10px;download2100">下载英文字体&nbsp;&nbsp;<font style="color:#ccc">(衡水体)</font></button>
-					<button class="sort-btn" style="float:right;download2100" onclick="(function(){
+					<button class="sort-btn" onclick="window.open('shuyaohengshuiti.ttf')" style="float:right;margin-left:3px;margin-top:3px;download2100">下载英文字体&nbsp;&nbsp;<font style="color:#ccc">(衡水体)</font></button>
+					<button class="sort-btn" style="float:right;download2100;margin-top:3px;" onclick="(function(){
 						const a = document.createElement('a');
 						a.href = window.download2100;
 						a.download = '初中2100单词.html';
