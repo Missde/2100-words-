@@ -303,6 +303,9 @@
 			.m_group38 .word-card{height:53px}
 			.m_group40 .word-card{height:50px}
 			.m_group42 .word-card{height:48px}
+			.m_group44 .word-card{height:45px}
+			.m_group46 .word-card{height:42px}
+			.m_group48 .word-card{height:40px}
 
 			.m_group2 .word-card{margin:0 0 1px 0;}
 			.m_group2 .word-main{height:23px;line-height:20px;}
@@ -1694,7 +1697,10 @@
 						let l=wordListString.split(',').filter(Boolean).length;
 						if(urlParams.title.indexOf("Unit")>-1){
 							//单元单词，尽量1张打印完(正反面)
-							if(l>80)document.body.className+=' m_group42 m_group2';
+							if(l>92)document.body.className+=' m_group48 m_group2';
+							else if(l>88)document.body.className+=' m_group46 m_group2';
+							else if(l>84)document.body.className+=' m_group44 m_group2';
+							else if(l>80)document.body.className+=' m_group42 m_group2';
 							else if(l>76)document.body.className+=' m_group40 m_group2';
 							else if(l>72)document.body.className+=' m_group38 m_group2';
 							else if(l>68)document.body.className+=' m_group36 m_group2';
@@ -2337,7 +2343,7 @@
 
 				if(groupSearch){
 					var searchTerms = query.replace(/　|，|。|、/g,',').split(',').map(term => term.trim()).filter(term => term);
-					if(urlParams.title.indexOf("Unit")>-1)limit=90;
+					if(urlParams.title.indexOf("Unit")>-1)limit=99;
 
 					 //判断是否是“短语”分类（标题以“短语”结尾）
 					const cleanTitle = decodeURIComponent(urlParams.title || '').trim();
